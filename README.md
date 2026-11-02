@@ -8,6 +8,10 @@ The idea: an AI result is never shown on its own. It passes through quality and 
 
 > **Research use only.** This is not a medical device and has not been clinically validated. Do not use it to make decisions about real patients. All patient data in the repo is synthetic seed data.
 
+<img width="1341" height="1333" alt="image" src="https://github.com/user-attachments/assets/4564024d-8280-4cc6-a2dd-0befba7cdbac" />
+
+
+
 ## What works today
 
 | Category | Modality | Classes | Status |
