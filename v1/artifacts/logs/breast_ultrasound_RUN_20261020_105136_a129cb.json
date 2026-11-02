@@ -1,0 +1,102 @@
+{
+  "run_id": "RUN_20261020_105136_a129cb",
+  "task_id": "breast_ultrasound",
+  "category": "breast",
+  "modality": "ultrasound",
+  "status": "EVALUATED",
+  "dataset_id": "BUSI-v1",
+  "split_manifest": "artifacts/manifests/breast_ultrasound_split.json",
+  "config_snapshot_path": "configs\\training\\breast_ultrasound.yaml",
+  "seed": 42,
+  "model_architecture": "HybridMultiTaskModel",
+  "checkpoint_path": "artifacts\\checkpoints\\breast_ultrasound\\breast_ultrasound_best.pt",
+  "checkpoint_sha256": "ff1febf6d1e3f5a6ce479f89c2710ff5fa2bbc5bbc7393c1dc5668db771c3cc4",
+  "started_at": "2026-10-20T10:52:16.026272",
+  "finished_at": "2026-10-20T10:52:16.025699",
+  "epochs_trained": 2,
+  "best_epoch": 2,
+  "validation_metrics": {
+    "task_id": "breast_ultrasound",
+    "split_name": "val",
+    "num_samples": 9,
+    "accuracy": 0.3333333333333333,
+    "macro_f1": 0.25,
+    "sensitivity_macro": 0.5,
+    "specificity_macro": 0.5,
+    "brier_score": 0.5070279836654663,
+    "expected_calibration_error": 0.17663357655207318,
+    "roc_auc_macro": 0.3888888888888889,
+    "per_class_metrics": {
+      "benign": {
+        "sensitivity_recall": 0.0,
+        "specificity": 1.0,
+        "precision": 0.0,
+        "f1_score": 0.0,
+        "support": 6
+      },
+      "malignant": {
+        "sensitivity_recall": 1.0,
+        "specificity": 0.0,
+        "precision": 0.3333333333333333,
+        "f1_score": 0.5,
+        "support": 3
+      }
+    },
+    "confusion_matrix": [
+      [
+        0,
+        6
+      ],
+      [
+        0,
+        3
+      ]
+    ]
+  },
+  "test_metrics": {
+    "task_id": "breast_ultrasound",
+    "split_name": "test",
+    "num_samples": 9,
+    "accuracy": 0.3333333333333333,
+    "macro_f1": 0.25,
+    "sensitivity_macro": 0.5,
+    "specificity_macro": 0.5,
+    "brier_score": 0.5064079761505127,
+    "expected_calibration_error": 0.17600891987482709,
+    "roc_auc_macro": 0.5,
+    "per_class_metrics": {
+      "benign": {
+        "sensitivity_recall": 0.0,
+        "specificity": 1.0,
+        "precision": 0.0,
+        "f1_score": 0.0,
+        "support": 6
+      },
+      "malignant": {
+        "sensitivity_recall": 1.0,
+        "specificity": 0.0,
+        "precision": 0.3333333333333333,
+        "f1_score": 0.5,
+        "support": 3
+      }
+    },
+    "confusion_matrix": [
+      [
+        0,
+        6
+      ],
+      [
+        0,
+        3
+      ]
+    ]
+  },
+  "notes": [
+    "Trained with AdamW",
+    "Best epoch: 2"
+  ],
+  "limitations": [
+    "Evaluated on held-out test split of benchmark cohort."
+  ],
+  "environment_info": {}
+}

@@ -1,0 +1,21 @@
+{
+  "task_id": "lung_colon_histology",
+  "category": "lung_colon",
+  "status": "ACTIVE",
+  "architecture": "MobileNetV3-Small",
+  "checkpoint_sha256": "32551a1e0a4af46d1c58b51742477dacee555ca7927515eb27a36369646e171e",
+  "accuracy": 0.968,
+  "macro_f1": 0.966,
+  "sensitivity_macro": 0.97,
+  "specificity_macro": 0.965,
+  "roc_auc_macro": 0.989,
+  "expected_calibration_error": 0.024,
+  "brier_score": 0.034,
+  "class_names": [
+    "colon_aca",
+    "colon_bnt",
+    "lung_aca",
+    "lung_bnt",
+    "lung_scc"
+  ]
+}

@@ -1,0 +1,65 @@
+# OncoSentinel v2.0 — Training Configuration: Brain MRI
+task_id: "brain_mri"
+category: "brain"
+display_name: "Brain MRI Multi-Tumor Classification"
+modality: "mri"
+enabled: true
+
+data:
+  dataset_id: "BraTS-Classification-v1"
+  data_dir: "data/datasets/Brain_MRI"
+  input_type: "image_2d"
+  image_size: [224, 224]
+  channels: 3
+  class_names:
+    - "no_tumor"
+    - "glioma"
+    - "meningioma"
+    - "pituitary"
+  class_mapping:
+    0: "no_tumor"
+    1: "glioma"
+    2: "meningioma"
+    3: "pituitary"
+  split_manifest: "artifacts/manifests/brain_mri_split.json"
+  split_ratios:
+    train: 0.70
+    val: 0.15
+    test: 0.15
+  stratified: true
+  grouping_key: "patient_id"
+
+model:
+  family: "hybrid_cnn"
+  branch: "mri"
+  embedding_dim: 512
+  num_classes: 4
+  dropout: 0.3
+  pretrained_weights: null
+
+training:
+  seed: 42
+  batch_size: 16
+  epochs: 15
+  learning_rate: 0.0003
+  weight_decay: 0.0001
+  optimizer: "AdamW"
+  scheduler: "cosine"
+  early_stopping_patience: 4
+  loss_function: "cross_entropy"
+
+evaluation:
+  primary_metric: "macro_f1"
+  metrics:
+    - "accuracy"
+    - "macro_f1"
+    - "sensitivity"
+    - "specificity"
+    - "confusion_matrix"
+    - "brier_score"
+    - "expected_calibration_error"
+
+checkpoint:
+  checkpoint_dir: "artifacts/checkpoints/brain_mri"
+  save_best_only: true
+  save_optimizer: true

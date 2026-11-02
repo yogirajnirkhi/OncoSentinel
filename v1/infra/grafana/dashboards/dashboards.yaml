@@ -1,0 +1,11 @@
+apiVersion: 1
+
+providers:
+  - name: 'OncoSentinel Dashboards'
+    orgId: 1
+    folder: 'OncoSentinel'
+    type: file
+    disableDeletion: false
+    editable: true
+    options:
+      path: /etc/grafana/provisioning/dashboards

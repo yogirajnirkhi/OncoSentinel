@@ -1,0 +1,24 @@
+{
+  "task_id": "oral_cancer",
+  "category": "oral",
+  "model_version": "v2.0.0-oral-mbv3s",
+  "architecture": "MobileNetV3-Small",
+  "status": "ACTIVE",
+  "checkpoint_path": "../models/oral_model.pth",
+  "sha256": "4446d83fc235780206619ed5a037ac0b9e8bfe18eadb07660c86e8cb5d7074b0",
+  "num_classes": 2,
+  "classes": [
+    "normal",
+    "oscc"
+  ],
+  "embedding_dim": 576,
+  "metrics": {
+    "accuracy": 0.941,
+    "macro_f1": 0.939,
+    "sensitivity_macro": 0.945,
+    "specificity_macro": 0.937,
+    "roc_auc_macro": 0.972,
+    "expected_calibration_error": 0.032,
+    "brier_score": 0.052
+  }
+}

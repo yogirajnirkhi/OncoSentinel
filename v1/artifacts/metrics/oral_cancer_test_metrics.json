@@ -1,0 +1,18 @@
+{
+  "task_id": "oral_cancer",
+  "category": "oral",
+  "status": "ACTIVE",
+  "architecture": "MobileNetV3-Small",
+  "checkpoint_sha256": "4446d83fc235780206619ed5a037ac0b9e8bfe18eadb07660c86e8cb5d7074b0",
+  "accuracy": 0.941,
+  "macro_f1": 0.939,
+  "sensitivity_macro": 0.945,
+  "specificity_macro": 0.937,
+  "roc_auc_macro": 0.972,
+  "expected_calibration_error": 0.032,
+  "brier_score": 0.052,
+  "class_names": [
+    "normal",
+    "oscc"
+  ]
+}

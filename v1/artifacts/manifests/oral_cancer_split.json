@@ -1,0 +1,690 @@
+{
+  "task_id": "oral_cancer",
+  "dataset_id": "OSCC-Histology-v1",
+  "created_at": "2026-10-20T10:54:48.493938",
+  "grouping_key": "slide_id",
+  "total_samples": 60,
+  "train_count": 42,
+  "val_count": 9,
+  "test_count": 9,
+  "class_distribution": {
+    "train": {
+      "oscc": 24,
+      "normal": 18
+    },
+    "val": {
+      "oscc": 3,
+      "normal": 6
+    },
+    "test": {
+      "oscc": 3,
+      "normal": 6
+    }
+  },
+  "train_samples": [
+    {
+      "sample_id": "PATIENT_ORAL_017_SCAN_00",
+      "relative_path": "oscc/PATIENT_ORAL_017_SCAN_00.png",
+      "class_label": 1,
+      "class_name": "oscc",
+      "grouping_id": "PATIENT_ORAL_017",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_ORAL_017_SCAN_01",
+      "relative_path": "oscc/PATIENT_ORAL_017_SCAN_01.png",
+      "class_label": 1,
+      "class_name": "oscc",
+      "grouping_id": "PATIENT_ORAL_017",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_ORAL_017_SCAN_02",
+      "relative_path": "oscc/PATIENT_ORAL_017_SCAN_02.png",
+      "class_label": 1,
+      "class_name": "oscc",
+      "grouping_id": "PATIENT_ORAL_017",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_ORAL_010_SCAN_00",
+      "relative_path": "normal/PATIENT_ORAL_010_SCAN_00.png",
+      "class_label": 0,
+      "class_name": "normal",
+      "grouping_id": "PATIENT_ORAL_010",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_ORAL_010_SCAN_01",
+      "relative_path": "normal/PATIENT_ORAL_010_SCAN_01.png",
+      "class_label": 0,
+      "class_name": "normal",
+      "grouping_id": "PATIENT_ORAL_010",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_ORAL_010_SCAN_02",
+      "relative_path": "normal/PATIENT_ORAL_010_SCAN_02.png",
+      "class_label": 0,
+      "class_name": "normal",
+      "grouping_id": "PATIENT_ORAL_010",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_ORAL_009_SCAN_00",
+      "relative_path": "oscc/PATIENT_ORAL_009_SCAN_00.png",
+      "class_label": 1,
+      "class_name": "oscc",
+      "grouping_id": "PATIENT_ORAL_009",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_ORAL_009_SCAN_01",
+      "relative_path": "oscc/PATIENT_ORAL_009_SCAN_01.png",
+      "class_label": 1,
+      "class_name": "oscc",
+      "grouping_id": "PATIENT_ORAL_009",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_ORAL_009_SCAN_02",
+      "relative_path": "oscc/PATIENT_ORAL_009_SCAN_02.png",
+      "class_label": 1,
+      "class_name": "oscc",
+      "grouping_id": "PATIENT_ORAL_009",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_ORAL_004_SCAN_00",
+      "relative_path": "normal/PATIENT_ORAL_004_SCAN_00.png",
+      "class_label": 0,
+      "class_name": "normal",
+      "grouping_id": "PATIENT_ORAL_004",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_ORAL_004_SCAN_01",
+      "relative_path": "normal/PATIENT_ORAL_004_SCAN_01.png",
+      "class_label": 0,
+      "class_name": "normal",
+      "grouping_id": "PATIENT_ORAL_004",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_ORAL_004_SCAN_02",
+      "relative_path": "normal/PATIENT_ORAL_004_SCAN_02.png",
+      "class_label": 0,
+      "class_name": "normal",
+      "grouping_id": "PATIENT_ORAL_004",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_ORAL_006_SCAN_00",
+      "relative_path": "normal/PATIENT_ORAL_006_SCAN_00.png",
+      "class_label": 0,
+      "class_name": "normal",
+      "grouping_id": "PATIENT_ORAL_006",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_ORAL_006_SCAN_01",
+      "relative_path": "normal/PATIENT_ORAL_006_SCAN_01.png",
+      "class_label": 0,
+      "class_name": "normal",
+      "grouping_id": "PATIENT_ORAL_006",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_ORAL_006_SCAN_02",
+      "relative_path": "normal/PATIENT_ORAL_006_SCAN_02.png",
+      "class_label": 0,
+      "class_name": "normal",
+      "grouping_id": "PATIENT_ORAL_006",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_ORAL_001_SCAN_00",
+      "relative_path": "oscc/PATIENT_ORAL_001_SCAN_00.png",
+      "class_label": 1,
+      "class_name": "oscc",
+      "grouping_id": "PATIENT_ORAL_001",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_ORAL_001_SCAN_01",
+      "relative_path": "oscc/PATIENT_ORAL_001_SCAN_01.png",
+      "class_label": 1,
+      "class_name": "oscc",
+      "grouping_id": "PATIENT_ORAL_001",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_ORAL_001_SCAN_02",
+      "relative_path": "oscc/PATIENT_ORAL_001_SCAN_02.png",
+      "class_label": 1,
+      "class_name": "oscc",
+      "grouping_id": "PATIENT_ORAL_001",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_ORAL_013_SCAN_00",
+      "relative_path": "oscc/PATIENT_ORAL_013_SCAN_00.png",
+      "class_label": 1,
+      "class_name": "oscc",
+      "grouping_id": "PATIENT_ORAL_013",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_ORAL_013_SCAN_01",
+      "relative_path": "oscc/PATIENT_ORAL_013_SCAN_01.png",
+      "class_label": 1,
+      "class_name": "oscc",
+      "grouping_id": "PATIENT_ORAL_013",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_ORAL_013_SCAN_02",
+      "relative_path": "oscc/PATIENT_ORAL_013_SCAN_02.png",
+      "class_label": 1,
+      "class_name": "oscc",
+      "grouping_id": "PATIENT_ORAL_013",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_ORAL_018_SCAN_00",
+      "relative_path": "normal/PATIENT_ORAL_018_SCAN_00.png",
+      "class_label": 0,
+      "class_name": "normal",
+      "grouping_id": "PATIENT_ORAL_018",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_ORAL_018_SCAN_01",
+      "relative_path": "normal/PATIENT_ORAL_018_SCAN_01.png",
+      "class_label": 0,
+      "class_name": "normal",
+      "grouping_id": "PATIENT_ORAL_018",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_ORAL_018_SCAN_02",
+      "relative_path": "normal/PATIENT_ORAL_018_SCAN_02.png",
+      "class_label": 0,
+      "class_name": "normal",
+      "grouping_id": "PATIENT_ORAL_018",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_ORAL_011_SCAN_00",
+      "relative_path": "oscc/PATIENT_ORAL_011_SCAN_00.png",
+      "class_label": 1,
+      "class_name": "oscc",
+      "grouping_id": "PATIENT_ORAL_011",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_ORAL_011_SCAN_01",
+      "relative_path": "oscc/PATIENT_ORAL_011_SCAN_01.png",
+      "class_label": 1,
+      "class_name": "oscc",
+      "grouping_id": "PATIENT_ORAL_011",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_ORAL_011_SCAN_02",
+      "relative_path": "oscc/PATIENT_ORAL_011_SCAN_02.png",
+      "class_label": 1,
+      "class_name": "oscc",
+      "grouping_id": "PATIENT_ORAL_011",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_ORAL_019_SCAN_00",
+      "relative_path": "oscc/PATIENT_ORAL_019_SCAN_00.png",
+      "class_label": 1,
+      "class_name": "oscc",
+      "grouping_id": "PATIENT_ORAL_019",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_ORAL_019_SCAN_01",
+      "relative_path": "oscc/PATIENT_ORAL_019_SCAN_01.png",
+      "class_label": 1,
+      "class_name": "oscc",
+      "grouping_id": "PATIENT_ORAL_019",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_ORAL_019_SCAN_02",
+      "relative_path": "oscc/PATIENT_ORAL_019_SCAN_02.png",
+      "class_label": 1,
+      "class_name": "oscc",
+      "grouping_id": "PATIENT_ORAL_019",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_ORAL_012_SCAN_00",
+      "relative_path": "normal/PATIENT_ORAL_012_SCAN_00.png",
+      "class_label": 0,
+      "class_name": "normal",
+      "grouping_id": "PATIENT_ORAL_012",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_ORAL_012_SCAN_01",
+      "relative_path": "normal/PATIENT_ORAL_012_SCAN_01.png",
+      "class_label": 0,
+      "class_name": "normal",
+      "grouping_id": "PATIENT_ORAL_012",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_ORAL_012_SCAN_02",
+      "relative_path": "normal/PATIENT_ORAL_012_SCAN_02.png",
+      "class_label": 0,
+      "class_name": "normal",
+      "grouping_id": "PATIENT_ORAL_012",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_ORAL_015_SCAN_00",
+      "relative_path": "oscc/PATIENT_ORAL_015_SCAN_00.png",
+      "class_label": 1,
+      "class_name": "oscc",
+      "grouping_id": "PATIENT_ORAL_015",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_ORAL_015_SCAN_01",
+      "relative_path": "oscc/PATIENT_ORAL_015_SCAN_01.png",
+      "class_label": 1,
+      "class_name": "oscc",
+      "grouping_id": "PATIENT_ORAL_015",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_ORAL_015_SCAN_02",
+      "relative_path": "oscc/PATIENT_ORAL_015_SCAN_02.png",
+      "class_label": 1,
+      "class_name": "oscc",
+      "grouping_id": "PATIENT_ORAL_015",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_ORAL_014_SCAN_00",
+      "relative_path": "normal/PATIENT_ORAL_014_SCAN_00.png",
+      "class_label": 0,
+      "class_name": "normal",
+      "grouping_id": "PATIENT_ORAL_014",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_ORAL_014_SCAN_01",
+      "relative_path": "normal/PATIENT_ORAL_014_SCAN_01.png",
+      "class_label": 0,
+      "class_name": "normal",
+      "grouping_id": "PATIENT_ORAL_014",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_ORAL_014_SCAN_02",
+      "relative_path": "normal/PATIENT_ORAL_014_SCAN_02.png",
+      "class_label": 0,
+      "class_name": "normal",
+      "grouping_id": "PATIENT_ORAL_014",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_ORAL_005_SCAN_00",
+      "relative_path": "oscc/PATIENT_ORAL_005_SCAN_00.png",
+      "class_label": 1,
+      "class_name": "oscc",
+      "grouping_id": "PATIENT_ORAL_005",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_ORAL_005_SCAN_01",
+      "relative_path": "oscc/PATIENT_ORAL_005_SCAN_01.png",
+      "class_label": 1,
+      "class_name": "oscc",
+      "grouping_id": "PATIENT_ORAL_005",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_ORAL_005_SCAN_02",
+      "relative_path": "oscc/PATIENT_ORAL_005_SCAN_02.png",
+      "class_label": 1,
+      "class_name": "oscc",
+      "grouping_id": "PATIENT_ORAL_005",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    }
+  ],
+  "val_samples": [
+    {
+      "sample_id": "PATIENT_ORAL_007_SCAN_00",
+      "relative_path": "oscc/PATIENT_ORAL_007_SCAN_00.png",
+      "class_label": 1,
+      "class_name": "oscc",
+      "grouping_id": "PATIENT_ORAL_007",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_ORAL_007_SCAN_01",
+      "relative_path": "oscc/PATIENT_ORAL_007_SCAN_01.png",
+      "class_label": 1,
+      "class_name": "oscc",
+      "grouping_id": "PATIENT_ORAL_007",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_ORAL_007_SCAN_02",
+      "relative_path": "oscc/PATIENT_ORAL_007_SCAN_02.png",
+      "class_label": 1,
+      "class_name": "oscc",
+      "grouping_id": "PATIENT_ORAL_007",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_ORAL_002_SCAN_00",
+      "relative_path": "normal/PATIENT_ORAL_002_SCAN_00.png",
+      "class_label": 0,
+      "class_name": "normal",
+      "grouping_id": "PATIENT_ORAL_002",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_ORAL_002_SCAN_01",
+      "relative_path": "normal/PATIENT_ORAL_002_SCAN_01.png",
+      "class_label": 0,
+      "class_name": "normal",
+      "grouping_id": "PATIENT_ORAL_002",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_ORAL_002_SCAN_02",
+      "relative_path": "normal/PATIENT_ORAL_002_SCAN_02.png",
+      "class_label": 0,
+      "class_name": "normal",
+      "grouping_id": "PATIENT_ORAL_002",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_ORAL_016_SCAN_00",
+      "relative_path": "normal/PATIENT_ORAL_016_SCAN_00.png",
+      "class_label": 0,
+      "class_name": "normal",
+      "grouping_id": "PATIENT_ORAL_016",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_ORAL_016_SCAN_01",
+      "relative_path": "normal/PATIENT_ORAL_016_SCAN_01.png",
+      "class_label": 0,
+      "class_name": "normal",
+      "grouping_id": "PATIENT_ORAL_016",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_ORAL_016_SCAN_02",
+      "relative_path": "normal/PATIENT_ORAL_016_SCAN_02.png",
+      "class_label": 0,
+      "class_name": "normal",
+      "grouping_id": "PATIENT_ORAL_016",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    }
+  ],
+  "test_samples": [
+    {
+      "sample_id": "PATIENT_ORAL_003_SCAN_00",
+      "relative_path": "oscc/PATIENT_ORAL_003_SCAN_00.png",
+      "class_label": 1,
+      "class_name": "oscc",
+      "grouping_id": "PATIENT_ORAL_003",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_ORAL_003_SCAN_01",
+      "relative_path": "oscc/PATIENT_ORAL_003_SCAN_01.png",
+      "class_label": 1,
+      "class_name": "oscc",
+      "grouping_id": "PATIENT_ORAL_003",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_ORAL_003_SCAN_02",
+      "relative_path": "oscc/PATIENT_ORAL_003_SCAN_02.png",
+      "class_label": 1,
+      "class_name": "oscc",
+      "grouping_id": "PATIENT_ORAL_003",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_ORAL_008_SCAN_00",
+      "relative_path": "normal/PATIENT_ORAL_008_SCAN_00.png",
+      "class_label": 0,
+      "class_name": "normal",
+      "grouping_id": "PATIENT_ORAL_008",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_ORAL_008_SCAN_01",
+      "relative_path": "normal/PATIENT_ORAL_008_SCAN_01.png",
+      "class_label": 0,
+      "class_name": "normal",
+      "grouping_id": "PATIENT_ORAL_008",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_ORAL_008_SCAN_02",
+      "relative_path": "normal/PATIENT_ORAL_008_SCAN_02.png",
+      "class_label": 0,
+      "class_name": "normal",
+      "grouping_id": "PATIENT_ORAL_008",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_ORAL_000_SCAN_00",
+      "relative_path": "normal/PATIENT_ORAL_000_SCAN_00.png",
+      "class_label": 0,
+      "class_name": "normal",
+      "grouping_id": "PATIENT_ORAL_000",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_ORAL_000_SCAN_01",
+      "relative_path": "normal/PATIENT_ORAL_000_SCAN_01.png",
+      "class_label": 0,
+      "class_name": "normal",
+      "grouping_id": "PATIENT_ORAL_000",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_ORAL_000_SCAN_02",
+      "relative_path": "normal/PATIENT_ORAL_000_SCAN_02.png",
+      "class_label": 0,
+      "class_name": "normal",
+      "grouping_id": "PATIENT_ORAL_000",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    }
+  ]
+}

@@ -1,0 +1,2902 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>OncoSentinel — Clinical Workspace</title>
+    <meta
+      content="A unified oncology workspace for clinical AI, patient care, and hospital operations."
+      name="description"
+    />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600;650;700&amp;family=Manrope:wght@400;500;600;650;700;750;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link href="css/app.css" rel="stylesheet" />
+    <link href="css/workspace.css" rel="stylesheet" />
+    <script src="js/config.js"></script>
+    <script src="js/api-client.js"></script>
+  </head>
+  <body>
+    <!-- ═══════════════════════════════════════════════════════════════════════════
+       AUTHENTICATION & STAFF REGISTRATION MODAL / VIEW
+  ═══════════════════════════════════════════════════════════════════════════ -->
+    <div class="auth-overlay hidden" id="authOverlay">
+      <div class="auth-card">
+        <div class="auth-header">
+          <div class="brand-logo-small">
+            <span class="logo-seal">os</span>
+          </div>
+          <div>
+            <div class="auth-brand-title">
+              ONCOSENTINEL <span class="badge-version">v2.0</span>
+            </div>
+            <div class="auth-brand-sub">
+              Clinical AI &amp; Hospital Management Gateway
+            </div>
+          </div>
+          <button
+            aria-label="Close sign in dialog"
+            class="icon-button"
+            hidden=""
+            id="btnCloseAuthModal"
+            style="margin-left: auto"
+            type="button"
+          >
+            ✕
+          </button>
+        </div>
+        <!-- Auth Navigation Tabs -->
+        <div class="auth-tabs">
+          <button class="auth-tab-btn active" id="tabBtnSignIn" type="button">
+            Sign In
+          </button>
+          <button class="auth-tab-btn" id="tabBtnRegister" type="button">
+            Register Staff Account
+          </button>
+        </div>
+        <!-- Sign In Form -->
+        <form class="auth-form-pane" id="signInForm">
+          <div class="form-group">
+            <label for="loginUsername">Staff Username or Hospital Email</label>
+            <input
+              autocomplete="username"
+              id="loginUsername"
+              placeholder="e.g. dr_chen or sarah.chen@hospital.org"
+              required=""
+              type="text"
+            />
+          </div>
+          <div class="form-group">
+            <label for="loginPassword">Staff Password</label>
+            <input
+              autocomplete="current-password"
+              id="loginPassword"
+              placeholder="••••••••••••"
+              required=""
+              type="password"
+            />
+          </div>
+          <p class="auth-error" hidden="" id="signInError"></p>
+          <button
+            class="btn btn-primary btn-block"
+            id="signInSubmitBtn"
+            type="submit"
+          >
+            Sign In to Clinical Workspace <span aria-hidden="true">→</span>
+          </button>
+          <div
+            class="staff-quick-login"
+            style="
+              margin-top: 14px;
+              padding-top: 12px;
+              border-top: 1px solid rgba(148, 163, 184, 0.18);
+            "
+          >
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 8px;
+              "
+            >
+              <span
+                style="
+                  font-size: 0.72rem;
+                  font-weight: 700;
+                  text-transform: uppercase;
+                  letter-spacing: 0.05em;
+                  color: #94a3b8;
+                "
+                >Hospital Staff Directory (Click to Sign In)</span
+              >
+              <span style="font-size: 0.68rem; color: #64748b"
+                >Enforced RBAC</span
+              >
+            </div>
+            <div
+              id="staffQuickLoginList"
+              style="
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 6px;
+                max-height: 215px;
+                overflow-y: auto;
+              "
+            >
+              <button
+                class="staff-quick-btn"
+                data-role="CLINICIAN"
+                data-username="dr_chen"
+                style="
+                  display: flex;
+                  align-items: center;
+                  justify-content: space-between;
+                  width: 100%;
+                  text-align: left;
+                  padding: 7px 10px;
+                  border-radius: 8px;
+                  background: rgba(15, 23, 42, 0.75);
+                  border: 1px solid rgba(56, 189, 248, 0.25);
+                  color: #f8fafc;
+                  cursor: pointer;
+                "
+                type="button"
+              >
+                <div>
+                  <div style="font-weight: 600; font-size: 0.81rem">
+                    Dr. Sarah Chen, MD
+                    <code style="font-size: 0.71rem; color: #38bdf8"
+                      >dr_chen</code
+                    >
+                  </div>
+                  <div style="font-size: 0.71rem; color: #94a3b8">
+                    Medical Oncology · AI Studio, Prescribe, Orders, Adjudicate
+                  </div>
+                </div>
+                <span class="role-pill clinician" style="font-size: 0.68rem"
+                  >CLINICIAN</span
+                >
+              </button>
+              <button
+                class="staff-quick-btn"
+                data-role="RADIOLOGIST"
+                data-username="dr_patel"
+                style="
+                  display: flex;
+                  align-items: center;
+                  justify-content: space-between;
+                  width: 100%;
+                  text-align: left;
+                  padding: 7px 10px;
+                  border-radius: 8px;
+                  background: rgba(15, 23, 42, 0.75);
+                  border: 1px solid rgba(148, 163, 184, 0.2);
+                  color: #f8fafc;
+                  cursor: pointer;
+                "
+                type="button"
+              >
+                <div>
+                  <div style="font-weight: 600; font-size: 0.81rem">
+                    Dr. Rajesh Patel, MD
+                    <code style="font-size: 0.71rem; color: #38bdf8"
+                      >dr_patel</code
+                    >
+                  </div>
+                  <div style="font-size: 0.71rem; color: #94a3b8">
+                    Diagnostic Radiology · Sign Imaging Reports, Lab Verify, AI
+                  </div>
+                </div>
+                <span class="role-pill radiologist" style="font-size: 0.68rem"
+                  >RADIOLOGIST</span
+                >
+              </button>
+              <button
+                class="staff-quick-btn"
+                data-role="PHARMACIST"
+                data-username="pharma_alex"
+                style="
+                  display: flex;
+                  align-items: center;
+                  justify-content: space-between;
+                  width: 100%;
+                  text-align: left;
+                  padding: 7px 10px;
+                  border-radius: 8px;
+                  background: rgba(15, 23, 42, 0.75);
+                  border: 1px solid rgba(148, 163, 184, 0.2);
+                  color: #f8fafc;
+                  cursor: pointer;
+                "
+                type="button"
+              >
+                <div>
+                  <div style="font-weight: 600; font-size: 0.81rem">
+                    Alex Rivera, PharmD
+                    <code style="font-size: 0.71rem; color: #38bdf8"
+                      >pharma_alex</code
+                    >
+                  </div>
+                  <div style="font-size: 0.71rem; color: #94a3b8">
+                    Clinical Oncology Pharmacy · FIFO Dispense &amp; Stock Lots
+                  </div>
+                </div>
+                <span class="role-pill pharmacist" style="font-size: 0.68rem"
+                  >PHARMACIST</span
+                >
+              </button>
+              <button
+                class="staff-quick-btn"
+                data-role="BILLING_CLERK"
+                data-username="billing_mark"
+                style="
+                  display: flex;
+                  align-items: center;
+                  justify-content: space-between;
+                  width: 100%;
+                  text-align: left;
+                  padding: 7px 10px;
+                  border-radius: 8px;
+                  background: rgba(15, 23, 42, 0.75);
+                  border: 1px solid rgba(148, 163, 184, 0.2);
+                  color: #f8fafc;
+                  cursor: pointer;
+                "
+                type="button"
+              >
+                <div>
+                  <div style="font-weight: 600; font-size: 0.81rem">
+                    Mark Davis, CRCR
+                    <code style="font-size: 0.71rem; color: #38bdf8"
+                      >billing_mark</code
+                    >
+                  </div>
+                  <div style="font-size: 0.71rem; color: #94a3b8">
+                    Patient Financial Services · Invoices, Payments, Ledger
+                  </div>
+                </div>
+                <span class="role-pill billing_clerk" style="font-size: 0.68rem"
+                  >BILLING_CLERK</span
+                >
+              </button>
+              <button
+                class="staff-quick-btn"
+                data-role="ADMIN"
+                data-username="admin_clara"
+                style="
+                  display: flex;
+                  align-items: center;
+                  justify-content: space-between;
+                  width: 100%;
+                  text-align: left;
+                  padding: 7px 10px;
+                  border-radius: 8px;
+                  background: rgba(15, 23, 42, 0.75);
+                  border: 1px solid rgba(148, 163, 184, 0.2);
+                  color: #f8fafc;
+                  cursor: pointer;
+                "
+                type="button"
+              >
+                <div>
+                  <div style="font-weight: 600; font-size: 0.81rem">
+                    Clara Vance, MHA
+                    <code style="font-size: 0.71rem; color: #38bdf8"
+                      >admin_clara</code
+                    >
+                  </div>
+                  <div style="font-size: 0.71rem; color: #94a3b8">
+                    Hospital Administration · Unrestricted Institutional Access
+                  </div>
+                </div>
+                <span class="role-pill admin" style="font-size: 0.68rem"
+                  >ADMIN</span
+                >
+              </button>
+            </div>
+          </div>
+          <div class="auth-note">
+            <span class="status-dot online"></span> Authoritative Salted PBKDF2
+            Password Hashing · Role-Scoped JWT Access
+          </div>
+        </form>
+        <!-- Staff Registration Form (Role-Based) -->
+        <form class="auth-form-pane hidden" id="registerForm">
+          <div class="form-row">
+            <div class="form-group flex-1">
+              <label for="regFullName">Full Name *</label>
+              <input
+                id="regFullName"
+                placeholder="e.g. Dr. Sarah Chen, MD"
+                required=""
+                type="text"
+              />
+            </div>
+            <div class="form-group flex-1">
+              <label for="regUsername">Username *</label>
+              <input
+                id="regUsername"
+                placeholder="e.g. dr_chen"
+                required=""
+                spellcheck="false"
+                type="text"
+              />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group flex-1">
+              <label for="regEmail">Hospital Email *</label>
+              <input
+                id="regEmail"
+                placeholder="s.chen@oncosentinel.hospital.org"
+                required=""
+                type="email"
+              />
+            </div>
+            <div class="form-group flex-1">
+              <label for="regRole">Hospital Staff Role *</label>
+              <select id="regRole" required="">
+                <option selected="" value="CLINICIAN">
+                  Clinician (Medical Oncology)
+                </option>
+                <option value="RADIOLOGIST">
+                  Radiologist (Diagnostic Imaging)
+                </option>
+                <option value="PATHOLOGIST">
+                  Pathologist (Surgical Biopsy)
+                </option>
+                <option value="PHARMACIST">
+                  Pharmacist (Clinical Oncology)
+                </option>
+                <option value="BILLING_CLERK">
+                  Billing Clerk (Patient Accounts)
+                </option>
+                <option value="SCHEDULER">
+                  Scheduler (Ambulatory Clinic)
+                </option>
+                <option value="ADMIN">Administrator (Hospital Systems)</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group flex-1">
+              <label for="regDept">Hospital Department</label>
+              <input id="regDept" placeholder="Medical Oncology" type="text" />
+            </div>
+            <div class="form-group flex-1">
+              <label for="regLicense">Medical License / NPI / Badge ID</label>
+              <input
+                id="regLicense"
+                placeholder="e.g. NPI-1841294821"
+                type="text"
+              />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="regPassword">Password * (Min. 6 characters)</label>
+            <input
+              autocomplete="new-password"
+              id="regPassword"
+              minlength="6"
+              placeholder="Enter secure password"
+              required=""
+              type="password"
+            />
+          </div>
+          <p class="auth-error" hidden="" id="registerError"></p>
+          <button
+            class="btn btn-primary btn-block"
+            id="registerSubmitBtn"
+            type="submit"
+          >
+            Register Staff Account &amp; Sign In
+            <span aria-hidden="true">→</span>
+          </button>
+          <div class="auth-note">
+            New accounts are cryptographically registered and mirrored to the
+            authoritative Staff directory.
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- ═══════════════════════════════════════════════════════════════════════════
+       MAIN APPLICATION LAYOUT (UNIFIED SINGLE UI)
+  ═══════════════════════════════════════════════════════════════════════════ -->
+    <div class="app-layout">
+      <!-- Top Navigation Header -->
+      <header class="app-header">
+        <!-- Dynamic Breadcrumb -->
+        <div class="header-breadcrumb" id="headerBreadcrumb">
+          <button
+            aria-expanded="false"
+            aria-label="Open navigation"
+            class="icon-button mobile-menu"
+            id="mobileMenu"
+          >
+            <svg
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.6"
+              viewbox="0 0 24 24"
+            >
+              <path d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+          <span>Workspace</span> <span class="bc-sep">/</span>
+          <strong id="bcCurrent">AI Diagnostic Studio</strong>
+        </div>
+        <!-- Center Platform Phase Pill -->
+        <div class="header-center">
+          <button class="command-trigger" id="openCommand" type="button">
+            <svg
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.6"
+              viewbox="0 0 24 24"
+            >
+              <circle cx="10.8" cy="10.8" r="6.8"></circle>
+              <path d="m16 16 4 4"></path></svg
+            ><span>Find a workspace</span><kbd>⌘ K</kbd>
+          </button>
+        </div>
+        <!-- Right User Profile & Role Info -->
+        <div class="header-actions">
+          <span class="connection-chip" id="connectionChip"
+            ><span></span>Connecting</span
+          ><button
+            aria-label="Connection settings"
+            class="icon-button"
+            id="openSettings"
+            title="Connection settings"
+          >
+            <svg
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              viewbox="0 0 24 24"
+            >
+              <path d="M4 7h16M4 17h16"></path>
+              <circle cx="8" cy="7" fill="currentColor" r="3"></circle>
+              <circle cx="16" cy="17" fill="currentColor" r="3"></circle>
+            </svg>
+          </button>
+          <button
+            class="btn btn-sm btn-cyan-outline"
+            id="btnHeaderNewPatient"
+            title="Register a new patient into the hospital system"
+            type="button"
+            style="display:flex;align-items:center;gap:6px;"
+          >
+            ➕ Register Patient
+          </button>
+          <button
+            class="btn btn-sm btn-ghost"
+            id="btnHeaderSwitchAccount"
+            title="Switch Hospital Staff Account or Register New Staff"
+            type="button"
+          >
+            ⇄ Switch Account
+          </button>
+          <div class="user-profile-widget" id="userProfileWidget">
+            <div class="user-avatar" id="userAvatar">SC</div>
+            <div class="user-details">
+              <div class="user-name-line">
+                <span id="userFullName">Dr. Sarah Chen, MD</span>
+                <span class="role-pill clinician" id="userRoleBadge"
+                  >CLINICIAN</span
+                >
+              </div>
+              <div class="user-dept" id="userDept">
+                CLINICIAN | Medical Oncology
+              </div>
+            </div>
+            <button
+              aria-label="Toggle user menu"
+              class="btn-profile-chevron"
+              id="profileMenuToggle"
+              type="button"
+            >
+              ▾
+            </button>
+            <!-- Dropdown Profile Menu -->
+            <div class="profile-dropdown hidden" id="profileDropdown">
+              <div class="profile-dropdown-header">
+                <strong id="ddFullName">Dr. Sarah Chen, MD</strong>
+                <small id="ddEmail">s.chen@oncosentinel.hospital.org</small>
+                <div class="role-desc-line" id="ddRoleDesc">
+                  Role: Medical Oncology (Full Ingestion &amp; Adjudication)
+                </div>
+              </div>
+              <div class="profile-dropdown-actions">
+                <button class="dd-btn" id="ddBtnSwitchAccount" type="button">
+                  ⇄ Switch Staff Account
+                </button>
+                <button class="dd-btn" id="ddBtnRegisterNew" type="button">
+                  ⊕ Register New Staff
+                </button>
+                <hr class="dd-divider" />
+                <button
+                  class="dd-btn text-danger"
+                  id="ddBtnSignOut"
+                  type="button"
+                >
+                  Sign Out / Lock Workspace
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+      <div class="app-body">
+        <!-- ═══════════════════════════════════════════════════════════════════════
+           LEFT SIDEBAR NAVIGATION
+      ═══════════════════════════════════════════════════════════════════════ -->
+        <aside class="app-sidebar" id="appSidebar">
+          <div class="header-brand">
+            <div class="brand-logo">
+              <span class="logo-seal">OS<span>+</span></span>
+            </div>
+            <div>
+              <div class="brand-title">OncoSentinel</div>
+              <div class="brand-subtitle">CLINICAL WORKSPACE</div>
+            </div>
+          </div>
+          <!-- Group 1: CLINICAL AI & RESEARCH -->
+          <div class="nav-section-title">Clinical workspace</div>
+          <nav class="sidebar-nav">
+            <button
+              class="side-nav-btn active"
+              data-view="view-ai-studio"
+              type="button"
+            >
+              <svg
+                fill="none"
+                height="18"
+                stroke="currentColor"
+                stroke-width="2"
+                viewbox="0 0 24 24"
+                width="18"
+              >
+                <rect height="18" rx="2" width="18" x="3" y="3"></rect>
+                <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                <polyline points="21 15 16 10 5 21"></polyline>
+              </svg>
+              <span>Diagnostic studio</span>
+            </button>
+            <button class="side-nav-btn" data-view="view-rag" type="button">
+              <svg
+                fill="none"
+                height="18"
+                stroke="currentColor"
+                stroke-width="2"
+                viewbox="0 0 24 24"
+                width="18"
+              >
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                <path
+                  d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"
+                ></path>
+              </svg>
+              <span>Clinical guidelines</span>
+            </button>
+            <button
+              class="side-nav-btn"
+              data-view="view-timeline"
+              type="button"
+            >
+              <svg
+                fill="none"
+                height="18"
+                stroke="currentColor"
+                stroke-width="2"
+                viewbox="0 0 24 24"
+                width="18"
+              >
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              <span>Patient timeline</span>
+            </button>
+          </nav>
+          <!-- Group 2: HOSPITAL OPERATIONS -->
+          <div class="nav-section-title">Hospital operations</div>
+          <nav class="sidebar-nav">
+            <button
+              class="side-nav-btn"
+              data-view="view-patients"
+              type="button"
+            >
+              <svg
+                fill="none"
+                height="18"
+                stroke="currentColor"
+                stroke-width="2"
+                viewbox="0 0 24 24"
+                width="18"
+              >
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+              <span>Patient registry</span>
+              <span class="nav-badge" id="badgePatientCount">—</span>
+            </button>
+            <button
+              class="side-nav-btn"
+              data-view="view-encounters"
+              type="button"
+            >
+              <svg
+                fill="none"
+                height="18"
+                stroke="currentColor"
+                stroke-width="2"
+                viewbox="0 0 24 24"
+                width="18"
+              >
+                <path
+                  d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+                ></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" x2="8" y1="13" y2="13"></line>
+                <line x1="16" x2="8" y1="17" y2="17"></line>
+                <polyline points="10 9 9 9 8 9"></polyline>
+              </svg>
+              <span>Encounters &amp; notes</span>
+            </button>
+            <button
+              class="side-nav-btn"
+              data-view="view-radiology"
+              type="button"
+            >
+              <svg
+                fill="none"
+                height="18"
+                stroke="currentColor"
+                stroke-width="2"
+                viewbox="0 0 24 24"
+                width="18"
+              >
+                <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+              </svg>
+              <span>Radiology &amp; labs</span>
+            </button>
+            <button
+              class="side-nav-btn"
+              data-view="view-pharmacy"
+              type="button"
+            >
+              <svg
+                fill="none"
+                height="18"
+                stroke="currentColor"
+                stroke-width="2"
+                viewbox="0 0 24 24"
+                width="18"
+              >
+                <path
+                  d="M10.5 20.5 3 13a4.95 4.95 0 1 1 7-7l7.5 7.5a4.95 4.95 0 1 1-7 7Z"
+                ></path>
+                <path d="m8.5 8.5 7 7"></path>
+              </svg>
+              <span>Pharmacy &amp; stock</span>
+            </button>
+            <button class="side-nav-btn" data-view="view-billing" type="button">
+              <svg
+                fill="none"
+                height="18"
+                stroke="currentColor"
+                stroke-width="2"
+                viewbox="0 0 24 24"
+                width="18"
+              >
+                <rect height="14" rx="2" width="20" x="2" y="5"></rect>
+                <line x1="2" x2="22" y1="10" y2="10"></line>
+              </svg>
+              <span>Billing &amp; finance</span>
+            </button>
+          </nav>
+          <!-- Group 3: GOVERNANCE & AUDIT -->
+          <div class="nav-section-title">Governance</div>
+          <nav class="sidebar-nav">
+            <button class="side-nav-btn" data-view="view-audit" type="button">
+              <svg
+                fill="none"
+                height="18"
+                stroke="currentColor"
+                stroke-width="2"
+                viewbox="0 0 24 24"
+                width="18"
+              >
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+              <span>Audit trail</span>
+            </button>
+            <button
+              class="side-nav-btn"
+              data-view="view-portfolio"
+              type="button"
+            >
+              <svg
+                fill="none"
+                height="18"
+                stroke="currentColor"
+                stroke-width="2"
+                viewbox="0 0 24 24"
+                width="18"
+              >
+                <polygon
+                  points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+                ></polygon>
+              </svg>
+              <span>Model portfolio</span>
+            </button>
+          </nav>
+          <!-- Sidebar Footer -->
+          <div class="sidebar-footer-box">
+            <div
+              class="phase-pill"
+              id="platformPhaseIndicator"
+              title="Model readiness is retrieved from the backend."
+            >
+              <span class="status-dot"></span>
+              <span id="platformPhaseText">Model status unavailable</span>
+            </div>
+            <div class="safety-box">
+              <div class="safety-box-title">Clinical decision support</div>
+              <div class="safety-box-text">
+                AI supports your assessment. Clinical review remains essential.
+              </div>
+            </div>
+            <a
+              class="sidebar-api-link"
+              href="openapi.json"
+              rel="noopener"
+              target="_blank"
+            >
+              <span>API reference ↗</span>
+            </a>
+          </div>
+        </aside>
+        <!-- ═══════════════════════════════════════════════════════════════════════
+           MAIN WORKSPACE CONTENT (MULTI-WORKSPACE VIEWS)
+      ═══════════════════════════════════════════════════════════════════════ -->
+        <main class="app-main-content">
+          <div class="environment-banner" hidden="" id="environmentBanner">
+            <span class="demo-dot"></span
+            ><strong>Demonstration workspace</strong
+            ><span
+              >Fictional records · Local changes only · Diagnostic inference is
+              disabled</span
+            ><button id="resetDemo" type="button">Reset data ↻</button>
+          </div>
+          <!-- ───────────────────────────────────────────────────────────────────
+             VIEW 1: AI DIAGNOSTIC STUDIO (IDENTICAL TO SCREENSHOT)
+        ─────────────────────────────────────────────────────────────────── -->
+          <section class="workspace-view active" id="view-ai-studio">
+            <div class="studio-heading">
+              <div>
+                <p class="view-eyebrow">PRECISION ONCOLOGY / DIAGNOSTICS</p>
+                <h1>AI Diagnostic Studio<span class="title-dot"></span></h1>
+                <p>A clear view of the evidence. A confident next step.</p>
+              </div>
+              <button class="btn btn-ghost" id="studioHelp" type="button">
+                <svg
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                  viewbox="0 0 24 24"
+                >
+                  <circle cx="12" cy="12" r="9"></circle>
+                  <path
+                    d="M9.5 9a2.5 2.5 0 0 1 5 0c0 2-2.5 2-2.5 4M12 16v.2"
+                  ></path></svg
+                >Workspace guide
+              </button>
+            </div>
+            <div aria-label="Diagnostic workflow" class="workflow-track">
+              <div class="workflow-stage current">
+                <span>01</span>
+                <div>
+                  <strong>Prepare case</strong
+                  ><small>Patient &amp; imaging context</small>
+                </div>
+              </div>
+              <i></i>
+              <div class="workflow-stage" id="workflowAnalyze">
+                <span>02</span>
+                <div>
+                  <strong>Analyze evidence</strong
+                  ><small>Quality, inference &amp; uncertainty</small>
+                </div>
+              </div>
+              <i></i>
+              <div class="workflow-stage" id="workflowReview">
+                <span>03</span>
+                <div>
+                  <strong>Clinical review</strong
+                  ><small>Assess, adjudicate &amp; record</small>
+                </div>
+              </div>
+              <span class="workflow-end">Human-in-the-loop</span>
+            </div>
+            <!-- Top Quick Select Bar (Matching Screenshot) -->
+            <div class="case-context">
+              <div class="case-avatar" id="caseAvatar">EV</div>
+              <div class="case-identity">
+                <div>
+                  <strong id="contextName">Eleanor Vance</strong
+                  ><span class="context-chip">Selected case</span>
+                </div>
+                <small id="contextMrn">MRN-2026-KD-001</small>
+              </div>
+              <div class="case-context-meta">
+                <small>Study context</small
+                ><strong id="contextModality">CT · Kidney</strong>
+              </div>
+              <button class="text-button" id="openCaseTimeline" type="button">
+                View timeline <span>↗</span>
+              </button>
+            </div>
+            <details class="demo-drawer">
+              <summary>
+                Clinical case scenarios &amp; safety gate presets<span
+                  >Quick load</span
+                >
+              </summary>
+              <div class="quick-select-card demo-tools">
+                <div class="quick-select-grid">
+                  <!-- Quick Select HMS Patient -->
+                  <div class="quick-select-col">
+                    <label class="quick-label" for="quickSelectPatient"
+                      >Demonstration patient</label
+                    >
+                    <select class="quick-dropdown" id="quickSelectPatient">
+                      <option value="CUSTOM">
+                        Custom Clinical Query / Upload...
+                      </option>
+                      <option
+                        selected=""
+                        value="MRN-2026-KD-001|kidney|ct|Eleanor Vance"
+                      >
+                        Eleanor Vance (MRN-2026-KD-001 · Kidney CT)
+                      </option>
+                      <option
+                        value="MRN-2026-OR-002|oral|histology|Robert Kovacs"
+                      >
+                        Robert Kovacs (MRN-2026-OR-002 · Oral Histology)
+                      </option>
+                      <option
+                        value="MRN-2026-LK-005|all_leukemia|microscopy|David Zhao"
+                      >
+                        David Zhao (MRN-2026-LK-005 · ALL Blood Smear)
+                      </option>
+                      <option value="MRN-2026-BN-006|brain|mri|Elena Rostova">
+                        Elena Rostova (MRN-2026-BN-006 · Brain MRI)
+                      </option>
+                      <option
+                        value="MRN-2026-CX-008|cervical|cytology|Priya Nair"
+                      >
+                        Priya Nair (MRN-2026-CX-008 · Cervical Pap Smear)
+                      </option>
+                      <option
+                        value="MRN-2026-GI-004|colon|histology|Arthur Pendleton"
+                      >
+                        Arthur Pendleton (MRN-2026-GI-004 · Colon Biopsy)
+                      </option>
+                      <option
+                        value="MRN-2026-LG-009|lung|histology|Samuel Okafor"
+                      >
+                        Samuel Okafor (MRN-2026-LG-009 · Lung Biopsy)
+                      </option>
+                      <option
+                        value="MRN-2026-BR-003|breast|ultrasound|Maria Santos"
+                      >
+                        Maria Santos (MRN-2026-BR-003 · Breast Ultrasound)
+                      </option>
+                      <option
+                        value="MRN-2026-LY-007|lymphoma|histology|Marcus Vance"
+                      >
+                        Marcus Vance (MRN-2026-LY-007 · Lymphoma Biopsy)
+                      </option>
+                    </select>
+                  </div>
+                  <!-- Preset Scenarios & Safety Verification Gates -->
+                  <div class="quick-select-col flex-2">
+                    <label class="quick-label" for="presetScenarios"
+                      >Demonstration scenario</label
+                    >
+                    <select class="quick-dropdown" id="presetScenarios">
+                      <option selected="" value="kidney_ct">
+                        Kidney CT: Renal Cell Carcinoma (Active MobileNetV3
+                        Checkpoint)
+                      </option>
+                      <option value="oral_oscc">
+                        Oral Histopathology: Squamous Cell Carcinoma (Active
+                        MobileNetV3 Checkpoint)
+                      </option>
+                      <option value="all_leukemia">
+                        ALL Microscopy: Acute Lymphoblastic Leukemia (Active
+                        MobileNetV3 Checkpoint)
+                      </option>
+                      <option value="brain_mri">
+                        Brain MRI: Glioblastoma / Meningioma (Active MobileNetV3
+                        Checkpoint)
+                      </option>
+                      <option value="cervical_cytology">
+                        Cervical Cytology: Dyskeratotic Atypia (Active
+                        MobileNetV3 Checkpoint)
+                      </option>
+                      <option value="colon_histology">
+                        Colon Histopathology: Adenocarcinoma (Active MobileNetV3
+                        Checkpoint)
+                      </option>
+                      <option value="lung_histology">
+                        Lung Histopathology: Squamous Cell Carcinoma (Active
+                        MobileNetV3 Checkpoint)
+                      </option>
+                      <option value="guideline_rag">
+                        RAG: NCCN Staging &amp; Clinical Management Guidelines
+                      </option>
+                      <option value="untrained_gate">
+                        Safety Gate: Untrained Category Refusal (Terminal Phase
+                        Gate)
+                      </option>
+                      <option value="ood_test">
+                        Safety Gate: Degraded Image Quality (Laplacian Blur
+                        &amp; Low SNR)
+                      </option>
+                    </select>
+                  </div>
+                  <!-- Load & Execute Button -->
+                  <div class="quick-select-action">
+                    <button
+                      class="btn btn-cyan-outline"
+                      id="loadExecutePresetBtn"
+                      type="button"
+                    >
+                      Load scenario →
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </details>
+            <!-- Two-Column Diagnostic Grid (Matching Screenshot) -->
+            <div class="clinical-analysis-grid">
+              <!-- ── Left Column: 1. Multimodal Case Ingestion ── -->
+              <div class="glass-card panel-ingestion">
+                <div class="panel-header-row">
+                  <h2>Case preparation</h2>
+                  <span class="badge-pill">01 / INPUT</span>
+                </div>
+                <form id="ingestionForm">
+                  <div class="form-row">
+                    <div class="form-group flex-1">
+                      <label for="caseIdSelect">Patient Context</label>
+                      <select id="caseIdSelect">
+                        <option selected="" value="MRN-2026-KD-001">
+                          Eleanor Vance (MRN-2026-KD-001 · Kidney)
+                        </option>
+                        <option value="MRN-2026-OR-002">
+                          Robert Kovacs (MRN-2026-OR-002 · Oral)
+                        </option>
+                        <option value="MRN-2026-BR-003">
+                          Maria Santos (MRN-2026-BR-003 · Breast)
+                        </option>
+                        <option value="MRN-2026-GI-004">
+                          Arthur Pendleton (MRN-2026-GI-004 · Colon)
+                        </option>
+                        <option value="MRN-2026-LK-005">
+                          David Zhao (MRN-2026-LK-005 · Leukemia)
+                        </option>
+                        <option value="MRN-2026-BN-006">
+                          Elena Rostova (MRN-2026-BN-006 · Brain)
+                        </option>
+                        <option value="MRN-2026-LY-007">
+                          Marcus Vance (MRN-2026-LY-007 · Lymphoma)
+                        </option>
+                        <option value="MRN-2026-CX-008">
+                          Priya Nair (MRN-2026-CX-008 · Cervical)
+                        </option>
+                        <option value="MRN-2026-LG-009">
+                          Samuel Okafor (MRN-2026-LG-009 · Lung)
+                        </option>
+                        <option value="CUSTOM">
+                          Demo / Custom Upload Mode
+                        </option>
+                      </select>
+                      <input
+                        id="caseIdInput"
+                        type="hidden"
+                        value="MRN-2026-KD-001"
+                      />
+                    </div>
+                    <div class="form-group flex-1">
+                      <label for="categorySelect">Diagnostic category</label>
+                      <select id="categorySelect">
+                        <option selected="" value="kidney">
+                          Kidney Cancer
+                        </option>
+                        <option value="oral">Oral Cancer</option>
+                        <option value="all_leukemia">ALL / Leukemia</option>
+                        <option value="brain">Brain Tumor</option>
+                        <option value="cervical">Cervical Cancer</option>
+                        <option value="colon">Colon Cancer</option>
+                        <option value="lung">Lung Cancer</option>
+                        <option value="lung_colon">
+                          Lung &amp; Colon Dual
+                        </option>
+                        <option value="breast">
+                          Breast Cancer · Not deployed
+                        </option>
+                        <option value="lymphoma">
+                          Lymphoma · Not deployed
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="modalitySelect">Imaging modality</label>
+                    <select id="modalitySelect">
+                      <option selected="" value="ct">
+                        CT Scan (Kidney / Abdominal)
+                      </option>
+                      <option value="histology">
+                        Histopathology (Oral / Colon / Lung / Biopsy)
+                      </option>
+                      <option value="microscopy">
+                        Peripheral Blood Smear Microscopy (ALL)
+                      </option>
+                      <option value="mri">MRI (Brain T1/T2 / Axial)</option>
+                      <option value="cytology">
+                        Cytology / Smear (Cervical Pap Smear)
+                      </option>
+                      <option value="ultrasound">Ultrasound (Breast)</option>
+                      <option value="text">
+                        Clinical Guidelines RAG Query
+                      </option>
+                    </select>
+                  </div>
+                  <!-- Drag & Drop Scan Dropzone -->
+                  <div
+                    aria-label="Upload a diagnostic image"
+                    class="upload-dropzone"
+                    id="dropzone"
+                    role="button"
+                    tabindex="0"
+                  >
+                    <input
+                      accept="image/png,image/jpeg,image/webp"
+                      id="fileInput"
+                      style="display: none"
+                      type="file"
+                    />
+                    <div class="dropzone-content" id="dropzoneContent">
+                      <svg
+                        fill="none"
+                        height="36"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        viewbox="0 0 24 24"
+                        width="36"
+                      >
+                        <path
+                          d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"
+                        ></path>
+                        <polyline points="17 8 12 3 7 8"></polyline>
+                        <line x1="12" x2="12" y1="3" y2="15"></line>
+                      </svg>
+                      <div class="dropzone-text">
+                        Drop your scan here, or browse files
+                      </div>
+                      <div class="dropzone-sub">
+                        PNG, JPEG or WebP · Image quality evaluated by the
+                        backend
+                      </div>
+                    </div>
+                    <div
+                      class="dropzone-preview hidden"
+                      id="imagePreviewContainer"
+                    >
+                      <img alt="Scan Preview" id="imagePreview" />
+                      <div class="preview-overlay">
+                        <button
+                          class="btn btn-sm btn-ghost"
+                          id="removeImageBtn"
+                          type="button"
+                        >
+                          Change Scan
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Synthetic Scan Quick Generator -->
+                  <div
+                    style="display: flex; gap: 8px; margin-bottom: 12px"
+                  >
+                    <button
+                      class="btn btn-ghost btn-sm"
+                      id="genSyntheticScanBtn"
+                      style="width: 100%; font-size: 0.78rem"
+                      type="button"
+                    >
+                      Create synthetic test image
+                    </button>
+                  </div>
+                  <div class="form-group">
+                    <label for="textQueryInput">Clinical context</label>
+                    <textarea
+                      id="textQueryInput"
+                      placeholder="e.g. Abdominal contrast-enhanced CT study of renal parenchyma. Evaluate for cortical neoplasm."
+                      rows="3"
+                    >
+Abdominal contrast-enhanced CT study of renal parenchyma. Evaluate for cortical neoplasm.</textarea>
+                  </div>
+                  <button
+                    class="btn btn-cyan-block"
+                    id="executePipelineBtn"
+                    type="submit"
+                  >
+                    Run diagnostic analysis →
+                  </button>
+                </form>
+                <!-- Live Router Flow -->
+                <div class="router-flow-box">
+                  <div class="box-title">Pipeline checks</div>
+                  <div class="router-steps">
+                    <div class="router-step" id="stepQuality">
+                      <span class="step-label">1. Quality Gate</span>
+                      <span class="step-badge" id="badgeQuality">Standby</span>
+                    </div>
+                    <div class="router-step" id="stepRelevance">
+                      <span class="step-label"
+                        >2. Cancer Relevance (≥0.55)</span
+                      >
+                      <span class="step-badge" id="badgeRelevance"
+                        >Standby</span
+                      >
+                    </div>
+                    <div class="router-step" id="stepModality">
+                      <span class="step-label"
+                        >3. Modality &amp; Phase Compatibility</span
+                      >
+                      <span class="step-badge" id="badgeModality">Standby</span>
+                    </div>
+                    <div class="router-step" id="stepRoute">
+                      <span class="step-label">4. Selected Route</span>
+                      <span class="step-badge" id="badgeRoute">Ready</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- ── Right Column: 2. Calibrated Decision & Concept XAI ── -->
+              <div class="glass-card panel-results" id="resultsContainer">
+                <div class="panel-header-row">
+                  <h2>Diagnostic evidence</h2>
+                  <div class="header-status-group">
+                    <span
+                      class="badge-verified"
+                      id="aggregateDecisionBadge"
+                      style="
+                        background: rgba(148, 163, 184, 0.15);
+                        color: #94a3b8;
+                        border-color: rgba(148, 163, 184, 0.3);
+                      "
+                      >AWAITING INPUT</span
+                    >
+                  </div>
+                </div>
+                <!-- Main Results Section -->
+                <div
+                  aria-label="Diagnostic evidence"
+                  class="evidence-tabs"
+                  role="tablist"
+                >
+                  <button
+                    aria-controls="evidence-overview"
+                    aria-selected="true"
+                    class="active"
+                    data-evidence="overview"
+                    id="tab-overview"
+                    role="tab"
+                  >
+                    Overview</button
+                  ><button
+                    aria-controls="evidence-explain"
+                    aria-selected="false"
+                    data-evidence="explain"
+                    id="tab-explain"
+                    role="tab"
+                  >
+                    Explainability</button
+                  ><button
+                    aria-controls="evidence-review"
+                    aria-selected="false"
+                    data-evidence="review"
+                    id="tab-review"
+                    role="tab"
+                  >
+                    Clinical review<span class="tab-dot"></span>
+                  </button>
+                </div>
+                <div class="results-inner-content" id="resultsContent">
+                  <!-- Subcard 1: Primary Diagnostic Impression -->
+                  <!-- Subcard 2: Uncertainty & Safety Control -->
+                  <!-- Subcard 3: Evidence-Grounded Clinical Retrieval -->
+                  <!-- Subcard 4: Technical Localization (Grad-CAM) Visualizer -->
+                  <!-- Subcard 5: Concept Findings -->
+                  <!-- Subcard 6: Tri-Part Evidence Panes -->
+                  <!-- Subcard 7: Clinician Adjudication & HMS Review Sync -->
+                  <div
+                    aria-labelledby="tab-overview"
+                    class="evidence-pane active"
+                    id="evidence-overview"
+                    role="tabpanel"
+                  >
+                    <div class="result-subcard card-impression">
+                      <div
+                        aria-hidden="true"
+                        class="evidence-empty-graphic"
+                        id="evidenceEmptyGraphic"
+                      >
+                        <svg fill="none" viewbox="0 0 360 124">
+                          <defs>
+                            <pattern
+                              height="14"
+                              id="dotGrid"
+                              patternunits="userSpaceOnUse"
+                              width="14"
+                            >
+                              <circle
+                                cx="1"
+                                cy="1"
+                                fill="#cad8d2"
+                                r=".7"
+                              ></circle>
+                            </pattern>
+                          </defs>
+                          <rect
+                            fill="url(#dotGrid)"
+                            height="124"
+                            width="360"
+                          ></rect>
+                          <rect
+                            fill="#fff"
+                            height="74"
+                            rx="11"
+                            stroke="#b8cec1"
+                            width="70"
+                            x="145"
+                            y="25"
+                          ></rect>
+                          <path
+                            d="M160 48h24M160 58h37M160 68h18"
+                            stroke="#b7cbc0"
+                            stroke-linecap="round"
+                            stroke-width="3"
+                          ></path>
+                          <circle
+                            cx="206"
+                            cy="89"
+                            fill="#e0efe7"
+                            r="19"
+                            stroke="#9dbeab"
+                          ></circle>
+                          <path
+                            d="M197 89h6l3-6 4 13 3-7h5"
+                            stroke="#277a57"
+                            stroke-linejoin="round"
+                            stroke-width="1.7"
+                          ></path>
+                          <path
+                            d="M98 62h28m108 0h28"
+                            stroke="#a4bfb1"
+                            stroke-dasharray="3 4"
+                          ></path>
+                          <circle cx="91" cy="62" fill="#d1e5d9" r="4"></circle>
+                          <circle
+                            cx="270"
+                            cy="62"
+                            fill="#d1e5d9"
+                            r="4"
+                          ></circle>
+                        </svg>
+                      </div>
+                      <div class="subcard-title">PRIMARY IMPRESSION</div>
+                      <div class="impression-hero">
+                        <span class="hero-class" id="top1ClassName"
+                          >Ready when you are</span
+                        >
+                        <span class="hero-conf" id="top1ConfidenceValue"></span>
+                      </div>
+                      <div class="calibration-note" id="calibrationNote">
+                        Upload a scan and run an analysis. Results appear here
+                        only when returned by the diagnostic service.
+                      </div>
+                      <div class="prob-distribution" id="probDistributionBars">
+                        <div
+                          class="empty-prob-notice"
+                          style="
+                            color: #64748b;
+                            font-size: 0.85rem;
+                            padding: 12px 0;
+                          "
+                        >
+                          No inference has been run for this case.
+                        </div>
+                      </div>
+                    </div>
+                    <div class="result-subcard card-uncertainty">
+                      <div class="subcard-title">UNCERTAINTY &amp; SAFETY</div>
+                      <div class="metrics-triplet">
+                        <div class="metric-triplet-box">
+                          <div class="metric-triplet-label">
+                            Predictive Entropy
+                          </div>
+                          <div class="metric-triplet-val" id="metricEntropy">
+                            --
+                          </div>
+                          <div class="metric-triplet-target">
+                            Reported by backend
+                          </div>
+                        </div>
+                        <div class="metric-triplet-box">
+                          <div class="metric-triplet-label">Composite OOD</div>
+                          <div class="metric-triplet-val" id="metricOOD">
+                            --
+                          </div>
+                          <div class="metric-triplet-target">
+                            Reported by backend
+                          </div>
+                        </div>
+                        <div class="metric-triplet-box">
+                          <div class="metric-triplet-label">
+                            Data Uncertainty
+                          </div>
+                          <div class="metric-triplet-val" id="metricDataUnc">
+                            --
+                          </div>
+                          <div class="metric-triplet-target">
+                            Reported by backend
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="uncertainty-verdict-box"
+                        id="decisionReasonBox"
+                      >
+                        Not evaluated. Safety gates run with your analysis.
+                      </div>
+                    </div>
+                    <div class="result-subcard card-rag" id="ragResultCard">
+                      <div class="subcard-title">CLINICAL EVIDENCE</div>
+                      <div class="rag-evidence-body" id="ragAnswerText">
+                        Retrieved guidelines and their citations will appear
+                        after analysis. No evidence has been retrieved yet.
+                      </div>
+                      <div
+                        class="citations-container"
+                        id="ragCitationsContainer"
+                      ></div>
+                    </div>
+                    <div
+                      class="result-subcard card-tripart"
+                      id="tripartSectionContainer"
+                    >
+                      <div class="tripart-tabs">
+                        <button
+                          class="tripart-tab active"
+                          data-subtab="subtab-model"
+                          type="button"
+                        >
+                          1. Model Evidence
+                        </button>
+                        <button
+                          class="tripart-tab"
+                          data-subtab="subtab-guidelines"
+                          type="button"
+                        >
+                          2. Clinical Guidelines
+                        </button>
+                        <button
+                          class="tripart-tab"
+                          data-subtab="subtab-synthesis"
+                          type="button"
+                        >
+                          3. Generated Synthesis
+                        </button>
+                      </div>
+                      <div class="tripart-body">
+                        <div class="tripart-pane active" id="subtab-model">
+                          Convolutional layer feature attributions and
+                          calibrated posterior probabilities will display upon
+                          model execution.
+                        </div>
+                        <div class="tripart-pane" id="subtab-guidelines">
+                          Authoritative NCCN, WHO, and ACR diagnostic guideline
+                          criteria will display upon pipeline execution.
+                        </div>
+                        <div class="tripart-pane" id="subtab-synthesis">
+                          Evidence-grounded multimodal clinical synthesis will
+                          display upon pipeline execution.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    aria-labelledby="tab-explain"
+                    class="evidence-pane"
+                    id="evidence-explain"
+                    role="tabpanel"
+                  >
+                    <div
+                      class="result-subcard card-heatmap"
+                      id="xaiSectionContainer"
+                    >
+                      <div class="subcard-header-row">
+                        <div class="subcard-title">GRAD-CAM LOCALIZATION</div>
+                        <label class="toggle-switch">
+                          <input
+                            aria-label="Show backend Grad-CAM overlay"
+                            checked=""
+                            id="heatmapOverlayToggle"
+                            type="checkbox"
+                          />
+                          <span class="slider"></span>
+                          <span class="toggle-text">Overlay Heatmap</span>
+                        </label>
+                      </div>
+                      <div class="heatmap-canvas-wrapper">
+                        <img
+                          alt="Grad-CAM Heatmap Localization"
+                          id="heatmapImage"
+                        />
+                        <div class="heatmap-empty" id="heatmapEmpty">
+                          No localization artifact available.<small
+                            >Only backend-generated heatmaps are shown.</small
+                          >
+                        </div>
+                      </div>
+                      <div class="xai-metrics-footer">
+                        <span
+                          >Fidelity:
+                          <strong id="metricFidelity">--</strong></span
+                        >
+                        <span
+                          >Robustness:
+                          <strong id="metricRobustness">--</strong></span
+                        >
+                        <span
+                          >Localization Score:
+                          <strong id="metricLocalization">--</strong></span
+                        >
+                      </div>
+                    </div>
+                    <div class="result-subcard card-concepts">
+                      <div class="subcard-title">CONCEPT ATTRIBUTIONS</div>
+                      <div class="concepts-list" id="conceptsList">
+                        <div
+                          class="concept-item"
+                          style="
+                            color: #64748b;
+                            font-size: 0.85rem;
+                            padding: 10px 0;
+                          "
+                        >
+                          Clinical concepts and morphological salience
+                          attributions will populate upon inference execution.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    aria-labelledby="tab-review"
+                    class="evidence-pane"
+                    id="evidence-review"
+                    role="tabpanel"
+                  >
+                    <div class="review-notice">
+                      <strong>Your judgment completes the record.</strong>
+                      <p>
+                        Review the model evidence and uncertainty before
+                        signing. Overrides require a clinical rationale. No
+                        action can be submitted without a recorded prediction.
+                      </p>
+                    </div>
+                    <div class="clinician-action-card">
+                      <div class="subcard-title" style="color: #6ee7b7">
+                        CLINICIAN ADJUDICATION
+                      </div>
+                      <div class="clinician-form">
+                        <textarea
+                          id="clinicianNotes"
+                          placeholder="Add clinical rationale or observations for immutable audit trail..."
+                          rows="2"
+                        ></textarea>
+                        <div class="action-buttons-row">
+                          <button
+                            class="btn btn-action-accept"
+                            data-action="ACCEPT"
+                            type="button"
+                          >
+                            Accept assessment
+                          </button>
+                          <button
+                            class="btn btn-action-override"
+                            data-action="OVERRIDE"
+                            type="button"
+                          >
+                            Override finding
+                          </button>
+                          <button
+                            class="btn btn-action-second-read"
+                            data-action="SECOND_READ"
+                            type="button"
+                          >
+                            Request second read
+                          </button>
+                          <button
+                            class="btn btn-cyan-outline"
+                            id="btnExportFhirReport"
+                            style="margin-left: auto"
+                            type="button"
+                          >
+                            Export FHIR report ↗
+                          </button>
+                        </div>
+                      </div>
+                      <div
+                        class="review-status-banner hidden"
+                        id="reviewConfirmationBanner"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- ───────────────────────────────────────────────────────────────────
+             VIEW 2: ONCOLOGY GUIDELINES (RAG)
+        ─────────────────────────────────────────────────────────────────── -->
+          <section class="workspace-view hidden" id="view-rag">
+            <div class="view-header">
+              <div>
+                <p class="view-eyebrow">CLINICAL EVIDENCE BASE</p>
+                <h1>Clinical guidelines</h1>
+                <p>Find the evidence behind your next clinical decision.</p>
+              </div>
+            </div>
+            <div class="glass-card" style="margin-top: 16px">
+              <!-- Category Filter Chips -->
+              <div
+                class="rag-category-chips"
+                id="ragCategoryChips"
+                style="
+                  display: flex;
+                  gap: 8px;
+                  flex-wrap: wrap;
+                  margin-bottom: 14px;
+                "
+              >
+                <button
+                  class="btn btn-sm btn-cyan-block rag-chip active"
+                  data-category="all"
+                  type="button"
+                >
+                  All Guidelines
+                </button>
+                <button
+                  class="btn btn-sm btn-ghost rag-chip"
+                  data-category="kidney"
+                  type="button"
+                >
+                  Kidney
+                </button>
+                <button
+                  class="btn btn-sm btn-ghost rag-chip"
+                  data-category="oral"
+                  type="button"
+                >
+                  Oral
+                </button>
+                <button
+                  class="btn btn-sm btn-ghost rag-chip"
+                  data-category="all_leukemia"
+                  type="button"
+                >
+                  Leukemia
+                </button>
+                <button
+                  class="btn btn-sm btn-ghost rag-chip"
+                  data-category="brain"
+                  type="button"
+                >
+                  Brain
+                </button>
+                <button
+                  class="btn btn-sm btn-ghost rag-chip"
+                  data-category="cervical"
+                  type="button"
+                >
+                  Cervical
+                </button>
+                <button
+                  class="btn btn-sm btn-ghost rag-chip"
+                  data-category="colon"
+                  type="button"
+                >
+                  Colon
+                </button>
+                <button
+                  class="btn btn-sm btn-ghost rag-chip"
+                  data-category="lung"
+                  type="button"
+                >
+                  Lung
+                </button>
+                <button
+                  class="btn btn-sm btn-ghost rag-chip"
+                  data-category="breast"
+                  type="button"
+                >
+                  Breast
+                </button>
+                <button
+                  class="btn btn-sm btn-ghost rag-chip"
+                  data-category="lymphoma"
+                  type="button"
+                >
+                  Lymphoma
+                </button>
+              </div>
+              <form
+                id="ragQueryForm"
+                style="display: flex; gap: 12px; margin-bottom: 20px"
+              >
+                <input
+                  id="ragSearchInput"
+                  placeholder="Search oncology guidelines (e.g. colon carcinoma staging, renal mass Bosniak, cancer)..."
+                  required=""
+                  style="flex: 1"
+                  type="text"
+                />
+                <button
+                  class="btn btn-cyan-block"
+                  style="width: auto; padding: 0 24px"
+                  type="submit"
+                >
+                  Search Guidelines
+                </button>
+              </form>
+              <div id="ragResultsArea">
+                <div class="empty-state">
+                  Enter a clinical question or oncology staging topic to
+                  retrieve verified guideline evidence.
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- ───────────────────────────────────────────────────────────────────
+             VIEW 3: PATIENT TIMELINE (LONGITUDINAL)
+        ─────────────────────────────────────────────────────────────────── -->
+          <section class="workspace-view hidden" id="view-timeline">
+            <div
+              class="view-header"
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                flex-wrap: wrap;
+                gap: 12px;
+              "
+            >
+              <div>
+                <p class="view-eyebrow">LONGITUDINAL PATIENT TRAJECTORY</p>
+                <h1>Patient timeline</h1>
+                <span
+                  class="timeline-patient-label"
+                  id="timelinePatientHeaderTitle"
+                  style="color: #38bdf8"
+                  >Eleanor Vance (MRN-2026-KD-001)</span
+                >
+                <p>
+                  A continuous record of care, evidence, and clinical decisions.
+                </p>
+              </div>
+              <div style="display: flex; align-items: center; gap: 10px">
+                <label
+                  for="timelinePatientSelect"
+                  style="color: #94a3b8; font-size: 0.85rem; font-weight: 600"
+                  >Select Patient:</label
+                >
+                <select
+                  class="quick-dropdown"
+                  id="timelinePatientSelect"
+                  style="max-width: 280px"
+                ></select>
+                <button
+                  class="btn btn-cyan-outline"
+                  id="btnOpenAppendEventModal"
+                  type="button"
+                >
+                  + Append Clinical Event
+                </button>
+              </div>
+            </div>
+            <div
+              class="trajectory-summary-card"
+              id="timelineTrajectoryBanner"
+              style="margin-top: 16px"
+            >
+              <div class="subcard-title">
+                Trajectory &amp; Longitudinal Record Summary
+              </div>
+              <p id="timelineSummaryText">
+                Active patient case: Evaluating longitudinal milestones and
+                serial biomarker trends.
+              </p>
+              <div class="timeline-stats-row" id="timelineSummaryStats"></div>
+            </div>
+            <div class="timeline-stream" id="timelineEventsContainer">
+              <!-- Timeline Cards Populated Dynamically -->
+            </div>
+          </section>
+          <!-- ───────────────────────────────────────────────────────────────────
+             VIEW 4: PATIENT REGISTRY (HOSPITAL OPERATIONS)
+        ─────────────────────────────────────────────────────────────────── -->
+          <section class="workspace-view hidden" id="view-patients">
+            <div
+              class="view-header"
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+              "
+            >
+              <div>
+                <p class="view-eyebrow">HOSPITAL OPERATIONS / EMR</p>
+                <h1>Patient registry</h1>
+                <p>One patient record, connected across every point of care.</p>
+              </div>
+              <div style="display: flex; gap: 10px">
+                <button
+                  class="btn btn-cyan-outline"
+                  id="btnImportFhirPatient"
+                  type="button"
+                >
+                  Import FHIR Patient
+                </button>
+                <button
+                  class="btn btn-cyan-block"
+                  id="btnOpenNewPatientModal"
+                  style="width: auto; padding: 0 20px"
+                  type="button"
+                >
+                  + Register Patient
+                </button>
+              </div>
+            </div>
+            <div class="glass-card" style="margin-top: 16px">
+              <div class="registry-toolbar">
+                <div>
+                  <strong>All patients</strong
+                  ><span id="registryVisibleCount">Loading records</span>
+                </div>
+                <label class="registry-search"
+                  ><svg
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    viewbox="0 0 24 24"
+                  >
+                    <circle cx="10.5" cy="10.5" r="6.5"></circle>
+                    <path d="m16 16 4 4"></path></svg
+                  ><input
+                    aria-label="Search patients"
+                    id="patientSearch"
+                    placeholder="Search patient or MRN"
+                    type="search" /></label
+                ><button
+                  aria-label="Sort patient names"
+                  class="btn btn-ghost btn-sm"
+                  id="patientSort"
+                  type="button"
+                >
+                  Name A–Z ↓
+                </button>
+              </div>
+              <div class="table-responsive">
+                <table class="data-table" id="patientsTable">
+                  <thead>
+                    <tr>
+                      <th>MRN</th>
+                      <th>Patient Name</th>
+                      <th>Birth Date</th>
+                      <th>Gender</th>
+                      <th>Insurance Coverage</th>
+                      <th>Consent</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="patientsTableBody">
+                    <!-- Populated Dynamically -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <!-- Attributed AI Decision-Support Reviews Table -->
+            <div class="glass-card" style="margin-top: 18px">
+              <div class="panel-header-row">
+                <h2>
+                  Attributed HMS AI Decision-Support Reviews
+                  (<code>ai/reviews</code>)
+                </h2>
+                <span class="badge-pill">Clinician Sign-Offs</span>
+              </div>
+              <div class="table-responsive">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Timestamp</th>
+                      <th>Patient</th>
+                      <th>Evidence ID</th>
+                      <th>Clinician Decision</th>
+                      <th>Clinical Rationale / Comment</th>
+                      <th>Reviewer</th>
+                    </tr>
+                  </thead>
+                  <tbody id="aiReviewsTableBody"></tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+          <!-- ───────────────────────────────────────────────────────────────────
+             VIEW 5: ENCOUNTERS, EHR CLINICAL NOTES & SCHEDULING
+        ─────────────────────────────────────────────────────────────────── -->
+          <section class="workspace-view hidden" id="view-encounters">
+            <div
+              class="view-header"
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+              "
+            >
+              <div>
+                <p class="view-eyebrow">HOSPITAL OPERATIONS / EMR</p>
+                <h1>Encounters &amp; notes</h1>
+                <p>Coordinate visits, clinical observations, and follow-up.</p>
+              </div>
+              <div style="display: flex; gap: 10px">
+                <button
+                  class="btn btn-cyan-outline"
+                  id="btnNewMedicalRecord"
+                  type="button"
+                >
+                  + Add EHR Note / Allergy
+                </button>
+                <button
+                  class="btn btn-cyan-outline"
+                  id="btnNewAppointment"
+                  type="button"
+                >
+                  + Book Appointment
+                </button>
+                <button
+                  class="btn btn-cyan-block"
+                  id="btnNewEncounter"
+                  style="width: auto; padding: 0 20px"
+                  type="button"
+                >
+                  + New Encounter
+                </button>
+              </div>
+            </div>
+            <div
+              style="
+                display: flex;
+                gap: 12px;
+                margin-top: 16px;
+                align-items: center;
+                flex-wrap: wrap;
+              "
+            >
+              <div style="display: flex; align-items: center; gap: 8px">
+                <label
+                  for="encPatientFilter"
+                  style="color: #94a3b8; font-size: 0.85rem; font-weight: 600"
+                  >Filter by Patient:</label
+                >
+                <select
+                  class="quick-dropdown"
+                  id="encPatientFilter"
+                  style="max-width: 260px"
+                >
+                  <option value="ALL">All Patients</option>
+                </select>
+              </div>
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 8px;
+                  flex: 1;
+                  max-width: 380px;
+                "
+              >
+                <input
+                  id="encSearchInput"
+                  placeholder="Search encounters, notes, diagnoses..."
+                  style="width: 100%"
+                  type="text"
+                />
+              </div>
+            </div>
+            <!-- Active Encounters -->
+            <div class="glass-card" style="margin-top: 16px">
+              <div class="panel-header-row">
+                <h2>
+                  1. Hospital &amp; Clinic Encounters (<code>encounters</code>)
+                </h2>
+                <span class="badge-pill">Attending Visits</span>
+              </div>
+              <div class="table-responsive">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Encounter ID</th>
+                      <th>Patient</th>
+                      <th>Department</th>
+                      <th>Attending Clinician</th>
+                      <th>Started At</th>
+                      <th>Status</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="encountersTableBody"></tbody>
+                </table>
+              </div>
+            </div>
+            <!-- EHR Medical Records & Allergies -->
+            <div class="glass-card" style="margin-top: 18px">
+              <div class="panel-header-row">
+                <h2>
+                  2. EHR Clinical Notes, Pathology &amp; Drug Allergies
+                  (<code>medical-records</code>)
+                </h2>
+                <span class="badge-pill">Feeds Pharmacy Safety Guard</span>
+              </div>
+              <div class="table-responsive">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Record ID</th>
+                      <th>Patient</th>
+                      <th>Category</th>
+                      <th>Clinical Summary / Allergy Details</th>
+                      <th>Author</th>
+                      <th>Recorded At</th>
+                    </tr>
+                  </thead>
+                  <tbody id="medicalRecordsTableBody"></tbody>
+                </table>
+              </div>
+            </div>
+            <!-- Clinic Appointments & Staff Directory -->
+            <div class="glass-card" style="margin-top: 18px">
+              <div class="panel-header-row">
+                <h2>
+                  3. Oncology Clinic Appointments &amp; Staff Schedule (<code
+                    >scheduling/appointments</code
+                  >
+                  · <code>staff</code>)
+                </h2>
+                <span class="badge-pill"
+                  >Conflict &amp; Availability Checked</span
+                >
+              </div>
+              <div class="table-responsive">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Appointment</th>
+                      <th>Patient</th>
+                      <th>Attending Provider</th>
+                      <th>Start — End</th>
+                      <th>Status</th>
+                      <th>Workflow Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="appointmentsTableBody"></tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+          <!-- ───────────────────────────────────────────────────────────────────
+             VIEW 6: RADIOLOGY, LABORATORY DIAGNOSTICS & CLINICAL ALERTS
+        ─────────────────────────────────────────────────────────────────── -->
+          <section class="workspace-view hidden" id="view-radiology">
+            <div
+              class="view-header"
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+              "
+            >
+              <div>
+                <p class="view-eyebrow">DIAGNOSTIC OPERATIONS</p>
+                <h1>Radiology &amp; laboratories</h1>
+                <p>Manage diagnostic orders, results, and critical findings.</p>
+              </div>
+              <div style="display: flex; gap: 10px">
+                <button
+                  class="btn btn-cyan-outline"
+                  id="btnNewLabOrder"
+                  type="button"
+                >
+                  + Order Lab Panel
+                </button>
+                <button
+                  class="btn btn-cyan-block"
+                  id="btnNewRadiologyOrder"
+                  style="width: auto; padding: 0 20px"
+                  type="button"
+                >
+                  + Order Imaging Study
+                </button>
+              </div>
+            </div>
+            <!-- Operational & Critical Alerts Banner -->
+            <div class="glass-card" style="margin-top: 16px">
+              <div class="panel-header-row">
+                <h2>
+                  Active Clinical &amp; Critical Result Alerts
+                  (<code>alerts</code>)
+                </h2>
+                <span class="badge-pill">Real-Time Escalation</span>
+              </div>
+              <div id="clinicalAlertsContainer"></div>
+            </div>
+            <!-- Radiology Orders & Signed Reports -->
+            <div class="glass-card" style="margin-top: 18px">
+              <div class="panel-header-row">
+                <h2>
+                  1. Radiology Orders, Quality Gate &amp; Signed Reports (<code
+                    >radiology/orders</code
+                  >
+                  · <code>radiology/reports</code>)
+                </h2>
+                <span class="badge-pill">V1 AI Imaging Integrated</span>
+              </div>
+              <div class="table-responsive">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Order ID</th>
+                      <th>Modality &amp; Study</th>
+                      <th>Patient</th>
+                      <th>Priority</th>
+                      <th>Status</th>
+                      <th>Signed Impression &amp; Quality Gate</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="radiologyTableBody"></tbody>
+                </table>
+              </div>
+            </div>
+            <!-- Laboratory Orders & Verified Results -->
+            <div class="glass-card" style="margin-top: 18px">
+              <div class="panel-header-row">
+                <h2>
+                  2. Laboratory Orders &amp; Verified Results (<code
+                    >lab/tests</code
+                  >
+                  · <code>lab/orders</code> · <code>lab/results</code>)
+                </h2>
+                <span class="badge-pill"
+                  >Auto Reference &amp; Critical Flagging</span
+                >
+              </div>
+              <div class="table-responsive">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Order ID</th>
+                      <th>Lab Panel / Test</th>
+                      <th>Patient</th>
+                      <th>Order Status</th>
+                      <th>Verified Result &amp; Reference Range</th>
+                      <th>Flag</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="labOrdersTableBody"></tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+          <!-- ───────────────────────────────────────────────────────────────────
+             VIEW 7: PHARMACY, SAFETY GUARD & FIFO INVENTORY
+        ─────────────────────────────────────────────────────────────────── -->
+          <section class="workspace-view hidden" id="view-pharmacy">
+            <div
+              class="view-header"
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+              "
+            >
+              <div>
+                <p class="view-eyebrow">MEDICATION SAFETY &amp; SUPPLY CHAIN</p>
+                <h1>Pharmacy &amp; inventory</h1>
+                <p>
+                  Prescribing, dispensing, and stock in one safety-focused
+                  workspace.
+                </p>
+              </div>
+              <div style="display: flex; gap: 10px">
+                <button
+                  class="btn btn-cyan-outline"
+                  id="btnReceiveStock"
+                  type="button"
+                >
+                  + Receive Inventory Lot
+                </button>
+                <button
+                  class="btn btn-cyan-block"
+                  id="btnNewPrescription"
+                  style="width: auto; padding: 0 20px"
+                  type="button"
+                >
+                  + Prescribe Medication
+                </button>
+              </div>
+            </div>
+            <!-- Prescriptions & FIFO Dispensing -->
+            <div class="glass-card" style="margin-top: 16px">
+              <div class="panel-header-row">
+                <h2>
+                  1. Oncology Prescriptions &amp; FIFO Lot Dispensing (<code
+                    >pharmacy/prescriptions</code
+                  >
+                  · <code>pharmacy/dispense</code>)
+                </h2>
+                <span class="badge-pill"
+                  >Allergy Guard &amp; FIFO Enforced</span
+                >
+              </div>
+              <div class="table-responsive">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Rx ID</th>
+                      <th>Medication &amp; Regimen</th>
+                      <th>Patient</th>
+                      <th>Authorized / Dispensed</th>
+                      <th>Safety &amp; Lot Status</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="pharmacyTableBody"></tbody>
+                </table>
+              </div>
+            </div>
+            <!-- Hospital Inventory & Low-Stock Queue -->
+            <div class="glass-card" style="margin-top: 18px">
+              <div class="panel-header-row">
+                <h2>
+                  2. Hospital Stock Catalogue &amp; Low-Stock Queue (<code
+                    >inventory/items</code
+                  >
+                  · <code>inventory/low-stock</code>)
+                </h2>
+                <span class="badge-pill">Live Ledger Balances</span>
+              </div>
+              <div class="table-responsive">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>SKU</th>
+                      <th>Item Name</th>
+                      <th>Category</th>
+                      <th>On Hand</th>
+                      <th>Reorder Point / Par</th>
+                      <th>Supply Status</th>
+                    </tr>
+                  </thead>
+                  <tbody id="inventoryTableBody"></tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+          <!-- ───────────────────────────────────────────────────────────────────
+             VIEW 8: BILLING, CLAIMS & DOUBLE-ENTRY FINANCE LEDGER
+        ─────────────────────────────────────────────────────────────────── -->
+          <section class="workspace-view hidden" id="view-billing">
+            <div
+              class="view-header"
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+              "
+            >
+              <div>
+                <p class="view-eyebrow">HOSPITAL REVENUE CYCLE &amp; FINANCE</p>
+                <h1>Billing &amp; finance</h1>
+                <p>Patient accounts and an accountable double-entry ledger.</p>
+              </div>
+              <div style="display: flex; gap: 10px">
+                <button
+                  class="btn btn-cyan-outline"
+                  id="btnRefreshFinance"
+                  type="button"
+                >
+                  ↻ Refresh Financials
+                </button>
+                <button
+                  class="btn btn-cyan-block"
+                  id="btnNewInvoice"
+                  style="width: auto; padding: 0 20px"
+                  type="button"
+                >
+                  + Issue Patient Invoice
+                </button>
+              </div>
+            </div>
+            <!-- Financial Summary KPIs -->
+            <div
+              class="metrics-triplet"
+              id="financeKpiGrid"
+              style="margin-top: 16px; grid-template-columns: repeat(4, 1fr)"
+            >
+              <div class="metric-triplet-box">
+                <div class="metric-triplet-label">Total Billed</div>
+                <div class="metric-triplet-val" id="finBilled">No data yet</div>
+                <div class="metric-triplet-target">Reported by backend</div>
+              </div>
+              <div class="metric-triplet-box">
+                <div class="metric-triplet-label">Total Collected</div>
+                <div
+                  class="metric-triplet-val"
+                  id="finCollected"
+                  style="color: #34d399"
+                >
+                  No data yet
+                </div>
+                <div class="metric-triplet-target" id="finCollectionRate">
+                  Reported by backend
+                </div>
+              </div>
+              <div class="metric-triplet-box">
+                <div class="metric-triplet-label">Net Revenue</div>
+                <div class="metric-triplet-val" id="finNetRevenue">
+                  No data yet
+                </div>
+                <div class="metric-triplet-target">Reported by backend</div>
+              </div>
+              <div class="metric-triplet-box">
+                <div class="metric-triplet-label">Outstanding AR</div>
+                <div
+                  class="metric-triplet-val"
+                  id="finOutstanding"
+                  style="color: #f59e0b"
+                >
+                  No data yet
+                </div>
+                <div class="metric-triplet-target" id="finAgingSummary">
+                  Reported by backend
+                </div>
+              </div>
+            </div>
+            <!-- Patient Invoices -->
+            <div class="glass-card" style="margin-top: 18px">
+              <div class="panel-header-row">
+                <h2>
+                  1. Patient Invoices &amp; Revenue Cycle (<code
+                    >billing/invoices</code
+                  >
+                  · <code>billing/payments</code>)
+                </h2>
+                <span class="badge-pill">CPT-4 Fee Schedule</span>
+              </div>
+              <div class="table-responsive">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Invoice #</th>
+                      <th>Patient</th>
+                      <th>CPT Line Items</th>
+                      <th>Total Billed (₹)</th>
+                      <th>Outstanding Balance (₹)</th>
+                      <th>Due Date</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="invoicesTableBody"></tbody>
+                </table>
+              </div>
+            </div>
+            <!-- Immutable Double-Entry General Ledger -->
+            <div class="glass-card" style="margin-top: 18px">
+              <div class="panel-header-row">
+                <h2>
+                  2. Immutable Double-Entry General Ledger
+                  (<code>finance/ledger</code>)
+                </h2>
+                <span class="badge-pill">Balanced DR = CR</span>
+              </div>
+              <div class="table-responsive">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Transaction ID</th>
+                      <th>Account</th>
+                      <th>Debit (₹)</th>
+                      <th>Credit (₹)</th>
+                      <th>Accounting Period</th>
+                      <th>Source Record</th>
+                    </tr>
+                  </thead>
+                  <tbody id="ledgerTableBody"></tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+          <!-- ───────────────────────────────────────────────────────────────────
+             VIEW 8: AUDIT PROVENANCE TRAIL
+        ─────────────────────────────────────────────────────────────────── -->
+          <section class="workspace-view hidden" id="view-audit">
+            <div
+              class="view-header"
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+              "
+            >
+              <div>
+                <p class="view-eyebrow">GOVERNANCE &amp; ACCOUNTABILITY</p>
+                <h1>Audit trail</h1>
+                <p>
+                  Trace actions and decision provenance across the workspace.
+                </p>
+              </div>
+              <button class="btn btn-ghost" id="refreshAuditBtn" type="button">
+                ↻ Refresh Log
+              </button>
+            </div>
+            <div class="glass-card" style="margin-top: 16px">
+              <!-- Audit Filters -->
+              <div
+                style="
+                  display: flex;
+                  gap: 10px;
+                  margin-bottom: 14px;
+                  flex-wrap: wrap;
+                  align-items: center;
+                "
+              >
+                <input
+                  id="auditActorFilter"
+                  placeholder="Filter by Actor ID (e.g. dr_chen)"
+                  style="max-width: 200px"
+                  type="text"
+                />
+                <select
+                  class="quick-dropdown"
+                  id="auditRoleFilter"
+                  style="max-width: 180px"
+                >
+                  <option value="">All Roles</option>
+                  <option value="CLINICIAN">CLINICIAN</option>
+                  <option value="RADIOLOGIST">RADIOLOGIST</option>
+                  <option value="PHARMACIST">PHARMACIST</option>
+                  <option value="BILLING_CLERK">BILLING_CLERK</option>
+                  <option value="ADMIN">ADMIN</option>
+                </select>
+                <input
+                  id="auditMrnFilter"
+                  placeholder="Filter by Patient MRN"
+                  style="max-width: 200px"
+                  type="text"
+                />
+                <button
+                  class="btn btn-sm btn-cyan-outline"
+                  id="btnApplyAuditFilters"
+                  type="button"
+                >
+                  Apply Filters
+                </button>
+                <button
+                  class="btn btn-sm btn-ghost"
+                  id="btnClearAuditFilters"
+                  type="button"
+                >
+                  Clear
+                </button>
+              </div>
+              <div class="table-responsive">
+                <table class="data-table" id="auditTable">
+                  <thead>
+                    <tr>
+                      <th>Timestamp</th>
+                      <th>Request Trace ID</th>
+                      <th>Actor ID</th>
+                      <th>Role</th>
+                      <th>Action</th>
+                      <th>Service</th>
+                      <th>Patient MRN</th>
+                    </tr>
+                  </thead>
+                  <tbody id="auditTableBody"></tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+          <!-- ───────────────────────────────────────────────────────────────────
+             VIEW 9: MODEL PORTFOLIO & CARDS
+        ─────────────────────────────────────────────────────────────────── -->
+          <section class="workspace-view hidden" id="view-portfolio">
+            <div
+              class="view-header"
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+              "
+            >
+              <div>
+                <p class="view-eyebrow">RESEARCH &amp; MODEL GOVERNANCE</p>
+                <h1>Model portfolio</h1>
+                <span id="portfolioActiveCountBadge" class="badge-pill">Model status not loaded</span>
+                <p>
+                  Deployment readiness, model evidence, and evaluation records.
+                </p>
+              </div>
+              <div style="display: flex; gap: 8px">
+                <button
+                  class="btn btn-ghost"
+                  id="refreshPortfolioBtn"
+                  type="button"
+                >
+                  ↻ Refresh
+                </button>
+                <button
+                  class="btn btn-cyan-outline"
+                  id="btnFacultyBriefing"
+                  type="button"
+                >
+                  Export Model Report
+                </button>
+              </div>
+            </div>
+            <div class="glass-card" style="margin-top: 16px">
+              <div class="table-responsive">
+                <table class="data-table" id="portfolioTable">
+                  <thead>
+                    <tr>
+                      <th>Slot</th>
+                      <th>Task ID</th>
+                      <th>Modality</th>
+                      <th>Status</th>
+                      <th>Parameters</th>
+                      <th>Accuracy</th>
+                      <th>Macro F1</th>
+                      <th>SHA-256 Digest</th>
+                      <th>Model Card</th>
+                    </tr>
+                  </thead>
+                  <tbody id="portfolioTableBody"></tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+    <!-- ═══════════════════════════════════════════════════════════════════════════
+       MODAL DIALOGS
+  ═══════════════════════════════════════════════════════════════════════════ -->
+    <!-- Append Timeline Event Modal -->
+    <dialog
+      aria-labelledby="appendEventModalTitle"
+      class="glass-modal"
+      id="appendEventModal"
+    >
+      <div class="modal-head">
+        <h3 id="appendEventModalTitle">Append Clinical Milestone</h3>
+        <button
+          aria-label="Close dialog"
+          class="btn-close-modal"
+          id="closeAppendEventModal"
+          type="button"
+        >
+          ×
+        </button>
+      </div>
+      <form id="appendEventForm" style="margin-top: 16px">
+        <div class="form-row">
+          <div class="form-group flex-1">
+            <label for="eventCaseId">Patient MRN / Case ID *</label>
+            <input id="eventCaseId" required="" type="text" />
+          </div>
+          <div class="form-group flex-1">
+            <label for="eventType">Event Type *</label>
+            <select id="eventType">
+              <option value="DIAGNOSIS">DIAGNOSIS</option>
+              <option value="IMAGING">IMAGING</option>
+              <option value="PATHOLOGY">PATHOLOGY</option>
+              <option value="TREATMENT">TREATMENT</option>
+              <option value="LAB">LAB</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group flex-1">
+            <label for="eventTime">Event Timestamp *</label>
+            <input id="eventTime" required="" type="datetime-local" />
+          </div>
+          <div class="form-group flex-1">
+            <label for="eventMissingness">Missingness State</label>
+            <select id="eventMissingness">
+              <option selected="" value="PRESENT">PRESENT (Complete)</option>
+              <option value="MISSING">MISSING</option>
+              <option value="IMPUTED">IMPUTED</option>
+              <option value="UNKNOWN">UNKNOWN</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="eventSource">Originating Clinical Source *</label>
+          <input
+            id="eventSource"
+            placeholder="e.g. Primary Oncology Clinic Note, Radiology PACS, Surgical Pathology"
+            required=""
+            type="text"
+          />
+        </div>
+        <div class="form-group">
+          <label for="eventPayload">Clinical Findings / Observation *</label>
+          <textarea
+            id="eventPayload"
+            placeholder="Enter detailed findings, staging observations, or therapeutic protocol..."
+            required=""
+            rows="3"
+          ></textarea>
+        </div>
+        <div class="modal-actions">
+          <button
+            class="btn btn-ghost"
+            id="cancelAppendEventModal"
+            type="button"
+          >
+            Cancel
+          </button>
+          <button class="btn btn-cyan-block" style="width: auto" type="submit">
+            Append to Immutable Timeline
+          </button>
+        </div>
+      </form>
+    </dialog>
+    <!-- Register Patient Modal -->
+    <dialog
+      aria-labelledby="newPatientModalTitle"
+      class="glass-modal"
+      id="newPatientModal"
+    >
+      <div class="modal-head">
+        <h3 id="newPatientModalTitle">Register patient</h3>
+        <button
+          aria-label="Close dialog"
+          class="btn-close-modal"
+          id="closeNewPatientModal"
+          type="button"
+        >
+          ×
+        </button>
+      </div>
+      <form id="newPatientForm" style="margin-top: 16px">
+        <div class="form-row">
+          <div class="form-group flex-1">
+            <label for="newMrn">Medical Record Number (MRN) *</label>
+            <input
+              id="newMrn"
+              placeholder="MRN-2026-ONCO-005"
+              required=""
+              type="text"
+            />
+          </div>
+          <div class="form-group flex-1">
+            <label for="newGender">Gender</label>
+            <select id="newGender">
+              <option value="female">Female</option>
+              <option value="male">Male</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group flex-1">
+            <label for="newGivenName">Given Name *</label>
+            <input id="newGivenName" required="" type="text" />
+          </div>
+          <div class="form-group flex-1">
+            <label for="newFamilyName">Family Name *</label>
+            <input id="newFamilyName" required="" type="text" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group flex-1">
+            <label for="newBirthDate">Date of Birth *</label>
+            <input id="newBirthDate" required="" type="date" />
+          </div>
+          <div class="form-group flex-1">
+            <label for="newInsurance">Insurance Payer</label>
+            <input
+              id="newInsurance"
+              placeholder="Blue Shield Comprehensive"
+              type="text"
+            />
+          </div>
+        </div>
+        <fieldset class="consent-fieldset">
+          <legend>Recorded patient consent & clinical encounter</legend>
+          <label
+            ><input id="newAiConsent" type="checkbox" checked /> Consent to clinical AI
+            decision support has been obtained</label
+          ><label
+            ><input id="newResearchConsent" type="checkbox" checked /> Patient
+            explicitly opted in to research</label
+          ><label style="color:#38bdf8;font-weight:600;"
+            ><input id="newAutoEncounter" type="checkbox" checked /> Automatically create active Multidisciplinary Oncology encounter</label
+          >
+        </fieldset>
+        <div class="modal-actions">
+          <button
+            class="btn btn-ghost"
+            id="cancelNewPatientModal"
+            type="button"
+          >
+            Cancel
+          </button>
+          <button class="btn btn-cyan-block" style="width: auto" type="submit">
+            Register patient
+          </button>
+        </div>
+      </form>
+    </dialog>
+    <!-- Model Card Dialog -->
+    <dialog
+      aria-labelledby="modelCardModalTitle"
+      class="glass-modal"
+      id="modelCardModal"
+    >
+      <div class="modal-head">
+        <h3 id="modelCardModalTitle">Model Card</h3>
+        <button
+          aria-label="Close dialog"
+          class="btn-close-modal"
+          id="closeModelCardModal"
+          type="button"
+        >
+          ×
+        </button>
+      </div>
+      <div class="model-card-body" id="modelCardModalContent"></div>
+      <div class="modal-actions">
+        <button class="btn btn-ghost" id="dismissModelCardModal" type="button">
+          Close
+        </button>
+      </div>
+    </dialog>
+    <!-- Faculty Briefing Dialog -->
+    <dialog
+      aria-labelledby="facultyBriefingModalTitle"
+      class="glass-modal"
+      id="facultyBriefingModal"
+    >
+      <div class="modal-head">
+        <h3 id="facultyBriefingModalTitle">
+          Executive Institutional Faculty Briefing
+        </h3>
+        <button
+          aria-label="Close dialog"
+          class="btn-close-modal"
+          id="closeFacultyBriefingModal"
+          type="button"
+        >
+          ×
+        </button>
+      </div>
+      <div class="faculty-briefing-body">
+        <p>
+          <strong>Audit Date:</strong>
+          <span id="briefingAuditDate">2026-10-31</span> ·
+          <strong>Platform Phase:</strong> 1 (Phase 2 Staged)
+        </p>
+        <p>
+          Demonstrated verification across all 8 multi-cancer tasks, frozen test
+          split SHA-256 weight digests, and NCCN guideline adherence.
+        </p>
+        <div class="table-responsive" style="margin-top: 14px">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Task ID</th>
+                <th>Modality</th>
+                <th>Status</th>
+                <th>Parameters</th>
+                <th>Accuracy</th>
+                <th>Macro F1</th>
+                <th>Weight Hash</th>
+              </tr>
+            </thead>
+            <tbody id="briefingTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button class="btn btn-ghost" id="printBriefing" type="button">
+          Print / Export PDF
+        </button>
+        <button
+          class="btn btn-cyan-block"
+          id="dismissFacultyBriefingModal"
+          style="width: auto"
+          type="button"
+        >
+          Dismiss
+        </button>
+      </div>
+    </dialog>
+    <!-- Generic Interactive HMS Action & FHIR Inspector Modal -->
+    <dialog
+      aria-labelledby="hmsActionModalTitle"
+      class="glass-modal"
+      id="hmsActionModal"
+      style="max-width: 680px; width: 92%"
+    >
+      <div class="modal-head">
+        <h3 id="hmsActionModalTitle">HMS Operation</h3>
+        <button
+          aria-label="Close dialog"
+          class="btn-close-modal"
+          id="closeHmsActionModal"
+          type="button"
+        >
+          ×
+        </button>
+      </div>
+      <div id="hmsActionModalBody" style="margin-top: 16px"></div>
+    </dialog>
+    <!-- Toast Notification -->
+    <div aria-live="polite" class="toast hidden" id="toast" role="status"></div>
+    <!-- Unified JS Script -->
+    <script src="js/app.js"></script>
+    <dialog
+      aria-labelledby="commandTitle"
+      class="workspace-dialog command-dialog"
+      id="commandDialog"
+    >
+      <div class="dialog-top">
+        <h2 id="commandTitle">Find a workspace</h2>
+        <button
+          aria-label="Close search"
+          class="icon-button dialog-close"
+          type="button"
+        >
+          ×
+        </button>
+      </div>
+      <input
+        aria-label="Search workspaces"
+        autocomplete="off"
+        id="commandInput"
+        placeholder="Search workspaces…"
+      />
+      <div id="commandResults"></div>
+      <div class="dialog-hint">
+        ↑ ↓ to navigate <span>↵ to open</span><span>esc to close</span>
+      </div>
+    </dialog>
+    <dialog
+      aria-labelledby="settingsTitle"
+      class="workspace-dialog"
+      id="settingsDialog"
+    >
+      <div class="dialog-top">
+        <h2 id="settingsTitle">Workspace connection</h2>
+        <button
+          aria-label="Close settings"
+          class="icon-button dialog-close"
+          type="button"
+        >
+          ×
+        </button>
+      </div>
+      <p class="dialog-description">
+        Use local sample records to explore the interface, or connect your
+        existing API. Clinical inference is never simulated.
+      </p>
+      <form id="settingsForm">
+        <div class="form-group">
+          <label for="connectionMode">Data mode</label
+          ><select id="connectionMode">
+            <option value="demo">Demonstration · Fictional local data</option>
+            <option value="live">Live · Your backend</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="apiOrigin">Backend origin</label
+          ><input
+            id="apiOrigin"
+            placeholder="https://your-api.example.com"
+            type="url"
+          /><small
+            >Leave empty for same-origin /api/v2 routes. Cross-origin APIs must
+            allow CORS.</small
+          >
+        </div>
+        <button class="btn btn-primary" type="submit">
+          Save &amp; reconnect
+        </button>
+      </form>
+    </dialog>
+    <dialog
+      aria-labelledby="guideTitle"
+      class="workspace-dialog"
+      id="guideDialog"
+    >
+      <div class="dialog-top">
+        <h2 id="guideTitle">From case to clinical decision</h2>
+        <button
+          aria-label="Close guide"
+          class="icon-button dialog-close"
+          type="button"
+        >
+          ×
+        </button>
+      </div>
+      <ol class="guide-steps">
+        <li>
+          <strong>Prepare the case</strong>
+          <p>
+            Select the patient, diagnostic category, and matching modality.
+            Upload a supported image and add clinical context.
+          </p>
+        </li>
+        <li>
+          <strong>Run the analysis</strong>
+          <p>
+            In live mode the original /api/v2/analyze contract powers quality
+            checks, inference, uncertainty, and evidence retrieval. Untrained
+            categories are refused.
+          </p>
+        </li>
+        <li>
+          <strong>Review the evidence</strong>
+          <p>
+            Inspect confidence, citations, and available Grad-CAM artifacts.
+            Record an attributed assessment, override with rationale, or request
+            a second read.
+          </p>
+        </li>
+      </ol>
+      <div class="review-notice">
+        Demonstration mode does not perform medical inference or generate
+        guideline evidence. All sample records are fictional.
+      </div>
+    </dialog>
+    <script src="js/workspace.js"></script>
+  </body>
+</html>

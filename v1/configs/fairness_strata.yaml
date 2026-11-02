@@ -1,0 +1,134 @@
+# OncoSentinel v2.0 — Fairness Strata Configuration
+# Version: 1.0.0
+# CRITICAL: Strata MUST be defined BEFORE any evaluation is run.
+# Any change requires an ADR + fairness re-evaluation.
+# Satisfies: FR-18, FR-19, NFR-08
+
+version: "1.0.0"
+updated_at: "2024-01-01"
+
+# ── Global Strata ─────────────────────────────────────────────────────────────
+# Applied across all categories unless overridden.
+global_strata:
+  age_group:
+    description: "Patient age bracket"
+    buckets:
+      - {label: "under_40", range: [0, 39]}
+      - {label: "40_to_59", range: [40, 59]}
+      - {label: "60_to_74", range: [60, 74]}
+      - {label: "75_plus", range: [75, 999]}
+    minimum_samples_for_reporting: 30
+    warn_below_samples: 50
+
+  sex:
+    description: "Biological sex as recorded in dataset"
+    values: ["male", "female", "not_recorded"]
+    minimum_samples_for_reporting: 30
+
+  institution:
+    description: "Data collection site / institution"
+    type: "categorical"
+    note: "Values populated from dataset metadata at evaluation time"
+    minimum_samples_for_reporting: 20
+
+  scanner_vendor:
+    description: "Imaging scanner manufacturer"
+    type: "categorical"
+    values: ["GE", "Siemens", "Philips", "Canon", "Hitachi", "Other", "Unknown"]
+    minimum_samples_for_reporting: 20
+
+# ── Per-Category Strata Extensions ───────────────────────────────────────────
+categories:
+  breast:
+    strata:
+      - age_group
+      - scanner_vendor
+      - institution
+      - biopsy_site
+    custom:
+      biopsy_site:
+        description: "Location of biopsy"
+        values: ["UIQ", "UIR", "LIQ", "LIR", "central", "unknown"]
+        minimum_samples_for_reporting: 20
+
+  kidney:
+    strata:
+      - age_group
+      - sex
+      - institution
+      - scanner_protocol
+    custom:
+      scanner_protocol:
+        description: "CT acquisition protocol"
+        values: ["contrast_enhanced", "non_contrast", "unknown"]
+        minimum_samples_for_reporting: 20
+
+  all_leukemia:
+    strata:
+      - age_group
+      - sex
+
+  oral:
+    strata:
+      - age_group
+      - sex
+
+  lung_colon:
+    strata:
+      - age_group
+      - sex
+      - smoking_status
+    custom:
+      smoking_status:
+        description: "Smoking history"
+        values: ["never", "former", "current", "unknown"]
+        minimum_samples_for_reporting: 20
+
+  lymphoma:
+    strata:
+      - age_group
+      - sex
+
+  brain:
+    strata:
+      - age_group
+      - sex
+      - scanner_field_strength
+    custom:
+      scanner_field_strength:
+        description: "MRI field strength in Tesla"
+        values: ["1.5T", "3T", "7T", "other", "unknown"]
+        minimum_samples_for_reporting: 20
+
+  cervical:
+    strata:
+      - age_group
+      - pap_smear_history
+    custom:
+      pap_smear_history:
+        description: "Prior Pap smear history"
+        values: ["regular", "irregular", "none", "unknown"]
+        minimum_samples_for_reporting: 20
+
+# ── Metrics Reported Per Subgroup ─────────────────────────────────────────────
+metrics:
+  - sensitivity
+  - specificity
+  - f1
+  - auc_roc
+  - ece
+  - fnr
+  - fpr
+  - abstention_rate
+  - explanation_utility_score
+
+confidence_interval_level: 0.95
+
+# ── Gate Policy ───────────────────────────────────────────────────────────────
+gate:
+  # A model is BLOCKED from promotion if:
+  fnr_max_disparity: 0.10    # max FNR difference between any two subgroups
+  fpr_max_disparity: 0.10    # max FPR difference between any two subgroups
+  auc_min_per_subgroup: 0.70 # every subgroup must meet this floor
+  # Groups with < minimum_samples are excluded from gate (but flagged in report)
+  note: "Failed fairness gate BLOCKS model promotion (FR-19)"

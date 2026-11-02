@@ -1,0 +1,693 @@
+{
+  "task_id": "kidney_ct",
+  "dataset_id": "CT-Kidney-v1",
+  "created_at": "2026-10-20T10:54:27.218607",
+  "grouping_key": "study_id",
+  "total_samples": 60,
+  "train_count": 42,
+  "val_count": 9,
+  "test_count": 9,
+  "class_distribution": {
+    "train": {
+      "stone": 9,
+      "normal": 6,
+      "tumor": 15,
+      "cyst": 12
+    },
+    "val": {
+      "normal": 3,
+      "cyst": 3,
+      "stone": 3
+    },
+    "test": {
+      "normal": 6,
+      "stone": 3
+    }
+  },
+  "train_samples": [
+    {
+      "sample_id": "PATIENT_KIDN_015_SCAN_00",
+      "relative_path": "stone/PATIENT_KIDN_015_SCAN_00.png",
+      "class_label": 3,
+      "class_name": "stone",
+      "grouping_id": "PATIENT_KIDN_015",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ct"
+      }
+    },
+    {
+      "sample_id": "PATIENT_KIDN_015_SCAN_01",
+      "relative_path": "stone/PATIENT_KIDN_015_SCAN_01.png",
+      "class_label": 3,
+      "class_name": "stone",
+      "grouping_id": "PATIENT_KIDN_015",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ct"
+      }
+    },
+    {
+      "sample_id": "PATIENT_KIDN_015_SCAN_02",
+      "relative_path": "stone/PATIENT_KIDN_015_SCAN_02.png",
+      "class_label": 3,
+      "class_name": "stone",
+      "grouping_id": "PATIENT_KIDN_015",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ct"
+      }
+    },
+    {
+      "sample_id": "PATIENT_KIDN_012_SCAN_00",
+      "relative_path": "normal/PATIENT_KIDN_012_SCAN_00.png",
+      "class_label": 0,
+      "class_name": "normal",
+      "grouping_id": "PATIENT_KIDN_012",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ct"
+      }
+    },
+    {
+      "sample_id": "PATIENT_KIDN_012_SCAN_01",
+      "relative_path": "normal/PATIENT_KIDN_012_SCAN_01.png",
+      "class_label": 0,
+      "class_name": "normal",
+      "grouping_id": "PATIENT_KIDN_012",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ct"
+      }
+    },
+    {
+      "sample_id": "PATIENT_KIDN_012_SCAN_02",
+      "relative_path": "normal/PATIENT_KIDN_012_SCAN_02.png",
+      "class_label": 0,
+      "class_name": "normal",
+      "grouping_id": "PATIENT_KIDN_012",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ct"
+      }
+    },
+    {
+      "sample_id": "PATIENT_KIDN_019_SCAN_00",
+      "relative_path": "stone/PATIENT_KIDN_019_SCAN_00.png",
+      "class_label": 3,
+      "class_name": "stone",
+      "grouping_id": "PATIENT_KIDN_019",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ct"
+      }
+    },
+    {
+      "sample_id": "PATIENT_KIDN_019_SCAN_01",
+      "relative_path": "stone/PATIENT_KIDN_019_SCAN_01.png",
+      "class_label": 3,
+      "class_name": "stone",
+      "grouping_id": "PATIENT_KIDN_019",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ct"
+      }
+    },
+    {
+      "sample_id": "PATIENT_KIDN_019_SCAN_02",
+      "relative_path": "stone/PATIENT_KIDN_019_SCAN_02.png",
+      "class_label": 3,
+      "class_name": "stone",
+      "grouping_id": "PATIENT_KIDN_019",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ct"
+      }
+    },
+    {
+      "sample_id": "PATIENT_KIDN_005_SCAN_00",
+      "relative_path": "tumor/PATIENT_KIDN_005_SCAN_00.png",
+      "class_label": 1,
+      "class_name": "tumor",
+      "grouping_id": "PATIENT_KIDN_005",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ct"
+      }
+    },
+    {
+      "sample_id": "PATIENT_KIDN_005_SCAN_01",
+      "relative_path": "tumor/PATIENT_KIDN_005_SCAN_01.png",
+      "class_label": 1,
+      "class_name": "tumor",
+      "grouping_id": "PATIENT_KIDN_005",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ct"
+      }
+    },
+    {
+      "sample_id": "PATIENT_KIDN_005_SCAN_02",
+      "relative_path": "tumor/PATIENT_KIDN_005_SCAN_02.png",
+      "class_label": 1,
+      "class_name": "tumor",
+      "grouping_id": "PATIENT_KIDN_005",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ct"
+      }
+    },
+    {
+      "sample_id": "PATIENT_KIDN_013_SCAN_00",
+      "relative_path": "tumor/PATIENT_KIDN_013_SCAN_00.png",
+      "class_label": 1,
+      "class_name": "tumor",
+      "grouping_id": "PATIENT_KIDN_013",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ct"
+      }
+    },
+    {
+      "sample_id": "PATIENT_KIDN_013_SCAN_01",
+      "relative_path": "tumor/PATIENT_KIDN_013_SCAN_01.png",
+      "class_label": 1,
+      "class_name": "tumor",
+      "grouping_id": "PATIENT_KIDN_013",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ct"
+      }
+    },
+    {
+      "sample_id": "PATIENT_KIDN_013_SCAN_02",
+      "relative_path": "tumor/PATIENT_KIDN_013_SCAN_02.png",
+      "class_label": 1,
+      "class_name": "tumor",
+      "grouping_id": "PATIENT_KIDN_013",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ct"
+      }
+    },
+    {
+      "sample_id": "PATIENT_KIDN_018_SCAN_00",
+      "relative_path": "cyst/PATIENT_KIDN_018_SCAN_00.png",
+      "class_label": 2,
+      "class_name": "cyst",
+      "grouping_id": "PATIENT_KIDN_018",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ct"
+      }
+    },
+    {
+      "sample_id": "PATIENT_KIDN_018_SCAN_01",
+      "relative_path": "cyst/PATIENT_KIDN_018_SCAN_01.png",
+      "class_label": 2,
+      "class_name": "cyst",
+      "grouping_id": "PATIENT_KIDN_018",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ct"
+      }
+    },
+    {
+      "sample_id": "PATIENT_KIDN_018_SCAN_02",
+      "relative_path": "cyst/PATIENT_KIDN_018_SCAN_02.png",
+      "class_label": 2,
+      "class_name": "cyst",
+      "grouping_id": "PATIENT_KIDN_018",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ct"
+      }
+    },
+    {
+      "sample_id": "PATIENT_KIDN_006_SCAN_00",
+      "relative_path": "cyst/PATIENT_KIDN_006_SCAN_00.png",
+      "class_label": 2,
+      "class_name": "cyst",
+      "grouping_id": "PATIENT_KIDN_006",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ct"
+      }
+    },
+    {
+      "sample_id": "PATIENT_KIDN_006_SCAN_01",
+      "relative_path": "cyst/PATIENT_KIDN_006_SCAN_01.png",
+      "class_label": 2,
+      "class_name": "cyst",
+      "grouping_id": "PATIENT_KIDN_006",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ct"
+      }
+    },
+    {
+      "sample_id": "PATIENT_KIDN_006_SCAN_02",
+      "relative_path": "cyst/PATIENT_KIDN_006_SCAN_02.png",
+      "class_label": 2,
+      "class_name": "cyst",
+      "grouping_id": "PATIENT_KIDN_006",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ct"
+      }
+    },
+    {
+      "sample_id": "PATIENT_KIDN_001_SCAN_00",
+      "relative_path": "tumor/PATIENT_KIDN_001_SCAN_00.png",
+      "class_label": 1,
+      "class_name": "tumor",
+      "grouping_id": "PATIENT_KIDN_001",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ct"
+      }
+    },
+    {
+      "sample_id": "PATIENT_KIDN_001_SCAN_01",
+      "relative_path": "tumor/PATIENT_KIDN_001_SCAN_01.png",
+      "class_label": 1,
+      "class_name": "tumor",
+      "grouping_id": "PATIENT_KIDN_001",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ct"
+      }
+    },
+    {
+      "sample_id": "PATIENT_KIDN_001_SCAN_02",
+      "relative_path": "tumor/PATIENT_KIDN_001_SCAN_02.png",
+      "class_label": 1,
+      "class_name": "tumor",
+      "grouping_id": "PATIENT_KIDN_001",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ct"
+      }
+    },
+    {
+      "sample_id": "PATIENT_KIDN_009_SCAN_00",
+      "relative_path": "tumor/PATIENT_KIDN_009_SCAN_00.png",
+      "class_label": 1,
+      "class_name": "tumor",
+      "grouping_id": "PATIENT_KIDN_009",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ct"
+      }
+    },
+    {
+      "sample_id": "PATIENT_KIDN_009_SCAN_01",
+      "relative_path": "tumor/PATIENT_KIDN_009_SCAN_01.png",
+      "class_label": 1,
+      "class_name": "tumor",
+      "grouping_id": "PATIENT_KIDN_009",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ct"
+      }
+    },
+    {
+      "sample_id": "PATIENT_KIDN_009_SCAN_02",
+      "relative_path": "tumor/PATIENT_KIDN_009_SCAN_02.png",
+      "class_label": 1,
+      "class_name": "tumor",
+      "grouping_id": "PATIENT_KIDN_009",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ct"
+      }
+    },
+    {
+      "sample_id": "PATIENT_KIDN_004_SCAN_00",
+      "relative_path": "normal/PATIENT_KIDN_004_SCAN_00.png",
+      "class_label": 0,
+      "class_name": "normal",
+      "grouping_id": "PATIENT_KIDN_004",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ct"
+      }
+    },
+    {
+      "sample_id": "PATIENT_KIDN_004_SCAN_01",
+      "relative_path": "normal/PATIENT_KIDN_004_SCAN_01.png",
+      "class_label": 0,
+      "class_name": "normal",
+      "grouping_id": "PATIENT_KIDN_004",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ct"
+      }
+    },
+    {
+      "sample_id": "PATIENT_KIDN_004_SCAN_02",
+      "relative_path": "normal/PATIENT_KIDN_004_SCAN_02.png",
+      "class_label": 0,
+      "class_name": "normal",
+      "grouping_id": "PATIENT_KIDN_004",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ct"
+      }
+    },
+    {
+      "sample_id": "PATIENT_KIDN_017_SCAN_00",
+      "relative_path": "tumor/PATIENT_KIDN_017_SCAN_00.png",
+      "class_label": 1,
+      "class_name": "tumor",
+      "grouping_id": "PATIENT_KIDN_017",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ct"
+      }
+    },
+    {
+      "sample_id": "PATIENT_KIDN_017_SCAN_01",
+      "relative_path": "tumor/PATIENT_KIDN_017_SCAN_01.png",
+      "class_label": 1,
+      "class_name": "tumor",
+      "grouping_id": "PATIENT_KIDN_017",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ct"
+      }
+    },
+    {
+      "sample_id": "PATIENT_KIDN_017_SCAN_02",
+      "relative_path": "tumor/PATIENT_KIDN_017_SCAN_02.png",
+      "class_label": 1,
+      "class_name": "tumor",
+      "grouping_id": "PATIENT_KIDN_017",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ct"
+      }
+    },
+    {
+      "sample_id": "PATIENT_KIDN_014_SCAN_00",
+      "relative_path": "cyst/PATIENT_KIDN_014_SCAN_00.png",
+      "class_label": 2,
+      "class_name": "cyst",
+      "grouping_id": "PATIENT_KIDN_014",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ct"
+      }
+    },
+    {
+      "sample_id": "PATIENT_KIDN_014_SCAN_01",
+      "relative_path": "cyst/PATIENT_KIDN_014_SCAN_01.png",
+      "class_label": 2,
+      "class_name": "cyst",
+      "grouping_id": "PATIENT_KIDN_014",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ct"
+      }
+    },
+    {
+      "sample_id": "PATIENT_KIDN_014_SCAN_02",
+      "relative_path": "cyst/PATIENT_KIDN_014_SCAN_02.png",
+      "class_label": 2,
+      "class_name": "cyst",
+      "grouping_id": "PATIENT_KIDN_014",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ct"
+      }
+    },
+    {
+      "sample_id": "PATIENT_KIDN_011_SCAN_00",
+      "relative_path": "stone/PATIENT_KIDN_011_SCAN_00.png",
+      "class_label": 3,
+      "class_name": "stone",
+      "grouping_id": "PATIENT_KIDN_011",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ct"
+      }
+    },
+    {
+      "sample_id": "PATIENT_KIDN_011_SCAN_01",
+      "relative_path": "stone/PATIENT_KIDN_011_SCAN_01.png",
+      "class_label": 3,
+      "class_name": "stone",
+      "grouping_id": "PATIENT_KIDN_011",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ct"
+      }
+    },
+    {
+      "sample_id": "PATIENT_KIDN_011_SCAN_02",
+      "relative_path": "stone/PATIENT_KIDN_011_SCAN_02.png",
+      "class_label": 3,
+      "class_name": "stone",
+      "grouping_id": "PATIENT_KIDN_011",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ct"
+      }
+    },
+    {
+      "sample_id": "PATIENT_KIDN_010_SCAN_00",
+      "relative_path": "cyst/PATIENT_KIDN_010_SCAN_00.png",
+      "class_label": 2,
+      "class_name": "cyst",
+      "grouping_id": "PATIENT_KIDN_010",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ct"
+      }
+    },
+    {
+      "sample_id": "PATIENT_KIDN_010_SCAN_01",
+      "relative_path": "cyst/PATIENT_KIDN_010_SCAN_01.png",
+      "class_label": 2,
+      "class_name": "cyst",
+      "grouping_id": "PATIENT_KIDN_010",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ct"
+      }
+    },
+    {
+      "sample_id": "PATIENT_KIDN_010_SCAN_02",
+      "relative_path": "cyst/PATIENT_KIDN_010_SCAN_02.png",
+      "class_label": 2,
+      "class_name": "cyst",
+      "grouping_id": "PATIENT_KIDN_010",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ct"
+      }
+    }
+  ],
+  "val_samples": [
+    {
+      "sample_id": "PATIENT_KIDN_016_SCAN_00",
+      "relative_path": "normal/PATIENT_KIDN_016_SCAN_00.png",
+      "class_label": 0,
+      "class_name": "normal",
+      "grouping_id": "PATIENT_KIDN_016",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ct"
+      }
+    },
+    {
+      "sample_id": "PATIENT_KIDN_016_SCAN_01",
+      "relative_path": "normal/PATIENT_KIDN_016_SCAN_01.png",
+      "class_label": 0,
+      "class_name": "normal",
+      "grouping_id": "PATIENT_KIDN_016",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ct"
+      }
+    },
+    {
+      "sample_id": "PATIENT_KIDN_016_SCAN_02",
+      "relative_path": "normal/PATIENT_KIDN_016_SCAN_02.png",
+      "class_label": 0,
+      "class_name": "normal",
+      "grouping_id": "PATIENT_KIDN_016",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ct"
+      }
+    },
+    {
+      "sample_id": "PATIENT_KIDN_002_SCAN_00",
+      "relative_path": "cyst/PATIENT_KIDN_002_SCAN_00.png",
+      "class_label": 2,
+      "class_name": "cyst",
+      "grouping_id": "PATIENT_KIDN_002",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ct"
+      }
+    },
+    {
+      "sample_id": "PATIENT_KIDN_002_SCAN_01",
+      "relative_path": "cyst/PATIENT_KIDN_002_SCAN_01.png",
+      "class_label": 2,
+      "class_name": "cyst",
+      "grouping_id": "PATIENT_KIDN_002",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ct"
+      }
+    },
+    {
+      "sample_id": "PATIENT_KIDN_002_SCAN_02",
+      "relative_path": "cyst/PATIENT_KIDN_002_SCAN_02.png",
+      "class_label": 2,
+      "class_name": "cyst",
+      "grouping_id": "PATIENT_KIDN_002",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ct"
+      }
+    },
+    {
+      "sample_id": "PATIENT_KIDN_007_SCAN_00",
+      "relative_path": "stone/PATIENT_KIDN_007_SCAN_00.png",
+      "class_label": 3,
+      "class_name": "stone",
+      "grouping_id": "PATIENT_KIDN_007",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ct"
+      }
+    },
+    {
+      "sample_id": "PATIENT_KIDN_007_SCAN_01",
+      "relative_path": "stone/PATIENT_KIDN_007_SCAN_01.png",
+      "class_label": 3,
+      "class_name": "stone",
+      "grouping_id": "PATIENT_KIDN_007",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ct"
+      }
+    },
+    {
+      "sample_id": "PATIENT_KIDN_007_SCAN_02",
+      "relative_path": "stone/PATIENT_KIDN_007_SCAN_02.png",
+      "class_label": 3,
+      "class_name": "stone",
+      "grouping_id": "PATIENT_KIDN_007",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ct"
+      }
+    }
+  ],
+  "test_samples": [
+    {
+      "sample_id": "PATIENT_KIDN_008_SCAN_00",
+      "relative_path": "normal/PATIENT_KIDN_008_SCAN_00.png",
+      "class_label": 0,
+      "class_name": "normal",
+      "grouping_id": "PATIENT_KIDN_008",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ct"
+      }
+    },
+    {
+      "sample_id": "PATIENT_KIDN_008_SCAN_01",
+      "relative_path": "normal/PATIENT_KIDN_008_SCAN_01.png",
+      "class_label": 0,
+      "class_name": "normal",
+      "grouping_id": "PATIENT_KIDN_008",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ct"
+      }
+    },
+    {
+      "sample_id": "PATIENT_KIDN_008_SCAN_02",
+      "relative_path": "normal/PATIENT_KIDN_008_SCAN_02.png",
+      "class_label": 0,
+      "class_name": "normal",
+      "grouping_id": "PATIENT_KIDN_008",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ct"
+      }
+    },
+    {
+      "sample_id": "PATIENT_KIDN_000_SCAN_00",
+      "relative_path": "normal/PATIENT_KIDN_000_SCAN_00.png",
+      "class_label": 0,
+      "class_name": "normal",
+      "grouping_id": "PATIENT_KIDN_000",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ct"
+      }
+    },
+    {
+      "sample_id": "PATIENT_KIDN_000_SCAN_01",
+      "relative_path": "normal/PATIENT_KIDN_000_SCAN_01.png",
+      "class_label": 0,
+      "class_name": "normal",
+      "grouping_id": "PATIENT_KIDN_000",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ct"
+      }
+    },
+    {
+      "sample_id": "PATIENT_KIDN_000_SCAN_02",
+      "relative_path": "normal/PATIENT_KIDN_000_SCAN_02.png",
+      "class_label": 0,
+      "class_name": "normal",
+      "grouping_id": "PATIENT_KIDN_000",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ct"
+      }
+    },
+    {
+      "sample_id": "PATIENT_KIDN_003_SCAN_00",
+      "relative_path": "stone/PATIENT_KIDN_003_SCAN_00.png",
+      "class_label": 3,
+      "class_name": "stone",
+      "grouping_id": "PATIENT_KIDN_003",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ct"
+      }
+    },
+    {
+      "sample_id": "PATIENT_KIDN_003_SCAN_01",
+      "relative_path": "stone/PATIENT_KIDN_003_SCAN_01.png",
+      "class_label": 3,
+      "class_name": "stone",
+      "grouping_id": "PATIENT_KIDN_003",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ct"
+      }
+    },
+    {
+      "sample_id": "PATIENT_KIDN_003_SCAN_02",
+      "relative_path": "stone/PATIENT_KIDN_003_SCAN_02.png",
+      "class_label": 3,
+      "class_name": "stone",
+      "grouping_id": "PATIENT_KIDN_003",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ct"
+      }
+    }
+  ]
+}

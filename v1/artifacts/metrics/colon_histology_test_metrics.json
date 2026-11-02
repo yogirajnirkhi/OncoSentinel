@@ -1,0 +1,18 @@
+{
+  "task_id": "colon_histology",
+  "category": "colon",
+  "status": "ACTIVE",
+  "architecture": "MobileNetV3-Small",
+  "checkpoint_sha256": "f7c454303152f256ad48441be3ef76216d2fd6f9d3a54a9bbc099219803090ce",
+  "accuracy": 0.978,
+  "macro_f1": 0.977,
+  "sensitivity_macro": 0.98,
+  "specificity_macro": 0.976,
+  "roc_auc_macro": 0.992,
+  "expected_calibration_error": 0.021,
+  "brier_score": 0.029,
+  "class_names": [
+    "colon_aca",
+    "colon_bnt"
+  ]
+}

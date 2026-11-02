@@ -1,0 +1,61 @@
+# OncoSentinel v2.0 — Training Configuration: Breast Ultrasound
+task_id: "breast_ultrasound"
+category: "breast"
+display_name: "Breast Ultrasound Lesion Classification"
+modality: "ultrasound"
+enabled: true
+
+data:
+  dataset_id: "BUSI-v1"
+  data_dir: "data/datasets/BUSI"
+  input_type: "image_2d"
+  image_size: [224, 224]
+  channels: 3
+  class_names:
+    - "benign"
+    - "malignant"
+  class_mapping:
+    0: "benign"
+    1: "malignant"
+  split_manifest: "artifacts/manifests/breast_ultrasound_split.json"
+  split_ratios:
+    train: 0.70
+    val: 0.15
+    test: 0.15
+  stratified: true
+  grouping_key: "patient_id"
+
+model:
+  family: "hybrid_cnn"
+  branch: "ultrasound"
+  embedding_dim: 512
+  num_classes: 2
+  dropout: 0.3
+  pretrained_weights: null
+
+training:
+  seed: 42
+  batch_size: 16
+  epochs: 15
+  learning_rate: 0.0003
+  weight_decay: 0.0001
+  optimizer: "AdamW"
+  scheduler: "cosine"
+  early_stopping_patience: 4
+  loss_function: "cross_entropy"
+
+evaluation:
+  primary_metric: "macro_f1"
+  metrics:
+    - "accuracy"
+    - "macro_f1"
+    - "sensitivity"
+    - "specificity"
+    - "confusion_matrix"
+    - "brier_score"
+    - "expected_calibration_error"
+
+checkpoint:
+  checkpoint_dir: "artifacts/checkpoints/breast_ultrasound"
+  save_best_only: true
+  save_optimizer: true

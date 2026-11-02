@@ -1,0 +1,102 @@
+{
+  "run_id": "RUN_20261020_105938_5226e1",
+  "task_id": "oral_cancer",
+  "category": "oral",
+  "modality": "histology",
+  "status": "EVALUATED",
+  "dataset_id": "OSCC-Histology-v1",
+  "split_manifest": "artifacts/manifests/oral_cancer_split.json",
+  "config_snapshot_path": "configs\\training\\oral_cancer.yaml",
+  "seed": 42,
+  "model_architecture": "HybridMultiTaskModel",
+  "checkpoint_path": "artifacts\\checkpoints\\oral_cancer\\oral_cancer_best.pt",
+  "checkpoint_sha256": "c272216058531ff997662e32a6e65a031785073d1f117f8bd4fab9a6b9fa20e3",
+  "started_at": "2026-10-20T10:59:53.622919",
+  "finished_at": "2026-10-20T10:59:53.622919",
+  "epochs_trained": 1,
+  "best_epoch": 1,
+  "validation_metrics": {
+    "task_id": "oral_cancer",
+    "split_name": "val",
+    "num_samples": 9,
+    "accuracy": 0.3333333333333333,
+    "macro_f1": 0.25,
+    "sensitivity_macro": 0.5,
+    "specificity_macro": 0.5,
+    "brier_score": 0.5163753032684326,
+    "expected_calibration_error": 0.18994383017222088,
+    "roc_auc_macro": 0.7222222222222222,
+    "per_class_metrics": {
+      "normal": {
+        "sensitivity_recall": 0.0,
+        "specificity": 1.0,
+        "precision": 0.0,
+        "f1_score": 0.0,
+        "support": 6
+      },
+      "oscc": {
+        "sensitivity_recall": 1.0,
+        "specificity": 0.0,
+        "precision": 0.3333333333333333,
+        "f1_score": 0.5,
+        "support": 3
+      }
+    },
+    "confusion_matrix": [
+      [
+        0,
+        6
+      ],
+      [
+        0,
+        3
+      ]
+    ]
+  },
+  "test_metrics": {
+    "task_id": "oral_cancer",
+    "split_name": "test",
+    "num_samples": 9,
+    "accuracy": 0.3333333333333333,
+    "macro_f1": 0.25,
+    "sensitivity_macro": 0.5,
+    "specificity_macro": 0.5,
+    "brier_score": 0.5164200067520142,
+    "expected_calibration_error": 0.19030354420344037,
+    "roc_auc_macro": 0.888888888888889,
+    "per_class_metrics": {
+      "normal": {
+        "sensitivity_recall": 0.0,
+        "specificity": 1.0,
+        "precision": 0.0,
+        "f1_score": 0.0,
+        "support": 6
+      },
+      "oscc": {
+        "sensitivity_recall": 1.0,
+        "specificity": 0.0,
+        "precision": 0.3333333333333333,
+        "f1_score": 0.5,
+        "support": 3
+      }
+    },
+    "confusion_matrix": [
+      [
+        0,
+        6
+      ],
+      [
+        0,
+        3
+      ]
+    ]
+  },
+  "notes": [
+    "Trained with AdamW",
+    "Best epoch: 1"
+  ],
+  "limitations": [
+    "Evaluated on held-out test split of benchmark cohort."
+  ],
+  "environment_info": {}
+}

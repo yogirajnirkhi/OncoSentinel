@@ -1,0 +1,102 @@
+{
+  "run_id": "RUN_20261020_105441_8df244",
+  "task_id": "leukemia_microscopy",
+  "category": "all_leukemia",
+  "modality": "microscopy",
+  "status": "EVALUATED",
+  "dataset_id": "C-NMC-2019",
+  "split_manifest": "artifacts/manifests/leukemia_microscopy_split.json",
+  "config_snapshot_path": "configs\\training\\leukemia_microscopy.yaml",
+  "seed": 42,
+  "model_architecture": "HybridMultiTaskModel",
+  "checkpoint_path": "artifacts\\checkpoints\\leukemia_microscopy\\leukemia_microscopy_best.pt",
+  "checkpoint_sha256": "d4f22fa7034adb2a7b54464dec6a451f69ac2e4c3a2e121aca406a403594930f",
+  "started_at": "2026-10-20T10:54:48.468540",
+  "finished_at": "2026-10-20T10:54:48.468540",
+  "epochs_trained": 1,
+  "best_epoch": 1,
+  "validation_metrics": {
+    "task_id": "leukemia_microscopy",
+    "split_name": "val",
+    "num_samples": 9,
+    "accuracy": 0.3333333333333333,
+    "macro_f1": 0.25,
+    "sensitivity_macro": 0.5,
+    "specificity_macro": 0.5,
+    "brier_score": 0.5356329679489136,
+    "expected_calibration_error": 0.21371076504389447,
+    "roc_auc_macro": 0.7222222222222222,
+    "per_class_metrics": {
+      "normal": {
+        "sensitivity_recall": 0.0,
+        "specificity": 1.0,
+        "precision": 0.0,
+        "f1_score": 0.0,
+        "support": 6
+      },
+      "all_blast": {
+        "sensitivity_recall": 1.0,
+        "specificity": 0.0,
+        "precision": 0.3333333333333333,
+        "f1_score": 0.5,
+        "support": 3
+      }
+    },
+    "confusion_matrix": [
+      [
+        0,
+        6
+      ],
+      [
+        0,
+        3
+      ]
+    ]
+  },
+  "test_metrics": {
+    "task_id": "leukemia_microscopy",
+    "split_name": "test",
+    "num_samples": 9,
+    "accuracy": 0.3333333333333333,
+    "macro_f1": 0.25,
+    "sensitivity_macro": 0.5,
+    "specificity_macro": 0.5,
+    "brier_score": 0.5357995629310608,
+    "expected_calibration_error": 0.21394095818201703,
+    "roc_auc_macro": 0.6666666666666667,
+    "per_class_metrics": {
+      "normal": {
+        "sensitivity_recall": 0.0,
+        "specificity": 1.0,
+        "precision": 0.0,
+        "f1_score": 0.0,
+        "support": 6
+      },
+      "all_blast": {
+        "sensitivity_recall": 1.0,
+        "specificity": 0.0,
+        "precision": 0.3333333333333333,
+        "f1_score": 0.5,
+        "support": 3
+      }
+    },
+    "confusion_matrix": [
+      [
+        0,
+        6
+      ],
+      [
+        0,
+        3
+      ]
+    ]
+  },
+  "notes": [
+    "Trained with AdamW",
+    "Best epoch: 1"
+  ],
+  "limitations": [
+    "Evaluated on held-out test split of benchmark cohort."
+  ],
+  "environment_info": {}
+}

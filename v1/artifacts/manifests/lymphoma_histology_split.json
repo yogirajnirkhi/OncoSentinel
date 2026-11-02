@@ -1,0 +1,691 @@
+{
+  "task_id": "lymphoma_histology",
+  "dataset_id": "Lymphoma-NIH-v1",
+  "created_at": "2026-10-20T10:55:04.267258",
+  "grouping_key": "case_id",
+  "total_samples": 60,
+  "train_count": 42,
+  "val_count": 9,
+  "test_count": 9,
+  "class_distribution": {
+    "train": {
+      "fl": 15,
+      "cll": 15,
+      "mcl": 12
+    },
+    "val": {
+      "mcl": 3,
+      "fl": 6
+    },
+    "test": {
+      "mcl": 3,
+      "cll": 6
+    }
+  },
+  "train_samples": [
+    {
+      "sample_id": "PATIENT_LYMP_019_SCAN_00",
+      "relative_path": "fl/PATIENT_LYMP_019_SCAN_00.png",
+      "class_label": 1,
+      "class_name": "fl",
+      "grouping_id": "PATIENT_LYMP_019",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LYMP_019_SCAN_01",
+      "relative_path": "fl/PATIENT_LYMP_019_SCAN_01.png",
+      "class_label": 1,
+      "class_name": "fl",
+      "grouping_id": "PATIENT_LYMP_019",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LYMP_019_SCAN_02",
+      "relative_path": "fl/PATIENT_LYMP_019_SCAN_02.png",
+      "class_label": 1,
+      "class_name": "fl",
+      "grouping_id": "PATIENT_LYMP_019",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LYMP_009_SCAN_00",
+      "relative_path": "cll/PATIENT_LYMP_009_SCAN_00.png",
+      "class_label": 0,
+      "class_name": "cll",
+      "grouping_id": "PATIENT_LYMP_009",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LYMP_009_SCAN_01",
+      "relative_path": "cll/PATIENT_LYMP_009_SCAN_01.png",
+      "class_label": 0,
+      "class_name": "cll",
+      "grouping_id": "PATIENT_LYMP_009",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LYMP_009_SCAN_02",
+      "relative_path": "cll/PATIENT_LYMP_009_SCAN_02.png",
+      "class_label": 0,
+      "class_name": "cll",
+      "grouping_id": "PATIENT_LYMP_009",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LYMP_011_SCAN_00",
+      "relative_path": "mcl/PATIENT_LYMP_011_SCAN_00.png",
+      "class_label": 2,
+      "class_name": "mcl",
+      "grouping_id": "PATIENT_LYMP_011",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LYMP_011_SCAN_01",
+      "relative_path": "mcl/PATIENT_LYMP_011_SCAN_01.png",
+      "class_label": 2,
+      "class_name": "mcl",
+      "grouping_id": "PATIENT_LYMP_011",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LYMP_011_SCAN_02",
+      "relative_path": "mcl/PATIENT_LYMP_011_SCAN_02.png",
+      "class_label": 2,
+      "class_name": "mcl",
+      "grouping_id": "PATIENT_LYMP_011",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LYMP_018_SCAN_00",
+      "relative_path": "cll/PATIENT_LYMP_018_SCAN_00.png",
+      "class_label": 0,
+      "class_name": "cll",
+      "grouping_id": "PATIENT_LYMP_018",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LYMP_018_SCAN_01",
+      "relative_path": "cll/PATIENT_LYMP_018_SCAN_01.png",
+      "class_label": 0,
+      "class_name": "cll",
+      "grouping_id": "PATIENT_LYMP_018",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LYMP_018_SCAN_02",
+      "relative_path": "cll/PATIENT_LYMP_018_SCAN_02.png",
+      "class_label": 0,
+      "class_name": "cll",
+      "grouping_id": "PATIENT_LYMP_018",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LYMP_014_SCAN_00",
+      "relative_path": "mcl/PATIENT_LYMP_014_SCAN_00.png",
+      "class_label": 2,
+      "class_name": "mcl",
+      "grouping_id": "PATIENT_LYMP_014",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LYMP_014_SCAN_01",
+      "relative_path": "mcl/PATIENT_LYMP_014_SCAN_01.png",
+      "class_label": 2,
+      "class_name": "mcl",
+      "grouping_id": "PATIENT_LYMP_014",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LYMP_014_SCAN_02",
+      "relative_path": "mcl/PATIENT_LYMP_014_SCAN_02.png",
+      "class_label": 2,
+      "class_name": "mcl",
+      "grouping_id": "PATIENT_LYMP_014",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LYMP_013_SCAN_00",
+      "relative_path": "fl/PATIENT_LYMP_013_SCAN_00.png",
+      "class_label": 1,
+      "class_name": "fl",
+      "grouping_id": "PATIENT_LYMP_013",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LYMP_013_SCAN_01",
+      "relative_path": "fl/PATIENT_LYMP_013_SCAN_01.png",
+      "class_label": 1,
+      "class_name": "fl",
+      "grouping_id": "PATIENT_LYMP_013",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LYMP_013_SCAN_02",
+      "relative_path": "fl/PATIENT_LYMP_013_SCAN_02.png",
+      "class_label": 1,
+      "class_name": "fl",
+      "grouping_id": "PATIENT_LYMP_013",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LYMP_001_SCAN_00",
+      "relative_path": "fl/PATIENT_LYMP_001_SCAN_00.png",
+      "class_label": 1,
+      "class_name": "fl",
+      "grouping_id": "PATIENT_LYMP_001",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LYMP_001_SCAN_01",
+      "relative_path": "fl/PATIENT_LYMP_001_SCAN_01.png",
+      "class_label": 1,
+      "class_name": "fl",
+      "grouping_id": "PATIENT_LYMP_001",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LYMP_001_SCAN_02",
+      "relative_path": "fl/PATIENT_LYMP_001_SCAN_02.png",
+      "class_label": 1,
+      "class_name": "fl",
+      "grouping_id": "PATIENT_LYMP_001",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LYMP_010_SCAN_00",
+      "relative_path": "fl/PATIENT_LYMP_010_SCAN_00.png",
+      "class_label": 1,
+      "class_name": "fl",
+      "grouping_id": "PATIENT_LYMP_010",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LYMP_010_SCAN_01",
+      "relative_path": "fl/PATIENT_LYMP_010_SCAN_01.png",
+      "class_label": 1,
+      "class_name": "fl",
+      "grouping_id": "PATIENT_LYMP_010",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LYMP_010_SCAN_02",
+      "relative_path": "fl/PATIENT_LYMP_010_SCAN_02.png",
+      "class_label": 1,
+      "class_name": "fl",
+      "grouping_id": "PATIENT_LYMP_010",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LYMP_006_SCAN_00",
+      "relative_path": "cll/PATIENT_LYMP_006_SCAN_00.png",
+      "class_label": 0,
+      "class_name": "cll",
+      "grouping_id": "PATIENT_LYMP_006",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LYMP_006_SCAN_01",
+      "relative_path": "cll/PATIENT_LYMP_006_SCAN_01.png",
+      "class_label": 0,
+      "class_name": "cll",
+      "grouping_id": "PATIENT_LYMP_006",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LYMP_006_SCAN_02",
+      "relative_path": "cll/PATIENT_LYMP_006_SCAN_02.png",
+      "class_label": 0,
+      "class_name": "cll",
+      "grouping_id": "PATIENT_LYMP_006",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LYMP_015_SCAN_00",
+      "relative_path": "cll/PATIENT_LYMP_015_SCAN_00.png",
+      "class_label": 0,
+      "class_name": "cll",
+      "grouping_id": "PATIENT_LYMP_015",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LYMP_015_SCAN_01",
+      "relative_path": "cll/PATIENT_LYMP_015_SCAN_01.png",
+      "class_label": 0,
+      "class_name": "cll",
+      "grouping_id": "PATIENT_LYMP_015",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LYMP_015_SCAN_02",
+      "relative_path": "cll/PATIENT_LYMP_015_SCAN_02.png",
+      "class_label": 0,
+      "class_name": "cll",
+      "grouping_id": "PATIENT_LYMP_015",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LYMP_004_SCAN_00",
+      "relative_path": "fl/PATIENT_LYMP_004_SCAN_00.png",
+      "class_label": 1,
+      "class_name": "fl",
+      "grouping_id": "PATIENT_LYMP_004",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LYMP_004_SCAN_01",
+      "relative_path": "fl/PATIENT_LYMP_004_SCAN_01.png",
+      "class_label": 1,
+      "class_name": "fl",
+      "grouping_id": "PATIENT_LYMP_004",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LYMP_004_SCAN_02",
+      "relative_path": "fl/PATIENT_LYMP_004_SCAN_02.png",
+      "class_label": 1,
+      "class_name": "fl",
+      "grouping_id": "PATIENT_LYMP_004",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LYMP_017_SCAN_00",
+      "relative_path": "mcl/PATIENT_LYMP_017_SCAN_00.png",
+      "class_label": 2,
+      "class_name": "mcl",
+      "grouping_id": "PATIENT_LYMP_017",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LYMP_017_SCAN_01",
+      "relative_path": "mcl/PATIENT_LYMP_017_SCAN_01.png",
+      "class_label": 2,
+      "class_name": "mcl",
+      "grouping_id": "PATIENT_LYMP_017",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LYMP_017_SCAN_02",
+      "relative_path": "mcl/PATIENT_LYMP_017_SCAN_02.png",
+      "class_label": 2,
+      "class_name": "mcl",
+      "grouping_id": "PATIENT_LYMP_017",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LYMP_005_SCAN_00",
+      "relative_path": "mcl/PATIENT_LYMP_005_SCAN_00.png",
+      "class_label": 2,
+      "class_name": "mcl",
+      "grouping_id": "PATIENT_LYMP_005",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LYMP_005_SCAN_01",
+      "relative_path": "mcl/PATIENT_LYMP_005_SCAN_01.png",
+      "class_label": 2,
+      "class_name": "mcl",
+      "grouping_id": "PATIENT_LYMP_005",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LYMP_005_SCAN_02",
+      "relative_path": "mcl/PATIENT_LYMP_005_SCAN_02.png",
+      "class_label": 2,
+      "class_name": "mcl",
+      "grouping_id": "PATIENT_LYMP_005",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LYMP_012_SCAN_00",
+      "relative_path": "cll/PATIENT_LYMP_012_SCAN_00.png",
+      "class_label": 0,
+      "class_name": "cll",
+      "grouping_id": "PATIENT_LYMP_012",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LYMP_012_SCAN_01",
+      "relative_path": "cll/PATIENT_LYMP_012_SCAN_01.png",
+      "class_label": 0,
+      "class_name": "cll",
+      "grouping_id": "PATIENT_LYMP_012",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LYMP_012_SCAN_02",
+      "relative_path": "cll/PATIENT_LYMP_012_SCAN_02.png",
+      "class_label": 0,
+      "class_name": "cll",
+      "grouping_id": "PATIENT_LYMP_012",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    }
+  ],
+  "val_samples": [
+    {
+      "sample_id": "PATIENT_LYMP_002_SCAN_00",
+      "relative_path": "mcl/PATIENT_LYMP_002_SCAN_00.png",
+      "class_label": 2,
+      "class_name": "mcl",
+      "grouping_id": "PATIENT_LYMP_002",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LYMP_002_SCAN_01",
+      "relative_path": "mcl/PATIENT_LYMP_002_SCAN_01.png",
+      "class_label": 2,
+      "class_name": "mcl",
+      "grouping_id": "PATIENT_LYMP_002",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LYMP_002_SCAN_02",
+      "relative_path": "mcl/PATIENT_LYMP_002_SCAN_02.png",
+      "class_label": 2,
+      "class_name": "mcl",
+      "grouping_id": "PATIENT_LYMP_002",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LYMP_007_SCAN_00",
+      "relative_path": "fl/PATIENT_LYMP_007_SCAN_00.png",
+      "class_label": 1,
+      "class_name": "fl",
+      "grouping_id": "PATIENT_LYMP_007",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LYMP_007_SCAN_01",
+      "relative_path": "fl/PATIENT_LYMP_007_SCAN_01.png",
+      "class_label": 1,
+      "class_name": "fl",
+      "grouping_id": "PATIENT_LYMP_007",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LYMP_007_SCAN_02",
+      "relative_path": "fl/PATIENT_LYMP_007_SCAN_02.png",
+      "class_label": 1,
+      "class_name": "fl",
+      "grouping_id": "PATIENT_LYMP_007",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LYMP_016_SCAN_00",
+      "relative_path": "fl/PATIENT_LYMP_016_SCAN_00.png",
+      "class_label": 1,
+      "class_name": "fl",
+      "grouping_id": "PATIENT_LYMP_016",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LYMP_016_SCAN_01",
+      "relative_path": "fl/PATIENT_LYMP_016_SCAN_01.png",
+      "class_label": 1,
+      "class_name": "fl",
+      "grouping_id": "PATIENT_LYMP_016",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LYMP_016_SCAN_02",
+      "relative_path": "fl/PATIENT_LYMP_016_SCAN_02.png",
+      "class_label": 1,
+      "class_name": "fl",
+      "grouping_id": "PATIENT_LYMP_016",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    }
+  ],
+  "test_samples": [
+    {
+      "sample_id": "PATIENT_LYMP_008_SCAN_00",
+      "relative_path": "mcl/PATIENT_LYMP_008_SCAN_00.png",
+      "class_label": 2,
+      "class_name": "mcl",
+      "grouping_id": "PATIENT_LYMP_008",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LYMP_008_SCAN_01",
+      "relative_path": "mcl/PATIENT_LYMP_008_SCAN_01.png",
+      "class_label": 2,
+      "class_name": "mcl",
+      "grouping_id": "PATIENT_LYMP_008",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LYMP_008_SCAN_02",
+      "relative_path": "mcl/PATIENT_LYMP_008_SCAN_02.png",
+      "class_label": 2,
+      "class_name": "mcl",
+      "grouping_id": "PATIENT_LYMP_008",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LYMP_003_SCAN_00",
+      "relative_path": "cll/PATIENT_LYMP_003_SCAN_00.png",
+      "class_label": 0,
+      "class_name": "cll",
+      "grouping_id": "PATIENT_LYMP_003",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LYMP_003_SCAN_01",
+      "relative_path": "cll/PATIENT_LYMP_003_SCAN_01.png",
+      "class_label": 0,
+      "class_name": "cll",
+      "grouping_id": "PATIENT_LYMP_003",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LYMP_003_SCAN_02",
+      "relative_path": "cll/PATIENT_LYMP_003_SCAN_02.png",
+      "class_label": 0,
+      "class_name": "cll",
+      "grouping_id": "PATIENT_LYMP_003",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LYMP_000_SCAN_00",
+      "relative_path": "cll/PATIENT_LYMP_000_SCAN_00.png",
+      "class_label": 0,
+      "class_name": "cll",
+      "grouping_id": "PATIENT_LYMP_000",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LYMP_000_SCAN_01",
+      "relative_path": "cll/PATIENT_LYMP_000_SCAN_01.png",
+      "class_label": 0,
+      "class_name": "cll",
+      "grouping_id": "PATIENT_LYMP_000",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LYMP_000_SCAN_02",
+      "relative_path": "cll/PATIENT_LYMP_000_SCAN_02.png",
+      "class_label": 0,
+      "class_name": "cll",
+      "grouping_id": "PATIENT_LYMP_000",
+      "metadata": {
+        "synthetic": true,
+        "modality": "histology"
+      }
+    }
+  ]
+}

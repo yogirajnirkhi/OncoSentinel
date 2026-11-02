@@ -1,0 +1,67 @@
+# OncoSentinel v2.0 — Training Configuration: Lung & Colon Histopathology
+task_id: "lung_colon_histology"
+category: "lung_colon"
+display_name: "Lung and Colon Histopathology Multi-Class Classification"
+modality: "histology"
+enabled: true
+
+data:
+  dataset_id: "LC25000-v1"
+  data_dir: "data/datasets/LC25000"
+  input_type: "image_2d"
+  image_size: [224, 224]
+  channels: 3
+  class_names:
+    - "colon_adenocarcinoma"
+    - "colon_benign"
+    - "lung_adenocarcinoma"
+    - "lung_benign"
+    - "lung_squamous_cell_carcinoma"
+  class_mapping:
+    0: "colon_adenocarcinoma"
+    1: "colon_benign"
+    2: "lung_adenocarcinoma"
+    3: "lung_benign"
+    4: "lung_squamous_cell_carcinoma"
+  split_manifest: "artifacts/manifests/lung_colon_histology_split.json"
+  split_ratios:
+    train: 0.70
+    val: 0.15
+    test: 0.15
+  stratified: true
+  grouping_key: "slide_id"
+
+model:
+  family: "hybrid_cnn"
+  branch: "histology"
+  embedding_dim: 512
+  num_classes: 5
+  dropout: 0.3
+  pretrained_weights: null
+
+training:
+  seed: 42
+  batch_size: 16
+  epochs: 15
+  learning_rate: 0.0003
+  weight_decay: 0.0001
+  optimizer: "AdamW"
+  scheduler: "cosine"
+  early_stopping_patience: 4
+  loss_function: "cross_entropy"
+
+evaluation:
+  primary_metric: "macro_f1"
+  metrics:
+    - "accuracy"
+    - "macro_f1"
+    - "sensitivity"
+    - "specificity"
+    - "confusion_matrix"
+    - "brier_score"
+    - "expected_calibration_error"
+
+checkpoint:
+  checkpoint_dir: "artifacts/checkpoints/lung_colon_histology"
+  save_best_only: true
+  save_optimizer: true

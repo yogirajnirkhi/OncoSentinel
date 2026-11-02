@@ -1,0 +1,693 @@
+{
+  "task_id": "brain_mri",
+  "dataset_id": "BraTS-Classification-v1",
+  "created_at": "2026-10-20T10:55:11.817501",
+  "grouping_key": "patient_id",
+  "total_samples": 60,
+  "train_count": 42,
+  "val_count": 9,
+  "test_count": 9,
+  "class_distribution": {
+    "train": {
+      "pituitary": 9,
+      "glioma": 15,
+      "meningioma": 12,
+      "no_tumor": 6
+    },
+    "val": {
+      "no_tumor": 3,
+      "pituitary": 3,
+      "meningioma": 3
+    },
+    "test": {
+      "pituitary": 3,
+      "no_tumor": 6
+    }
+  },
+  "train_samples": [
+    {
+      "sample_id": "PATIENT_BRAI_019_SCAN_00",
+      "relative_path": "pituitary/PATIENT_BRAI_019_SCAN_00.png",
+      "class_label": 3,
+      "class_name": "pituitary",
+      "grouping_id": "PATIENT_BRAI_019",
+      "metadata": {
+        "synthetic": true,
+        "modality": "mri"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BRAI_019_SCAN_01",
+      "relative_path": "pituitary/PATIENT_BRAI_019_SCAN_01.png",
+      "class_label": 3,
+      "class_name": "pituitary",
+      "grouping_id": "PATIENT_BRAI_019",
+      "metadata": {
+        "synthetic": true,
+        "modality": "mri"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BRAI_019_SCAN_02",
+      "relative_path": "pituitary/PATIENT_BRAI_019_SCAN_02.png",
+      "class_label": 3,
+      "class_name": "pituitary",
+      "grouping_id": "PATIENT_BRAI_019",
+      "metadata": {
+        "synthetic": true,
+        "modality": "mri"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BRAI_001_SCAN_00",
+      "relative_path": "glioma/PATIENT_BRAI_001_SCAN_00.png",
+      "class_label": 1,
+      "class_name": "glioma",
+      "grouping_id": "PATIENT_BRAI_001",
+      "metadata": {
+        "synthetic": true,
+        "modality": "mri"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BRAI_001_SCAN_01",
+      "relative_path": "glioma/PATIENT_BRAI_001_SCAN_01.png",
+      "class_label": 1,
+      "class_name": "glioma",
+      "grouping_id": "PATIENT_BRAI_001",
+      "metadata": {
+        "synthetic": true,
+        "modality": "mri"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BRAI_001_SCAN_02",
+      "relative_path": "glioma/PATIENT_BRAI_001_SCAN_02.png",
+      "class_label": 1,
+      "class_name": "glioma",
+      "grouping_id": "PATIENT_BRAI_001",
+      "metadata": {
+        "synthetic": true,
+        "modality": "mri"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BRAI_010_SCAN_00",
+      "relative_path": "meningioma/PATIENT_BRAI_010_SCAN_00.png",
+      "class_label": 2,
+      "class_name": "meningioma",
+      "grouping_id": "PATIENT_BRAI_010",
+      "metadata": {
+        "synthetic": true,
+        "modality": "mri"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BRAI_010_SCAN_01",
+      "relative_path": "meningioma/PATIENT_BRAI_010_SCAN_01.png",
+      "class_label": 2,
+      "class_name": "meningioma",
+      "grouping_id": "PATIENT_BRAI_010",
+      "metadata": {
+        "synthetic": true,
+        "modality": "mri"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BRAI_010_SCAN_02",
+      "relative_path": "meningioma/PATIENT_BRAI_010_SCAN_02.png",
+      "class_label": 2,
+      "class_name": "meningioma",
+      "grouping_id": "PATIENT_BRAI_010",
+      "metadata": {
+        "synthetic": true,
+        "modality": "mri"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BRAI_011_SCAN_00",
+      "relative_path": "pituitary/PATIENT_BRAI_011_SCAN_00.png",
+      "class_label": 3,
+      "class_name": "pituitary",
+      "grouping_id": "PATIENT_BRAI_011",
+      "metadata": {
+        "synthetic": true,
+        "modality": "mri"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BRAI_011_SCAN_01",
+      "relative_path": "pituitary/PATIENT_BRAI_011_SCAN_01.png",
+      "class_label": 3,
+      "class_name": "pituitary",
+      "grouping_id": "PATIENT_BRAI_011",
+      "metadata": {
+        "synthetic": true,
+        "modality": "mri"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BRAI_011_SCAN_02",
+      "relative_path": "pituitary/PATIENT_BRAI_011_SCAN_02.png",
+      "class_label": 3,
+      "class_name": "pituitary",
+      "grouping_id": "PATIENT_BRAI_011",
+      "metadata": {
+        "synthetic": true,
+        "modality": "mri"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BRAI_014_SCAN_00",
+      "relative_path": "meningioma/PATIENT_BRAI_014_SCAN_00.png",
+      "class_label": 2,
+      "class_name": "meningioma",
+      "grouping_id": "PATIENT_BRAI_014",
+      "metadata": {
+        "synthetic": true,
+        "modality": "mri"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BRAI_014_SCAN_01",
+      "relative_path": "meningioma/PATIENT_BRAI_014_SCAN_01.png",
+      "class_label": 2,
+      "class_name": "meningioma",
+      "grouping_id": "PATIENT_BRAI_014",
+      "metadata": {
+        "synthetic": true,
+        "modality": "mri"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BRAI_014_SCAN_02",
+      "relative_path": "meningioma/PATIENT_BRAI_014_SCAN_02.png",
+      "class_label": 2,
+      "class_name": "meningioma",
+      "grouping_id": "PATIENT_BRAI_014",
+      "metadata": {
+        "synthetic": true,
+        "modality": "mri"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BRAI_012_SCAN_00",
+      "relative_path": "no_tumor/PATIENT_BRAI_012_SCAN_00.png",
+      "class_label": 0,
+      "class_name": "no_tumor",
+      "grouping_id": "PATIENT_BRAI_012",
+      "metadata": {
+        "synthetic": true,
+        "modality": "mri"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BRAI_012_SCAN_01",
+      "relative_path": "no_tumor/PATIENT_BRAI_012_SCAN_01.png",
+      "class_label": 0,
+      "class_name": "no_tumor",
+      "grouping_id": "PATIENT_BRAI_012",
+      "metadata": {
+        "synthetic": true,
+        "modality": "mri"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BRAI_012_SCAN_02",
+      "relative_path": "no_tumor/PATIENT_BRAI_012_SCAN_02.png",
+      "class_label": 0,
+      "class_name": "no_tumor",
+      "grouping_id": "PATIENT_BRAI_012",
+      "metadata": {
+        "synthetic": true,
+        "modality": "mri"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BRAI_013_SCAN_00",
+      "relative_path": "glioma/PATIENT_BRAI_013_SCAN_00.png",
+      "class_label": 1,
+      "class_name": "glioma",
+      "grouping_id": "PATIENT_BRAI_013",
+      "metadata": {
+        "synthetic": true,
+        "modality": "mri"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BRAI_013_SCAN_01",
+      "relative_path": "glioma/PATIENT_BRAI_013_SCAN_01.png",
+      "class_label": 1,
+      "class_name": "glioma",
+      "grouping_id": "PATIENT_BRAI_013",
+      "metadata": {
+        "synthetic": true,
+        "modality": "mri"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BRAI_013_SCAN_02",
+      "relative_path": "glioma/PATIENT_BRAI_013_SCAN_02.png",
+      "class_label": 1,
+      "class_name": "glioma",
+      "grouping_id": "PATIENT_BRAI_013",
+      "metadata": {
+        "synthetic": true,
+        "modality": "mri"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BRAI_017_SCAN_00",
+      "relative_path": "glioma/PATIENT_BRAI_017_SCAN_00.png",
+      "class_label": 1,
+      "class_name": "glioma",
+      "grouping_id": "PATIENT_BRAI_017",
+      "metadata": {
+        "synthetic": true,
+        "modality": "mri"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BRAI_017_SCAN_01",
+      "relative_path": "glioma/PATIENT_BRAI_017_SCAN_01.png",
+      "class_label": 1,
+      "class_name": "glioma",
+      "grouping_id": "PATIENT_BRAI_017",
+      "metadata": {
+        "synthetic": true,
+        "modality": "mri"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BRAI_017_SCAN_02",
+      "relative_path": "glioma/PATIENT_BRAI_017_SCAN_02.png",
+      "class_label": 1,
+      "class_name": "glioma",
+      "grouping_id": "PATIENT_BRAI_017",
+      "metadata": {
+        "synthetic": true,
+        "modality": "mri"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BRAI_009_SCAN_00",
+      "relative_path": "glioma/PATIENT_BRAI_009_SCAN_00.png",
+      "class_label": 1,
+      "class_name": "glioma",
+      "grouping_id": "PATIENT_BRAI_009",
+      "metadata": {
+        "synthetic": true,
+        "modality": "mri"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BRAI_009_SCAN_01",
+      "relative_path": "glioma/PATIENT_BRAI_009_SCAN_01.png",
+      "class_label": 1,
+      "class_name": "glioma",
+      "grouping_id": "PATIENT_BRAI_009",
+      "metadata": {
+        "synthetic": true,
+        "modality": "mri"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BRAI_009_SCAN_02",
+      "relative_path": "glioma/PATIENT_BRAI_009_SCAN_02.png",
+      "class_label": 1,
+      "class_name": "glioma",
+      "grouping_id": "PATIENT_BRAI_009",
+      "metadata": {
+        "synthetic": true,
+        "modality": "mri"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BRAI_005_SCAN_00",
+      "relative_path": "glioma/PATIENT_BRAI_005_SCAN_00.png",
+      "class_label": 1,
+      "class_name": "glioma",
+      "grouping_id": "PATIENT_BRAI_005",
+      "metadata": {
+        "synthetic": true,
+        "modality": "mri"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BRAI_005_SCAN_01",
+      "relative_path": "glioma/PATIENT_BRAI_005_SCAN_01.png",
+      "class_label": 1,
+      "class_name": "glioma",
+      "grouping_id": "PATIENT_BRAI_005",
+      "metadata": {
+        "synthetic": true,
+        "modality": "mri"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BRAI_005_SCAN_02",
+      "relative_path": "glioma/PATIENT_BRAI_005_SCAN_02.png",
+      "class_label": 1,
+      "class_name": "glioma",
+      "grouping_id": "PATIENT_BRAI_005",
+      "metadata": {
+        "synthetic": true,
+        "modality": "mri"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BRAI_015_SCAN_00",
+      "relative_path": "pituitary/PATIENT_BRAI_015_SCAN_00.png",
+      "class_label": 3,
+      "class_name": "pituitary",
+      "grouping_id": "PATIENT_BRAI_015",
+      "metadata": {
+        "synthetic": true,
+        "modality": "mri"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BRAI_015_SCAN_01",
+      "relative_path": "pituitary/PATIENT_BRAI_015_SCAN_01.png",
+      "class_label": 3,
+      "class_name": "pituitary",
+      "grouping_id": "PATIENT_BRAI_015",
+      "metadata": {
+        "synthetic": true,
+        "modality": "mri"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BRAI_015_SCAN_02",
+      "relative_path": "pituitary/PATIENT_BRAI_015_SCAN_02.png",
+      "class_label": 3,
+      "class_name": "pituitary",
+      "grouping_id": "PATIENT_BRAI_015",
+      "metadata": {
+        "synthetic": true,
+        "modality": "mri"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BRAI_018_SCAN_00",
+      "relative_path": "meningioma/PATIENT_BRAI_018_SCAN_00.png",
+      "class_label": 2,
+      "class_name": "meningioma",
+      "grouping_id": "PATIENT_BRAI_018",
+      "metadata": {
+        "synthetic": true,
+        "modality": "mri"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BRAI_018_SCAN_01",
+      "relative_path": "meningioma/PATIENT_BRAI_018_SCAN_01.png",
+      "class_label": 2,
+      "class_name": "meningioma",
+      "grouping_id": "PATIENT_BRAI_018",
+      "metadata": {
+        "synthetic": true,
+        "modality": "mri"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BRAI_018_SCAN_02",
+      "relative_path": "meningioma/PATIENT_BRAI_018_SCAN_02.png",
+      "class_label": 2,
+      "class_name": "meningioma",
+      "grouping_id": "PATIENT_BRAI_018",
+      "metadata": {
+        "synthetic": true,
+        "modality": "mri"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BRAI_004_SCAN_00",
+      "relative_path": "no_tumor/PATIENT_BRAI_004_SCAN_00.png",
+      "class_label": 0,
+      "class_name": "no_tumor",
+      "grouping_id": "PATIENT_BRAI_004",
+      "metadata": {
+        "synthetic": true,
+        "modality": "mri"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BRAI_004_SCAN_01",
+      "relative_path": "no_tumor/PATIENT_BRAI_004_SCAN_01.png",
+      "class_label": 0,
+      "class_name": "no_tumor",
+      "grouping_id": "PATIENT_BRAI_004",
+      "metadata": {
+        "synthetic": true,
+        "modality": "mri"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BRAI_004_SCAN_02",
+      "relative_path": "no_tumor/PATIENT_BRAI_004_SCAN_02.png",
+      "class_label": 0,
+      "class_name": "no_tumor",
+      "grouping_id": "PATIENT_BRAI_004",
+      "metadata": {
+        "synthetic": true,
+        "modality": "mri"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BRAI_006_SCAN_00",
+      "relative_path": "meningioma/PATIENT_BRAI_006_SCAN_00.png",
+      "class_label": 2,
+      "class_name": "meningioma",
+      "grouping_id": "PATIENT_BRAI_006",
+      "metadata": {
+        "synthetic": true,
+        "modality": "mri"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BRAI_006_SCAN_01",
+      "relative_path": "meningioma/PATIENT_BRAI_006_SCAN_01.png",
+      "class_label": 2,
+      "class_name": "meningioma",
+      "grouping_id": "PATIENT_BRAI_006",
+      "metadata": {
+        "synthetic": true,
+        "modality": "mri"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BRAI_006_SCAN_02",
+      "relative_path": "meningioma/PATIENT_BRAI_006_SCAN_02.png",
+      "class_label": 2,
+      "class_name": "meningioma",
+      "grouping_id": "PATIENT_BRAI_006",
+      "metadata": {
+        "synthetic": true,
+        "modality": "mri"
+      }
+    }
+  ],
+  "val_samples": [
+    {
+      "sample_id": "PATIENT_BRAI_016_SCAN_00",
+      "relative_path": "no_tumor/PATIENT_BRAI_016_SCAN_00.png",
+      "class_label": 0,
+      "class_name": "no_tumor",
+      "grouping_id": "PATIENT_BRAI_016",
+      "metadata": {
+        "synthetic": true,
+        "modality": "mri"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BRAI_016_SCAN_01",
+      "relative_path": "no_tumor/PATIENT_BRAI_016_SCAN_01.png",
+      "class_label": 0,
+      "class_name": "no_tumor",
+      "grouping_id": "PATIENT_BRAI_016",
+      "metadata": {
+        "synthetic": true,
+        "modality": "mri"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BRAI_016_SCAN_02",
+      "relative_path": "no_tumor/PATIENT_BRAI_016_SCAN_02.png",
+      "class_label": 0,
+      "class_name": "no_tumor",
+      "grouping_id": "PATIENT_BRAI_016",
+      "metadata": {
+        "synthetic": true,
+        "modality": "mri"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BRAI_007_SCAN_00",
+      "relative_path": "pituitary/PATIENT_BRAI_007_SCAN_00.png",
+      "class_label": 3,
+      "class_name": "pituitary",
+      "grouping_id": "PATIENT_BRAI_007",
+      "metadata": {
+        "synthetic": true,
+        "modality": "mri"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BRAI_007_SCAN_01",
+      "relative_path": "pituitary/PATIENT_BRAI_007_SCAN_01.png",
+      "class_label": 3,
+      "class_name": "pituitary",
+      "grouping_id": "PATIENT_BRAI_007",
+      "metadata": {
+        "synthetic": true,
+        "modality": "mri"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BRAI_007_SCAN_02",
+      "relative_path": "pituitary/PATIENT_BRAI_007_SCAN_02.png",
+      "class_label": 3,
+      "class_name": "pituitary",
+      "grouping_id": "PATIENT_BRAI_007",
+      "metadata": {
+        "synthetic": true,
+        "modality": "mri"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BRAI_002_SCAN_00",
+      "relative_path": "meningioma/PATIENT_BRAI_002_SCAN_00.png",
+      "class_label": 2,
+      "class_name": "meningioma",
+      "grouping_id": "PATIENT_BRAI_002",
+      "metadata": {
+        "synthetic": true,
+        "modality": "mri"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BRAI_002_SCAN_01",
+      "relative_path": "meningioma/PATIENT_BRAI_002_SCAN_01.png",
+      "class_label": 2,
+      "class_name": "meningioma",
+      "grouping_id": "PATIENT_BRAI_002",
+      "metadata": {
+        "synthetic": true,
+        "modality": "mri"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BRAI_002_SCAN_02",
+      "relative_path": "meningioma/PATIENT_BRAI_002_SCAN_02.png",
+      "class_label": 2,
+      "class_name": "meningioma",
+      "grouping_id": "PATIENT_BRAI_002",
+      "metadata": {
+        "synthetic": true,
+        "modality": "mri"
+      }
+    }
+  ],
+  "test_samples": [
+    {
+      "sample_id": "PATIENT_BRAI_003_SCAN_00",
+      "relative_path": "pituitary/PATIENT_BRAI_003_SCAN_00.png",
+      "class_label": 3,
+      "class_name": "pituitary",
+      "grouping_id": "PATIENT_BRAI_003",
+      "metadata": {
+        "synthetic": true,
+        "modality": "mri"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BRAI_003_SCAN_01",
+      "relative_path": "pituitary/PATIENT_BRAI_003_SCAN_01.png",
+      "class_label": 3,
+      "class_name": "pituitary",
+      "grouping_id": "PATIENT_BRAI_003",
+      "metadata": {
+        "synthetic": true,
+        "modality": "mri"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BRAI_003_SCAN_02",
+      "relative_path": "pituitary/PATIENT_BRAI_003_SCAN_02.png",
+      "class_label": 3,
+      "class_name": "pituitary",
+      "grouping_id": "PATIENT_BRAI_003",
+      "metadata": {
+        "synthetic": true,
+        "modality": "mri"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BRAI_000_SCAN_00",
+      "relative_path": "no_tumor/PATIENT_BRAI_000_SCAN_00.png",
+      "class_label": 0,
+      "class_name": "no_tumor",
+      "grouping_id": "PATIENT_BRAI_000",
+      "metadata": {
+        "synthetic": true,
+        "modality": "mri"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BRAI_000_SCAN_01",
+      "relative_path": "no_tumor/PATIENT_BRAI_000_SCAN_01.png",
+      "class_label": 0,
+      "class_name": "no_tumor",
+      "grouping_id": "PATIENT_BRAI_000",
+      "metadata": {
+        "synthetic": true,
+        "modality": "mri"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BRAI_000_SCAN_02",
+      "relative_path": "no_tumor/PATIENT_BRAI_000_SCAN_02.png",
+      "class_label": 0,
+      "class_name": "no_tumor",
+      "grouping_id": "PATIENT_BRAI_000",
+      "metadata": {
+        "synthetic": true,
+        "modality": "mri"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BRAI_008_SCAN_00",
+      "relative_path": "no_tumor/PATIENT_BRAI_008_SCAN_00.png",
+      "class_label": 0,
+      "class_name": "no_tumor",
+      "grouping_id": "PATIENT_BRAI_008",
+      "metadata": {
+        "synthetic": true,
+        "modality": "mri"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BRAI_008_SCAN_01",
+      "relative_path": "no_tumor/PATIENT_BRAI_008_SCAN_01.png",
+      "class_label": 0,
+      "class_name": "no_tumor",
+      "grouping_id": "PATIENT_BRAI_008",
+      "metadata": {
+        "synthetic": true,
+        "modality": "mri"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BRAI_008_SCAN_02",
+      "relative_path": "no_tumor/PATIENT_BRAI_008_SCAN_02.png",
+      "class_label": 0,
+      "class_name": "no_tumor",
+      "grouping_id": "PATIENT_BRAI_008",
+      "metadata": {
+        "synthetic": true,
+        "modality": "mri"
+      }
+    }
+  ]
+}

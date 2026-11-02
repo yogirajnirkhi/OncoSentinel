@@ -1,0 +1,690 @@
+{
+  "task_id": "breast_ultrasound",
+  "dataset_id": "BUSI-v1",
+  "created_at": "2026-10-20T10:51:37.138913",
+  "grouping_key": "patient_id",
+  "total_samples": 60,
+  "train_count": 42,
+  "val_count": 9,
+  "test_count": 9,
+  "class_distribution": {
+    "train": {
+      "malignant": 24,
+      "benign": 18
+    },
+    "val": {
+      "benign": 6,
+      "malignant": 3
+    },
+    "test": {
+      "malignant": 3,
+      "benign": 6
+    }
+  },
+  "train_samples": [
+    {
+      "sample_id": "PATIENT_BREA_015_SCAN_00",
+      "relative_path": "malignant/PATIENT_BREA_015_SCAN_00.png",
+      "class_label": 1,
+      "class_name": "malignant",
+      "grouping_id": "PATIENT_BREA_015",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ultrasound"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BREA_015_SCAN_01",
+      "relative_path": "malignant/PATIENT_BREA_015_SCAN_01.png",
+      "class_label": 1,
+      "class_name": "malignant",
+      "grouping_id": "PATIENT_BREA_015",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ultrasound"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BREA_015_SCAN_02",
+      "relative_path": "malignant/PATIENT_BREA_015_SCAN_02.png",
+      "class_label": 1,
+      "class_name": "malignant",
+      "grouping_id": "PATIENT_BREA_015",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ultrasound"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BREA_011_SCAN_00",
+      "relative_path": "malignant/PATIENT_BREA_011_SCAN_00.png",
+      "class_label": 1,
+      "class_name": "malignant",
+      "grouping_id": "PATIENT_BREA_011",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ultrasound"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BREA_011_SCAN_01",
+      "relative_path": "malignant/PATIENT_BREA_011_SCAN_01.png",
+      "class_label": 1,
+      "class_name": "malignant",
+      "grouping_id": "PATIENT_BREA_011",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ultrasound"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BREA_011_SCAN_02",
+      "relative_path": "malignant/PATIENT_BREA_011_SCAN_02.png",
+      "class_label": 1,
+      "class_name": "malignant",
+      "grouping_id": "PATIENT_BREA_011",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ultrasound"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BREA_001_SCAN_00",
+      "relative_path": "malignant/PATIENT_BREA_001_SCAN_00.png",
+      "class_label": 1,
+      "class_name": "malignant",
+      "grouping_id": "PATIENT_BREA_001",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ultrasound"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BREA_001_SCAN_01",
+      "relative_path": "malignant/PATIENT_BREA_001_SCAN_01.png",
+      "class_label": 1,
+      "class_name": "malignant",
+      "grouping_id": "PATIENT_BREA_001",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ultrasound"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BREA_001_SCAN_02",
+      "relative_path": "malignant/PATIENT_BREA_001_SCAN_02.png",
+      "class_label": 1,
+      "class_name": "malignant",
+      "grouping_id": "PATIENT_BREA_001",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ultrasound"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BREA_012_SCAN_00",
+      "relative_path": "benign/PATIENT_BREA_012_SCAN_00.png",
+      "class_label": 0,
+      "class_name": "benign",
+      "grouping_id": "PATIENT_BREA_012",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ultrasound"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BREA_012_SCAN_01",
+      "relative_path": "benign/PATIENT_BREA_012_SCAN_01.png",
+      "class_label": 0,
+      "class_name": "benign",
+      "grouping_id": "PATIENT_BREA_012",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ultrasound"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BREA_012_SCAN_02",
+      "relative_path": "benign/PATIENT_BREA_012_SCAN_02.png",
+      "class_label": 0,
+      "class_name": "benign",
+      "grouping_id": "PATIENT_BREA_012",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ultrasound"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BREA_019_SCAN_00",
+      "relative_path": "malignant/PATIENT_BREA_019_SCAN_00.png",
+      "class_label": 1,
+      "class_name": "malignant",
+      "grouping_id": "PATIENT_BREA_019",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ultrasound"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BREA_019_SCAN_01",
+      "relative_path": "malignant/PATIENT_BREA_019_SCAN_01.png",
+      "class_label": 1,
+      "class_name": "malignant",
+      "grouping_id": "PATIENT_BREA_019",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ultrasound"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BREA_019_SCAN_02",
+      "relative_path": "malignant/PATIENT_BREA_019_SCAN_02.png",
+      "class_label": 1,
+      "class_name": "malignant",
+      "grouping_id": "PATIENT_BREA_019",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ultrasound"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BREA_013_SCAN_00",
+      "relative_path": "malignant/PATIENT_BREA_013_SCAN_00.png",
+      "class_label": 1,
+      "class_name": "malignant",
+      "grouping_id": "PATIENT_BREA_013",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ultrasound"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BREA_013_SCAN_01",
+      "relative_path": "malignant/PATIENT_BREA_013_SCAN_01.png",
+      "class_label": 1,
+      "class_name": "malignant",
+      "grouping_id": "PATIENT_BREA_013",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ultrasound"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BREA_013_SCAN_02",
+      "relative_path": "malignant/PATIENT_BREA_013_SCAN_02.png",
+      "class_label": 1,
+      "class_name": "malignant",
+      "grouping_id": "PATIENT_BREA_013",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ultrasound"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BREA_010_SCAN_00",
+      "relative_path": "benign/PATIENT_BREA_010_SCAN_00.png",
+      "class_label": 0,
+      "class_name": "benign",
+      "grouping_id": "PATIENT_BREA_010",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ultrasound"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BREA_010_SCAN_01",
+      "relative_path": "benign/PATIENT_BREA_010_SCAN_01.png",
+      "class_label": 0,
+      "class_name": "benign",
+      "grouping_id": "PATIENT_BREA_010",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ultrasound"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BREA_010_SCAN_02",
+      "relative_path": "benign/PATIENT_BREA_010_SCAN_02.png",
+      "class_label": 0,
+      "class_name": "benign",
+      "grouping_id": "PATIENT_BREA_010",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ultrasound"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BREA_014_SCAN_00",
+      "relative_path": "benign/PATIENT_BREA_014_SCAN_00.png",
+      "class_label": 0,
+      "class_name": "benign",
+      "grouping_id": "PATIENT_BREA_014",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ultrasound"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BREA_014_SCAN_01",
+      "relative_path": "benign/PATIENT_BREA_014_SCAN_01.png",
+      "class_label": 0,
+      "class_name": "benign",
+      "grouping_id": "PATIENT_BREA_014",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ultrasound"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BREA_014_SCAN_02",
+      "relative_path": "benign/PATIENT_BREA_014_SCAN_02.png",
+      "class_label": 0,
+      "class_name": "benign",
+      "grouping_id": "PATIENT_BREA_014",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ultrasound"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BREA_009_SCAN_00",
+      "relative_path": "malignant/PATIENT_BREA_009_SCAN_00.png",
+      "class_label": 1,
+      "class_name": "malignant",
+      "grouping_id": "PATIENT_BREA_009",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ultrasound"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BREA_009_SCAN_01",
+      "relative_path": "malignant/PATIENT_BREA_009_SCAN_01.png",
+      "class_label": 1,
+      "class_name": "malignant",
+      "grouping_id": "PATIENT_BREA_009",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ultrasound"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BREA_009_SCAN_02",
+      "relative_path": "malignant/PATIENT_BREA_009_SCAN_02.png",
+      "class_label": 1,
+      "class_name": "malignant",
+      "grouping_id": "PATIENT_BREA_009",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ultrasound"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BREA_006_SCAN_00",
+      "relative_path": "benign/PATIENT_BREA_006_SCAN_00.png",
+      "class_label": 0,
+      "class_name": "benign",
+      "grouping_id": "PATIENT_BREA_006",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ultrasound"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BREA_006_SCAN_01",
+      "relative_path": "benign/PATIENT_BREA_006_SCAN_01.png",
+      "class_label": 0,
+      "class_name": "benign",
+      "grouping_id": "PATIENT_BREA_006",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ultrasound"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BREA_006_SCAN_02",
+      "relative_path": "benign/PATIENT_BREA_006_SCAN_02.png",
+      "class_label": 0,
+      "class_name": "benign",
+      "grouping_id": "PATIENT_BREA_006",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ultrasound"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BREA_017_SCAN_00",
+      "relative_path": "malignant/PATIENT_BREA_017_SCAN_00.png",
+      "class_label": 1,
+      "class_name": "malignant",
+      "grouping_id": "PATIENT_BREA_017",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ultrasound"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BREA_017_SCAN_01",
+      "relative_path": "malignant/PATIENT_BREA_017_SCAN_01.png",
+      "class_label": 1,
+      "class_name": "malignant",
+      "grouping_id": "PATIENT_BREA_017",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ultrasound"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BREA_017_SCAN_02",
+      "relative_path": "malignant/PATIENT_BREA_017_SCAN_02.png",
+      "class_label": 1,
+      "class_name": "malignant",
+      "grouping_id": "PATIENT_BREA_017",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ultrasound"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BREA_004_SCAN_00",
+      "relative_path": "benign/PATIENT_BREA_004_SCAN_00.png",
+      "class_label": 0,
+      "class_name": "benign",
+      "grouping_id": "PATIENT_BREA_004",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ultrasound"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BREA_004_SCAN_01",
+      "relative_path": "benign/PATIENT_BREA_004_SCAN_01.png",
+      "class_label": 0,
+      "class_name": "benign",
+      "grouping_id": "PATIENT_BREA_004",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ultrasound"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BREA_004_SCAN_02",
+      "relative_path": "benign/PATIENT_BREA_004_SCAN_02.png",
+      "class_label": 0,
+      "class_name": "benign",
+      "grouping_id": "PATIENT_BREA_004",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ultrasound"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BREA_018_SCAN_00",
+      "relative_path": "benign/PATIENT_BREA_018_SCAN_00.png",
+      "class_label": 0,
+      "class_name": "benign",
+      "grouping_id": "PATIENT_BREA_018",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ultrasound"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BREA_018_SCAN_01",
+      "relative_path": "benign/PATIENT_BREA_018_SCAN_01.png",
+      "class_label": 0,
+      "class_name": "benign",
+      "grouping_id": "PATIENT_BREA_018",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ultrasound"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BREA_018_SCAN_02",
+      "relative_path": "benign/PATIENT_BREA_018_SCAN_02.png",
+      "class_label": 0,
+      "class_name": "benign",
+      "grouping_id": "PATIENT_BREA_018",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ultrasound"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BREA_005_SCAN_00",
+      "relative_path": "malignant/PATIENT_BREA_005_SCAN_00.png",
+      "class_label": 1,
+      "class_name": "malignant",
+      "grouping_id": "PATIENT_BREA_005",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ultrasound"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BREA_005_SCAN_01",
+      "relative_path": "malignant/PATIENT_BREA_005_SCAN_01.png",
+      "class_label": 1,
+      "class_name": "malignant",
+      "grouping_id": "PATIENT_BREA_005",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ultrasound"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BREA_005_SCAN_02",
+      "relative_path": "malignant/PATIENT_BREA_005_SCAN_02.png",
+      "class_label": 1,
+      "class_name": "malignant",
+      "grouping_id": "PATIENT_BREA_005",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ultrasound"
+      }
+    }
+  ],
+  "val_samples": [
+    {
+      "sample_id": "PATIENT_BREA_016_SCAN_00",
+      "relative_path": "benign/PATIENT_BREA_016_SCAN_00.png",
+      "class_label": 0,
+      "class_name": "benign",
+      "grouping_id": "PATIENT_BREA_016",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ultrasound"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BREA_016_SCAN_01",
+      "relative_path": "benign/PATIENT_BREA_016_SCAN_01.png",
+      "class_label": 0,
+      "class_name": "benign",
+      "grouping_id": "PATIENT_BREA_016",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ultrasound"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BREA_016_SCAN_02",
+      "relative_path": "benign/PATIENT_BREA_016_SCAN_02.png",
+      "class_label": 0,
+      "class_name": "benign",
+      "grouping_id": "PATIENT_BREA_016",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ultrasound"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BREA_007_SCAN_00",
+      "relative_path": "malignant/PATIENT_BREA_007_SCAN_00.png",
+      "class_label": 1,
+      "class_name": "malignant",
+      "grouping_id": "PATIENT_BREA_007",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ultrasound"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BREA_007_SCAN_01",
+      "relative_path": "malignant/PATIENT_BREA_007_SCAN_01.png",
+      "class_label": 1,
+      "class_name": "malignant",
+      "grouping_id": "PATIENT_BREA_007",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ultrasound"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BREA_007_SCAN_02",
+      "relative_path": "malignant/PATIENT_BREA_007_SCAN_02.png",
+      "class_label": 1,
+      "class_name": "malignant",
+      "grouping_id": "PATIENT_BREA_007",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ultrasound"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BREA_002_SCAN_00",
+      "relative_path": "benign/PATIENT_BREA_002_SCAN_00.png",
+      "class_label": 0,
+      "class_name": "benign",
+      "grouping_id": "PATIENT_BREA_002",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ultrasound"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BREA_002_SCAN_01",
+      "relative_path": "benign/PATIENT_BREA_002_SCAN_01.png",
+      "class_label": 0,
+      "class_name": "benign",
+      "grouping_id": "PATIENT_BREA_002",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ultrasound"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BREA_002_SCAN_02",
+      "relative_path": "benign/PATIENT_BREA_002_SCAN_02.png",
+      "class_label": 0,
+      "class_name": "benign",
+      "grouping_id": "PATIENT_BREA_002",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ultrasound"
+      }
+    }
+  ],
+  "test_samples": [
+    {
+      "sample_id": "PATIENT_BREA_003_SCAN_00",
+      "relative_path": "malignant/PATIENT_BREA_003_SCAN_00.png",
+      "class_label": 1,
+      "class_name": "malignant",
+      "grouping_id": "PATIENT_BREA_003",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ultrasound"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BREA_003_SCAN_01",
+      "relative_path": "malignant/PATIENT_BREA_003_SCAN_01.png",
+      "class_label": 1,
+      "class_name": "malignant",
+      "grouping_id": "PATIENT_BREA_003",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ultrasound"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BREA_003_SCAN_02",
+      "relative_path": "malignant/PATIENT_BREA_003_SCAN_02.png",
+      "class_label": 1,
+      "class_name": "malignant",
+      "grouping_id": "PATIENT_BREA_003",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ultrasound"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BREA_000_SCAN_00",
+      "relative_path": "benign/PATIENT_BREA_000_SCAN_00.png",
+      "class_label": 0,
+      "class_name": "benign",
+      "grouping_id": "PATIENT_BREA_000",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ultrasound"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BREA_000_SCAN_01",
+      "relative_path": "benign/PATIENT_BREA_000_SCAN_01.png",
+      "class_label": 0,
+      "class_name": "benign",
+      "grouping_id": "PATIENT_BREA_000",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ultrasound"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BREA_000_SCAN_02",
+      "relative_path": "benign/PATIENT_BREA_000_SCAN_02.png",
+      "class_label": 0,
+      "class_name": "benign",
+      "grouping_id": "PATIENT_BREA_000",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ultrasound"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BREA_008_SCAN_00",
+      "relative_path": "benign/PATIENT_BREA_008_SCAN_00.png",
+      "class_label": 0,
+      "class_name": "benign",
+      "grouping_id": "PATIENT_BREA_008",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ultrasound"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BREA_008_SCAN_01",
+      "relative_path": "benign/PATIENT_BREA_008_SCAN_01.png",
+      "class_label": 0,
+      "class_name": "benign",
+      "grouping_id": "PATIENT_BREA_008",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ultrasound"
+      }
+    },
+    {
+      "sample_id": "PATIENT_BREA_008_SCAN_02",
+      "relative_path": "benign/PATIENT_BREA_008_SCAN_02.png",
+      "class_label": 0,
+      "class_name": "benign",
+      "grouping_id": "PATIENT_BREA_008",
+      "metadata": {
+        "synthetic": true,
+        "modality": "ultrasound"
+      }
+    }
+  ]
+}

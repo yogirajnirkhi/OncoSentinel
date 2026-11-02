@@ -1,0 +1,1954 @@
+version: 2.0.0
+updated_at: '2026-10-31'
+title: OncoSentinel HMS
+disclaimer: "Research use only \xB7 Decision support, not independent medical authority."
+page_size: 25
+max_page_size: 100
+currency: INR
+money_scale: '0.01'
+mrn_pattern: ^[A-Za-z0-9][A-Za-z0-9-]{2,63}$
+max_text_length: 4000
+claim_delivery: manual
+roles:
+- ADMIN
+- ANALYST
+- AUDITOR
+- BILLING_CLERK
+- CLINICIAN
+- FINANCE
+- INVENTORY_MANAGER
+- LAB_TECH
+- PATHOLOGIST
+- PHARMACIST
+- RADIOLOGIST
+- RECEPTION
+- RESEARCHER
+- SCHEDULER
+resources:
+  patients:
+    label: Patient registry
+    group: Clinical operations
+    fields:
+    - &id001
+      name: mrn
+      type: str
+      required: true
+      ref: null
+      default: null
+      label: Mrn
+    - &id002
+      name: given_name
+      type: str
+      required: true
+      ref: null
+      default: null
+      label: Given name
+    - &id003
+      name: family_name
+      type: str
+      required: true
+      ref: null
+      default: null
+      label: Family name
+    - &id004
+      name: birth_date
+      type: date
+      required: true
+      ref: null
+      default: null
+      label: Birth date
+    - name: gender
+      type: str
+      required: false
+      ref: null
+      default: null
+      label: Gender
+    - name: contact
+      type: json
+      required: false
+      ref: null
+      default: null
+      label: Contact
+    - name: insurance
+      type: json
+      required: false
+      ref: null
+      default: null
+      label: Insurance
+    - name: consent
+      type: json
+      required: false
+      ref: null
+      default: null
+      label: Consent
+    write:
+    - CLINICIAN
+    - ADMIN
+    - PHARMACIST
+    - RECEPTION
+    read:
+    - CLINICIAN
+    - ADMIN
+    - AUDITOR
+    - RADIOLOGIST
+    - PATHOLOGIST
+    - PHARMACIST
+    - FINANCE
+    immutable: false
+    statuses: []
+    update: true
+    confirm: false
+    table_columns:
+    - *id001
+    - *id002
+    - *id003
+    - *id004
+  encounters:
+    label: Encounters
+    group: Clinical operations
+    fields:
+    - &id006
+      name: patient_id
+      type: uuid
+      required: true
+      ref: patients
+      default: null
+      label: Patient id
+    - &id007
+      name: department
+      type: str
+      required: true
+      ref: null
+      default: null
+      label: Department
+    - &id008
+      name: attending_id
+      type: str
+      required: true
+      ref: null
+      default: null
+      label: Attending id
+    - &id009
+      name: started_at
+      type: datetime
+      required: true
+      ref: null
+      default: null
+      label: Started at
+    - &id010
+      name: ended_at
+      type: datetime
+      required: false
+      ref: null
+      default: null
+      label: Ended at
+    - name: status
+      type: str
+      required: true
+      ref: null
+      default: active
+      label: Status
+    write: &id005
+    - CLINICIAN
+    - ADMIN
+    read:
+    - CLINICIAN
+    - ADMIN
+    - RADIOLOGIST
+    - PATHOLOGIST
+    - PHARMACIST
+    immutable: false
+    statuses:
+    - active
+    - discharged
+    - cancelled
+    update: true
+    confirm: false
+    table_columns:
+    - *id006
+    - *id007
+    - *id008
+    - *id009
+    - *id010
+  medical-records:
+    label: Medical records
+    group: Clinical operations
+    fields:
+    - &id011
+      name: patient_id
+      type: uuid
+      required: true
+      ref: patients
+      default: null
+      label: Patient id
+    - &id012
+      name: kind
+      type: str
+      required: true
+      ref: null
+      default: null
+      label: Kind
+    - &id013
+      name: content
+      type: json
+      required: true
+      ref: null
+      default: null
+      label: Content
+    - &id014
+      name: document_uri
+      type: str
+      required: false
+      ref: null
+      default: null
+      label: Document uri
+    - &id015
+      name: amends_id
+      type: uuid
+      required: false
+      ref: medical-records
+      default: null
+      label: Amends id
+    write: *id005
+    read:
+    - CLINICIAN
+    - ADMIN
+    - RADIOLOGIST
+    - PATHOLOGIST
+    - PHARMACIST
+    immutable: true
+    statuses: []
+    update: false
+    confirm: true
+    table_columns:
+    - *id011
+    - *id012
+    - *id013
+    - *id014
+    - *id015
+  billing/charge-items:
+    label: Fee schedule
+    group: Revenue cycle
+    fields:
+    - &id017
+      name: code
+      type: str
+      required: true
+      ref: null
+      default: null
+      label: Code
+    - &id018
+      name: name
+      type: str
+      required: true
+      ref: null
+      default: null
+      label: Name
+    - &id019
+      name: amount
+      type: money
+      required: true
+      ref: null
+      default: null
+      label: Amount
+    - &id020
+      name: coding_system
+      type: str
+      required: true
+      ref: null
+      default: null
+      label: Coding system
+    - &id021
+      name: active
+      type: bool
+      required: false
+      ref: null
+      default: true
+      label: Active
+    write: &id016
+    - BILLING_CLERK
+    - ADMIN
+    read: *id016
+    immutable: false
+    statuses: []
+    update: true
+    confirm: false
+    table_columns:
+    - *id017
+    - *id018
+    - *id019
+    - *id020
+    - *id021
+  billing/invoices:
+    label: Invoices
+    group: Revenue cycle
+    fields:
+    - &id022
+      name: patient_id
+      type: uuid
+      required: true
+      ref: patients
+      default: null
+      label: Patient id
+    - name: lines
+      type: json
+      required: true
+      ref: null
+      default: null
+      label: Lines
+    - &id023
+      name: due_date
+      type: date
+      required: true
+      ref: null
+      default: null
+      label: Due date
+    - name: currency
+      type: str
+      required: true
+      ref: null
+      default: INR
+      label: Currency
+    write: *id016
+    read: *id016
+    immutable: true
+    statuses: []
+    update: false
+    confirm: true
+    table_columns:
+    - &id139
+      name: number
+      type: str
+      required: true
+      ref: null
+      default: null
+      label: Number
+    - *id022
+    - &id138
+      name: total
+      type: money
+      required: true
+      ref: null
+      default: null
+      label: Total
+    - name: outstanding
+      label: Outstanding
+      type: decimal
+    - *id023
+  billing/payments:
+    label: Payments
+    group: Revenue cycle
+    fields:
+    - &id024
+      name: invoice_id
+      type: uuid
+      required: true
+      ref: billing/invoices
+      default: null
+      label: Invoice id
+    - &id025
+      name: amount
+      type: money
+      required: true
+      ref: null
+      default: null
+      label: Amount
+    - &id026
+      name: method
+      type: str
+      required: true
+      ref: null
+      default: null
+      label: Method
+    - &id027
+      name: reference
+      type: str
+      required: true
+      ref: null
+      default: null
+      label: Reference
+    write: *id016
+    read: *id016
+    immutable: true
+    statuses: []
+    update: false
+    confirm: true
+    table_columns:
+    - *id024
+    - *id025
+    - *id026
+    - *id027
+  billing/claims:
+    label: Insurance claims
+    group: Revenue cycle
+    fields:
+    - &id028
+      name: invoice_id
+      type: uuid
+      required: true
+      ref: billing/invoices
+      default: null
+      label: Invoice id
+    - &id029
+      name: payer
+      type: str
+      required: true
+      ref: null
+      default: null
+      label: Payer
+    - &id030
+      name: reference
+      type: str
+      required: true
+      ref: null
+      default: null
+      label: Reference
+    - &id031
+      name: evidence_uri
+      type: str
+      required: true
+      ref: null
+      default: null
+      label: Evidence uri
+    - &id032
+      name: status
+      type: str
+      required: true
+      ref: null
+      default: reviewed
+      label: Status
+    write: *id016
+    read: *id016
+    immutable: true
+    statuses:
+    - reviewed
+    update: false
+    confirm: true
+    table_columns:
+    - *id028
+    - *id029
+    - *id030
+    - *id031
+    - *id032
+  billing/adjustments:
+    label: Invoice adjustments
+    group: Revenue cycle
+    fields:
+    - &id033
+      name: invoice_id
+      type: uuid
+      required: true
+      ref: billing/invoices
+      default: null
+      label: Invoice id
+    - &id034
+      name: amount
+      type: money
+      required: true
+      ref: null
+      default: null
+      label: Amount
+    - &id035
+      name: reason
+      type: str
+      required: true
+      ref: null
+      default: null
+      label: Reason
+    - &id036
+      name: reverses_id
+      type: uuid
+      required: false
+      ref: billing/adjustments
+      default: null
+      label: Reverses id
+    write: *id016
+    read: *id016
+    immutable: true
+    statuses: []
+    update: false
+    confirm: true
+    table_columns:
+    - *id033
+    - *id034
+    - *id035
+    - *id036
+  finance/ledger:
+    label: General ledger
+    group: Revenue cycle
+    fields:
+    - name: transaction_id
+      type: uuid
+      required: true
+      ref: null
+      default: null
+      label: Transaction id
+    - &id037
+      name: account
+      type: str
+      required: true
+      ref: null
+      default: null
+      label: Account
+    - &id038
+      name: debit
+      type: money
+      required: true
+      ref: null
+      default: null
+      label: Debit
+    - &id039
+      name: credit
+      type: money
+      required: true
+      ref: null
+      default: null
+      label: Credit
+    - &id041
+      name: source_id
+      type: uuid
+      required: true
+      ref: null
+      default: null
+      label: Source id
+    - &id040
+      name: period
+      type: str
+      required: true
+      ref: null
+      default: null
+      label: Period
+    - name: reverses_id
+      type: uuid
+      required: false
+      ref: finance/ledger
+      default: null
+      label: Reverses id
+    write: []
+    read:
+    - ADMIN
+    - AUDITOR
+    - FINANCE
+    immutable: true
+    statuses: []
+    update: false
+    confirm: false
+    table_columns:
+    - *id037
+    - *id038
+    - *id039
+    - *id040
+    - *id041
+    utility:
+      label: Financial summary
+      endpoint: /finance/reports
+  finance/periods:
+    label: Period close
+    group: Revenue cycle
+    fields:
+    - &id043
+      name: period
+      type: str
+      required: true
+      ref: null
+      default: null
+      label: Period
+    - &id044
+      name: reason
+      type: str
+      required: true
+      ref: null
+      default: null
+      label: Reason
+    write: &id042
+    - ADMIN
+    - FINANCE
+    read: *id042
+    immutable: true
+    statuses: []
+    update: false
+    confirm: true
+    table_columns:
+    - *id043
+    - *id044
+  pharmacy/medications:
+    label: Formulary
+    group: Medication & stock
+    fields:
+    - &id045
+      name: code
+      type: str
+      required: true
+      ref: null
+      default: null
+      label: Code
+    - &id046
+      name: name
+      type: str
+      required: true
+      ref: null
+      default: null
+      label: Name
+    - &id047
+      name: strength
+      type: str
+      required: true
+      ref: null
+      default: null
+      label: Strength
+    - &id048
+      name: dosage_form
+      type: str
+      required: true
+      ref: null
+      default: null
+      label: Dosage form
+    - &id049
+      name: route
+      type: str
+      required: true
+      ref: null
+      default: null
+      label: Route
+    - name: stock_item_id
+      type: uuid
+      required: true
+      ref: inventory/items
+      default: null
+      label: Stock item id
+    write:
+    - PHARMACIST
+    - ADMIN
+    read:
+    - CLINICIAN
+    - ADMIN
+    - PHARMACIST
+    immutable: false
+    statuses: []
+    update: true
+    confirm: false
+    table_columns:
+    - *id045
+    - *id046
+    - *id047
+    - *id048
+    - *id049
+  pharmacy/prescriptions:
+    label: Prescriptions
+    group: Medication & stock
+    fields:
+    - &id050
+      name: patient_id
+      type: uuid
+      required: true
+      ref: patients
+      default: null
+      label: Patient id
+    - &id051
+      name: encounter_id
+      type: uuid
+      required: true
+      ref: encounters
+      default: null
+      label: Encounter id
+    - &id052
+      name: medication_id
+      type: uuid
+      required: true
+      ref: pharmacy/medications
+      default: null
+      label: Medication id
+    - &id053
+      name: quantity
+      type: decimal
+      required: true
+      ref: null
+      default: null
+      label: Quantity
+    - &id054
+      name: directions
+      type: str
+      required: true
+      ref: null
+      default: null
+      label: Directions
+    - name: refills
+      type: int
+      required: false
+      ref: null
+      default: 0
+      label: Refills
+    - name: replaces_id
+      type: uuid
+      required: false
+      ref: pharmacy/prescriptions
+      default: null
+      label: Replaces id
+    write:
+    - CLINICIAN
+    - ADMIN
+    - PHARMACIST
+    read:
+    - CLINICIAN
+    - ADMIN
+    - PHARMACIST
+    immutable: true
+    statuses: []
+    update: false
+    confirm: true
+    table_columns:
+    - *id050
+    - *id051
+    - *id052
+    - *id053
+    - *id054
+  pharmacy/dispense:
+    label: Dispense records
+    group: Medication & stock
+    fields:
+    - &id056
+      name: prescription_id
+      type: uuid
+      required: true
+      ref: pharmacy/prescriptions
+      default: null
+      label: Prescription id
+    - &id057
+      name: quantity
+      type: decimal
+      required: true
+      ref: null
+      default: null
+      label: Quantity
+    - &id058
+      name: lot
+      type: str
+      required: true
+      ref: null
+      default: null
+      label: Lot
+    - &id059
+      name: expiry
+      type: date
+      required: true
+      ref: null
+      default: null
+      label: Expiry
+    write: &id055
+    - PHARMACIST
+    - ADMIN
+    read:
+    - CLINICIAN
+    - PHARMACIST
+    - ADMIN
+    immutable: true
+    statuses: []
+    update: false
+    confirm: true
+    table_columns:
+    - *id056
+    - *id057
+    - *id058
+    - *id059
+    - &id140
+      name: pharmacist_id
+      type: str
+      required: true
+      ref: null
+      default: null
+      label: Pharmacist id
+  inventory/items:
+    label: Stock catalogue
+    group: Medication & stock
+    fields:
+    - &id061
+      name: sku
+      type: str
+      required: true
+      ref: null
+      default: null
+      label: Sku
+    - &id062
+      name: name
+      type: str
+      required: true
+      ref: null
+      default: null
+      label: Name
+    - name: category
+      type: str
+      required: true
+      ref: null
+      default: null
+      label: Category
+    - &id063
+      name: unit
+      type: str
+      required: true
+      ref: null
+      default: null
+      label: Unit
+    - name: par_level
+      type: decimal
+      required: true
+      ref: null
+      default: null
+      label: Par level
+    - &id064
+      name: reorder_point
+      type: decimal
+      required: true
+      ref: null
+      default: null
+      label: Reorder point
+    write: &id060
+    - INVENTORY_MANAGER
+    - ADMIN
+    read:
+    - CLINICIAN
+    - PHARMACIST
+    - INVENTORY_MANAGER
+    - ADMIN
+    immutable: false
+    statuses: []
+    update: true
+    confirm: false
+    table_columns:
+    - *id061
+    - *id062
+    - *id063
+    - name: on_hand
+      label: On hand
+      type: decimal
+    - *id064
+    utility:
+      label: Low-stock queue
+      endpoint: /inventory/low-stock
+  inventory/movements:
+    label: Stock movements
+    group: Medication & stock
+    fields:
+    - &id065
+      name: item_id
+      type: uuid
+      required: true
+      ref: inventory/items
+      default: null
+      label: Item id
+    - &id066
+      name: quantity
+      type: decimal
+      required: true
+      ref: null
+      default: null
+      label: Quantity
+    - &id067
+      name: kind
+      type: str
+      required: true
+      ref: null
+      default: null
+      label: Kind
+    - &id068
+      name: lot
+      type: str
+      required: true
+      ref: null
+      default: null
+      label: Lot
+    - &id069
+      name: expiry
+      type: date
+      required: true
+      ref: null
+      default: null
+      label: Expiry
+    - name: reason
+      type: str
+      required: true
+      ref: null
+      default: null
+      label: Reason
+    - name: purchase_order_id
+      type: uuid
+      required: false
+      ref: inventory/purchase-orders
+      default: null
+      label: Purchase order id
+    write:
+    - INVENTORY_MANAGER
+    read: *id060
+    immutable: true
+    statuses: []
+    update: false
+    confirm: false
+    table_columns:
+    - *id065
+    - *id066
+    - *id067
+    - *id068
+    - *id069
+  inventory/purchase-orders:
+    label: Purchase orders
+    group: Medication & stock
+    fields:
+    - &id070
+      name: supplier
+      type: str
+      required: true
+      ref: null
+      default: null
+      label: Supplier
+    - &id071
+      name: item_id
+      type: uuid
+      required: true
+      ref: inventory/items
+      default: null
+      label: Item id
+    - &id072
+      name: quantity
+      type: decimal
+      required: true
+      ref: null
+      default: null
+      label: Quantity
+    - &id073
+      name: reference
+      type: str
+      required: true
+      ref: null
+      default: null
+      label: Reference
+    write: *id060
+    read: *id060
+    immutable: true
+    statuses: []
+    update: false
+    confirm: true
+    table_columns:
+    - *id070
+    - *id071
+    - *id072
+    - *id073
+  inventory/receipts:
+    label: Receive records
+    group: Medication & stock
+    fields:
+    - &id074
+      name: purchase_order_id
+      type: uuid
+      required: true
+      ref: inventory/purchase-orders
+      default: null
+      label: Purchase order id
+    - &id075
+      name: quantity
+      type: decimal
+      required: true
+      ref: null
+      default: null
+      label: Quantity
+    - &id076
+      name: lot
+      type: str
+      required: true
+      ref: null
+      default: null
+      label: Lot
+    - &id077
+      name: expiry
+      type: date
+      required: true
+      ref: null
+      default: null
+      label: Expiry
+    write: *id060
+    read: *id060
+    immutable: true
+    statuses: []
+    update: false
+    confirm: true
+    table_columns:
+    - *id074
+    - *id075
+    - *id076
+    - *id077
+  staff:
+    label: Staff directory
+    group: Scheduling
+    fields:
+    - &id078
+      name: display_name
+      type: str
+      required: true
+      ref: null
+      default: null
+      label: Display name
+    - &id079
+      name: role
+      type: str
+      required: true
+      ref: null
+      default: null
+      label: Role
+    - &id080
+      name: department
+      type: str
+      required: true
+      ref: null
+      default: null
+      label: Department
+    - &id081
+      name: credentials
+      type: json
+      required: true
+      ref: null
+      default: null
+      label: Credentials
+    - &id082
+      name: license_expiry
+      type: date
+      required: true
+      ref: null
+      default: null
+      label: License expiry
+    - name: contact
+      type: json
+      required: false
+      ref: null
+      default: null
+      label: Contact
+    write:
+    - ADMIN
+    - SCHEDULER
+    read:
+    - SCHEDULER
+    - CLINICIAN
+    - RADIOLOGIST
+    - PATHOLOGIST
+    - ADMIN
+    immutable: false
+    statuses: []
+    update: true
+    confirm: false
+    table_columns:
+    - *id078
+    - *id079
+    - *id080
+    - *id081
+    - *id082
+  scheduling/availability:
+    label: Provider availability
+    group: Scheduling
+    fields:
+    - &id084
+      name: provider_id
+      type: uuid
+      required: true
+      ref: staff
+      default: null
+      label: Provider id
+    - &id085
+      name: start
+      type: datetime
+      required: true
+      ref: null
+      default: null
+      label: Start
+    - &id086
+      name: end
+      type: datetime
+      required: true
+      ref: null
+      default: null
+      label: End
+    write: &id083
+    - SCHEDULER
+    - CLINICIAN
+    - ADMIN
+    read: *id083
+    immutable: false
+    statuses: []
+    update: true
+    confirm: false
+    table_columns:
+    - *id084
+    - *id085
+    - *id086
+  scheduling/shifts:
+    label: Staff shifts
+    group: Scheduling
+    fields:
+    - &id087
+      name: provider_id
+      type: uuid
+      required: true
+      ref: staff
+      default: null
+      label: Provider id
+    - &id088
+      name: start
+      type: datetime
+      required: true
+      ref: null
+      default: null
+      label: Start
+    - &id089
+      name: end
+      type: datetime
+      required: true
+      ref: null
+      default: null
+      label: End
+    - &id090
+      name: department
+      type: str
+      required: true
+      ref: null
+      default: null
+      label: Department
+    - &id091
+      name: status
+      type: str
+      required: true
+      ref: null
+      default: assigned
+      label: Status
+    write: *id083
+    read: *id083
+    immutable: false
+    statuses:
+    - assigned
+    - cancelled
+    update: true
+    confirm: false
+    table_columns:
+    - *id087
+    - *id088
+    - *id089
+    - *id090
+    - *id091
+  scheduling/swaps:
+    label: Shift swap requests
+    group: Scheduling
+    fields:
+    - &id092
+      name: shift_id
+      type: uuid
+      required: true
+      ref: scheduling/shifts
+      default: null
+      label: Shift id
+    - &id093
+      name: replacement_id
+      type: uuid
+      required: true
+      ref: staff
+      default: null
+      label: Replacement id
+    - &id094
+      name: reason
+      type: str
+      required: true
+      ref: null
+      default: null
+      label: Reason
+    - &id095
+      name: status
+      type: str
+      required: true
+      ref: null
+      default: requested
+      label: Status
+    write: *id083
+    read: *id083
+    immutable: true
+    statuses:
+    - requested
+    update: false
+    confirm: true
+    table_columns:
+    - *id092
+    - *id093
+    - *id094
+    - *id095
+  scheduling/appointments:
+    label: Appointments
+    group: Scheduling
+    fields:
+    - &id096
+      name: patient_id
+      type: uuid
+      required: true
+      ref: patients
+      default: null
+      label: Patient id
+    - &id097
+      name: provider_id
+      type: uuid
+      required: true
+      ref: staff
+      default: null
+      label: Provider id
+    - &id098
+      name: encounter_id
+      type: uuid
+      required: false
+      ref: encounters
+      default: null
+      label: Encounter id
+    - &id099
+      name: start
+      type: datetime
+      required: true
+      ref: null
+      default: null
+      label: Start
+    - &id100
+      name: end
+      type: datetime
+      required: true
+      ref: null
+      default: null
+      label: End
+    - name: kind
+      type: str
+      required: true
+      ref: null
+      default: null
+      label: Kind
+    - name: status
+      type: str
+      required: true
+      ref: null
+      default: booked
+      label: Status
+    write: *id083
+    read:
+    - SCHEDULER
+    - CLINICIAN
+    - RADIOLOGIST
+    - PATHOLOGIST
+    - ADMIN
+    immutable: false
+    statuses:
+    - booked
+    - arrived
+    - completed
+    - cancelled
+    update: true
+    confirm: true
+    table_columns:
+    - *id096
+    - *id097
+    - *id098
+    - *id099
+    - *id100
+  lab/tests:
+    label: Lab catalogue
+    group: Diagnostics
+    fields:
+    - &id101
+      name: code
+      type: str
+      required: true
+      ref: null
+      default: null
+      label: Code
+    - &id102
+      name: name
+      type: str
+      required: true
+      ref: null
+      default: null
+      label: Name
+    - &id103
+      name: specimen
+      type: str
+      required: true
+      ref: null
+      default: null
+      label: Specimen
+    - &id104
+      name: unit
+      type: str
+      required: true
+      ref: null
+      default: null
+      label: Unit
+    - &id105
+      name: reference_low
+      type: decimal
+      required: true
+      ref: null
+      default: null
+      label: Reference low
+    - name: reference_high
+      type: decimal
+      required: true
+      ref: null
+      default: null
+      label: Reference high
+    - name: critical_low
+      type: decimal
+      required: true
+      ref: null
+      default: null
+      label: Critical low
+    - name: critical_high
+      type: decimal
+      required: true
+      ref: null
+      default: null
+      label: Critical high
+    write: &id110
+    - LAB_TECH
+    - PATHOLOGIST
+    - ADMIN
+    read:
+    - CLINICIAN
+    - RADIOLOGIST
+    - LAB_TECH
+    - PATHOLOGIST
+    - ADMIN
+    immutable: false
+    statuses: []
+    update: true
+    confirm: false
+    table_columns:
+    - *id101
+    - *id102
+    - *id103
+    - *id104
+    - *id105
+  lab/orders:
+    label: Lab orders
+    group: Diagnostics
+    fields:
+    - &id106
+      name: patient_id
+      type: uuid
+      required: true
+      ref: patients
+      default: null
+      label: Patient id
+    - &id107
+      name: encounter_id
+      type: uuid
+      required: true
+      ref: encounters
+      default: null
+      label: Encounter id
+    - &id108
+      name: test_id
+      type: uuid
+      required: true
+      ref: lab/tests
+      default: null
+      label: Test id
+    - &id109
+      name: status
+      type: str
+      required: true
+      ref: null
+      default: ordered
+      label: Status
+    write:
+    - CLINICIAN
+    - LAB_TECH
+    - PATHOLOGIST
+    - ADMIN
+    read:
+    - CLINICIAN
+    - RADIOLOGIST
+    - LAB_TECH
+    - PATHOLOGIST
+    - ADMIN
+    immutable: false
+    statuses:
+    - ordered
+    - collected
+    - resulted
+    - cancelled
+    update: true
+    confirm: false
+    table_columns:
+    - *id106
+    - *id107
+    - *id108
+    - *id109
+  lab/results:
+    label: Verified lab results
+    group: Diagnostics
+    fields:
+    - &id111
+      name: order_id
+      type: uuid
+      required: true
+      ref: lab/orders
+      default: null
+      label: Order id
+    - &id112
+      name: value
+      type: decimal
+      required: true
+      ref: null
+      default: null
+      label: Value
+    - &id113
+      name: unit
+      type: str
+      required: true
+      ref: null
+      default: null
+      label: Unit
+    - name: verified
+      type: bool
+      required: true
+      ref: null
+      default: null
+      label: Verified
+    - name: amends_id
+      type: uuid
+      required: false
+      ref: lab/results
+      default: null
+      label: Amends id
+    write: *id110
+    read:
+    - CLINICIAN
+    - RADIOLOGIST
+    - LAB_TECH
+    - PATHOLOGIST
+    - ADMIN
+    immutable: true
+    statuses: []
+    update: false
+    confirm: true
+    table_columns:
+    - *id111
+    - *id112
+    - *id113
+    - &id141
+      name: flag
+      type: str
+      required: true
+      ref: null
+      default: null
+      label: Flag
+    - &id142
+      name: verifier_id
+      type: str
+      required: true
+      ref: null
+      default: null
+      label: Verifier id
+  radiology/studies:
+    label: Imaging catalogue
+    group: Diagnostics
+    fields:
+    - &id114
+      name: modality
+      type: str
+      required: true
+      ref: null
+      default: null
+      label: Modality
+    - &id115
+      name: body_part
+      type: str
+      required: true
+      ref: null
+      default: null
+      label: Body part
+    - &id116
+      name: name
+      type: str
+      required: true
+      ref: null
+      default: null
+      label: Name
+    write: &id122
+    - RADIOLOGIST
+    - PATHOLOGIST
+    - ADMIN
+    read:
+    - CLINICIAN
+    - RADIOLOGIST
+    - PATHOLOGIST
+    - ADMIN
+    immutable: false
+    statuses: []
+    update: true
+    confirm: false
+    table_columns:
+    - *id114
+    - *id115
+    - *id116
+  radiology/orders:
+    label: Radiology orders
+    group: Diagnostics
+    fields:
+    - &id117
+      name: patient_id
+      type: uuid
+      required: true
+      ref: patients
+      default: null
+      label: Patient id
+    - &id118
+      name: encounter_id
+      type: uuid
+      required: true
+      ref: encounters
+      default: null
+      label: Encounter id
+    - &id119
+      name: study_id
+      type: uuid
+      required: true
+      ref: radiology/studies
+      default: null
+      label: Study id
+    - &id120
+      name: priority
+      type: str
+      required: true
+      ref: null
+      default: null
+      label: Priority
+    - &id121
+      name: preparation
+      type: str
+      required: true
+      ref: null
+      default: null
+      label: Preparation
+    - name: status
+      type: str
+      required: true
+      ref: null
+      default: ordered
+      label: Status
+    write:
+    - CLINICIAN
+    - RADIOLOGIST
+    - PATHOLOGIST
+    - IMAGING_TECH
+    - ADMIN
+    read:
+    - CLINICIAN
+    - RADIOLOGIST
+    - PATHOLOGIST
+    - ADMIN
+    immutable: false
+    statuses:
+    - ordered
+    - scheduled
+    - acquired
+    - reported
+    - cancelled
+    update: true
+    confirm: false
+    table_columns:
+    - *id117
+    - *id118
+    - *id119
+    - *id120
+    - *id121
+  radiology/reports:
+    label: Signed imaging reports
+    group: Diagnostics
+    fields:
+    - &id123
+      name: order_id
+      type: uuid
+      required: true
+      ref: radiology/orders
+      default: null
+      label: Order id
+    - name: findings
+      type: str
+      required: true
+      ref: null
+      default: null
+      label: Findings
+    - &id124
+      name: impression
+      type: str
+      required: true
+      ref: null
+      default: null
+      label: Impression
+    - name: image_uri
+      type: str
+      required: true
+      ref: null
+      default: null
+      label: Image uri
+    - name: dicom_metadata
+      type: json
+      required: true
+      ref: null
+      default: null
+      label: Dicom metadata
+    - name: diagnostic_use
+      type: bool
+      required: true
+      ref: null
+      default: null
+      label: Diagnostic use
+    - name: amends_id
+      type: uuid
+      required: false
+      ref: radiology/reports
+      default: null
+      label: Amends id
+    write: *id122
+    read:
+    - CLINICIAN
+    - RADIOLOGIST
+    - PATHOLOGIST
+    - ADMIN
+    immutable: true
+    statuses: []
+    update: false
+    confirm: true
+    table_columns:
+    - *id123
+    - *id124
+    - &id143
+      name: signer_id
+      type: str
+      required: true
+      ref: null
+      default: null
+      label: Signer id
+    - &id144
+      name: signed_at
+      type: datetime
+      required: true
+      ref: null
+      default: null
+      label: Signed at
+  alerts:
+    label: Operational alerts
+    group: Governance
+    fields:
+    - &id125
+      name: kind
+      type: str
+      required: true
+      ref: null
+      default: null
+      label: Kind
+    - &id128
+      name: resource_id
+      type: uuid
+      required: true
+      ref: null
+      default: null
+      label: Resource id
+    - &id126
+      name: severity
+      type: str
+      required: true
+      ref: null
+      default: null
+      label: Severity
+    - &id127
+      name: message
+      type: str
+      required: true
+      ref: null
+      default: null
+      label: Message
+    write: []
+    read:
+    - ADMIN
+    - CLINICIAN
+    - PHARMACIST
+    - INVENTORY_MANAGER
+    - LAB_TECH
+    - PATHOLOGIST
+    - RADIOLOGIST
+    immutable: true
+    statuses: []
+    update: false
+    confirm: false
+    table_columns:
+    - *id125
+    - *id126
+    - *id127
+    - *id128
+  ai/reviews:
+    label: Decision-support reviews
+    group: Governance
+    fields:
+    - &id129
+      name: patient_id
+      type: uuid
+      required: true
+      ref: patients
+      default: null
+      label: Patient id
+    - &id130
+      name: evidence_id
+      type: str
+      required: true
+      ref: null
+      default: null
+      label: Evidence id
+    - &id131
+      name: decision
+      type: str
+      required: true
+      ref: null
+      default: null
+      label: Decision
+    - &id132
+      name: comment
+      type: str
+      required: true
+      ref: null
+      default: null
+      label: Comment
+    write: *id005
+    read: *id005
+    immutable: true
+    statuses: []
+    update: false
+    confirm: true
+    table_columns:
+    - *id129
+    - *id130
+    - *id131
+    - *id132
+  billing/invoice-lines:
+    label: Invoice line snapshots
+    group: Revenue cycle
+    fields:
+    - &id133
+      name: invoice_id
+      type: uuid
+      required: true
+      ref: billing/invoices
+      default: null
+      label: Invoice id
+    - &id134
+      name: charge_item_id
+      type: uuid
+      required: true
+      ref: billing/charge-items
+      default: null
+      label: Charge item id
+    - &id135
+      name: code
+      type: str
+      required: true
+      ref: null
+      default: null
+      label: Code
+    - &id136
+      name: quantity
+      type: decimal
+      required: true
+      ref: null
+      default: null
+      label: Quantity
+    - &id137
+      name: unit_price
+      type: money
+      required: true
+      ref: null
+      default: null
+      label: Unit price
+    - name: amount
+      type: money
+      required: true
+      ref: null
+      default: null
+      label: Amount
+    write: []
+    read: *id016
+    immutable: true
+    statuses: []
+    update: false
+    confirm: false
+    table_columns:
+    - *id133
+    - *id134
+    - *id135
+    - *id136
+    - *id137
+derived_fields:
+  billing/invoices:
+  - *id138
+  - *id139
+  pharmacy/prescriptions:
+  - name: prescriber_id
+    type: str
+    required: true
+    ref: null
+    default: null
+    label: Prescriber id
+  pharmacy/dispense:
+  - *id140
+  lab/results:
+  - *id141
+  - *id142
+  radiology/reports:
+  - *id143
+  - *id144
+  - name: quality_evidence
+    type: json
+    required: true
+    ref: null
+    default: null
+    label: Quality evidence
+inventory_kinds:
+- inbound
+- outbound
+- adjustment
+payment_methods:
+- cash
+- card
+- bank
+- insurance
+review_decisions:
+- accept
+- reject
+- edit
+- abstain
+- request_evidence
+medical_record_kinds:
+- allergy
+- problem
+- medication
+- immunization
+- document
+- prescription_void
+ledger_accounts:
+  receivable: '1100'
+  cash: '1000'
+  revenue: '4000'
+  adjustments: '4100'
+allergy_rule_mode: require_explicit_review
+interaction_rules: []
+interactions_verified: false
+field_choices:
+  gender:
+  - male
+  - female
+  - other
+  - unknown
+  priority:
+  - routine
+  - urgent
+  - stat
+  modality:
+  - X-ray
+  - CT
+  - MRI
+  - ultrasound
+  kind:inventory/movements:
+  - inbound
+  - outbound
+  - adjustment
+  kind:medical-records:
+  - allergy
+  - problem
+  - medication
+  - immunization
+  - document
+  - prescription_void
+  decision:ai/reviews:
+  - accept
+  - reject
+  - edit
+  - abstain
+  - request_evidence
+workflow_transitions:
+  encounters:
+    active:
+    - discharged
+    - cancelled
+  scheduling/appointments:
+    booked:
+    - arrived
+    - cancelled
+    arrived:
+    - completed
+    - cancelled
+  scheduling/shifts:
+    assigned:
+    - cancelled
+  lab/orders:
+    ordered:
+    - collected
+    - cancelled
+    collected:
+    - cancelled
+  radiology/orders:
+    ordered:
+    - scheduled
+    - cancelled
+    scheduled:
+    - acquired
+    - cancelled
+    acquired:
+    - cancelled
+ui:
+  groups:
+  - Clinical operations
+  - Scheduling
+  - Revenue cycle
+  - Medication & stock
+  - Diagnostics
+  - Governance
+  home: Operational workspace
+  empty: No records match this queue.
+  confirm: Confirm attributed action
+  success: Action recorded and audited.
+  safety: Clinical actions require human review. Corrections append amendments or
+    reversals.
+  statuses:
+    normal: Normal
+    abnormal: Abnormal
+    critical: Critical
+    review_required: Review required
+features:
+  pharmacy: No validated interaction knowledge base supplied. Prescription and dispensing
+    require the host safety callback; YAML rules are supplemental only.
+  ai: Advisory panel requires the existing evidence-grounded host service. No synthetic
+    recommendations.
+expiry_alert_days: 30
+status_semantics:
+  critical: critical
+  abnormal: warning
+  review_required: warning
+permissions:
+  audit:
+  - ADMIN
+  - AUDITOR
+  - CLINICIAN
+  - RADIOLOGIST
+  - PATHOLOGIST
+  - PHARMACIST
+  - FINANCE
+  ai:
+  - CLINICIAN
+  - RADIOLOGIST
+  - PATHOLOGIST
+  - ADMIN
+  reports:
+  - ADMIN
+  - AUDITOR
+  - FINANCE
+  - ANALYST
+aging_buckets_days:
+- 0
+- 30
+- 60
+- 90

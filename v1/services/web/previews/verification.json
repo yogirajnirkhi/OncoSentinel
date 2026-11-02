@@ -1,0 +1,16 @@
+{
+  "original_dom_ids_preserved": 193,
+  "missing_original_ids": [],
+  "duplicate_ids": [],
+  "playwright": {
+    "startTime": "2026-11-01T12:05:49.214Z",
+    "duration": 33250.228,
+    "expected": 28,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "openapi_unchanged": true,
+  "schema_reference_unchanged": true,
+  "limitations": "HTTP-fixture integration tests, not a running clinical backend or model validation. Automated accessibility scan covers initial desktop Studio only."
+}

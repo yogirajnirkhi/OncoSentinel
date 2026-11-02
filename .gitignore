@@ -1,0 +1,50 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Testing & Coverage
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+
+# Local databases (auto-created & seeded on first launch)
+*.db
+*.sqlite
+*.sqlite3
+
+# Environment
+.env
+.venv/
+venv/
+ENV/
+
+# Temporary / OS / Logs
+.DS_Store
+Thumbs.db
+*.tmp
+*.log
+
+# Build, packaging & binaries
+dist/
+build/
+*.egg-info/
+*.exe
+
+# Active model checkpoints in models/ are tracked
+# (Do not ignore models/ directory)
+!models/
+!models/*.pth
+
+# Runtime generated heatmaps and storage artifacts (preserve directories via .gitkeep)
+data/storage/*
+!data/storage/*/.gitkeep
+v1/data/storage/*
+!v1/data/storage/*/.gitkeep
+
+# Test artifacts
+artifacts/logs/test_*
+v1/artifacts/logs/test_*
+v1/artifacts/metrics/test_*
+v1/artifacts/model_cards/test_*

@@ -1,0 +1,26 @@
+{
+  "task_id": "leukemia_microscopy",
+  "category": "all_leukemia",
+  "model_version": "v2.0.0-all_leukemia-mbv3s",
+  "architecture": "MobileNetV3-Small",
+  "status": "ACTIVE",
+  "checkpoint_path": "../models/ALL.pth",
+  "sha256": "81cbf9c5ff4f3e7c69cf70e5ddde39528c11562c074c6611489ac01d5e12b5be",
+  "num_classes": 4,
+  "classes": [
+    "all_benign",
+    "all_early",
+    "all_pre",
+    "all_pro"
+  ],
+  "embedding_dim": 576,
+  "metrics": {
+    "accuracy": 0.952,
+    "macro_f1": 0.948,
+    "sensitivity_macro": 0.954,
+    "specificity_macro": 0.95,
+    "roc_auc_macro": 0.981,
+    "expected_calibration_error": 0.029,
+    "brier_score": 0.044
+  }
+}

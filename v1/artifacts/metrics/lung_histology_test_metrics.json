@@ -1,0 +1,19 @@
+{
+  "task_id": "lung_histology",
+  "category": "lung",
+  "status": "ACTIVE",
+  "architecture": "MobileNetV3-Small",
+  "checkpoint_sha256": "32551a1e0a4af46d1c58b51742477dacee555ca7927515eb27a36369646e171e",
+  "accuracy": 0.961,
+  "macro_f1": 0.959,
+  "sensitivity_macro": 0.963,
+  "specificity_macro": 0.958,
+  "roc_auc_macro": 0.986,
+  "expected_calibration_error": 0.026,
+  "brier_score": 0.038,
+  "class_names": [
+    "lung_aca",
+    "lung_bnt",
+    "lung_scc"
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "task_id": "colon_histology",
+  "category": "colon",
+  "model_version": "v2.0.0-colon-mbv3s",
+  "architecture": "MobileNetV3-Small",
+  "status": "ACTIVE",
+  "checkpoint_path": "../models/colon.pth",
+  "sha256": "f7c454303152f256ad48441be3ef76216d2fd6f9d3a54a9bbc099219803090ce",
+  "num_classes": 2,
+  "classes": [
+    "colon_aca",
+    "colon_bnt"
+  ],
+  "embedding_dim": 576,
+  "metrics": {
+    "accuracy": 0.978,
+    "macro_f1": 0.977,
+    "sensitivity_macro": 0.98,
+    "specificity_macro": 0.976,
+    "roc_auc_macro": 0.992,
+    "expected_calibration_error": 0.021,
+    "brier_score": 0.029
+  }
+}

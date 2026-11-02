@@ -1,0 +1,19 @@
+{
+  "task_id": "brain_mri",
+  "category": "brain",
+  "status": "ACTIVE",
+  "architecture": "MobileNetV3-Small",
+  "checkpoint_sha256": "d73579f6d4ac5cda67f816ce2a15c8a2b47435b46541d2ee48f252282e71edf5",
+  "accuracy": 0.947,
+  "macro_f1": 0.945,
+  "sensitivity_macro": 0.949,
+  "specificity_macro": 0.944,
+  "roc_auc_macro": 0.979,
+  "expected_calibration_error": 0.031,
+  "brier_score": 0.048,
+  "class_names": [
+    "brain_glioma",
+    "brain_menin",
+    "brain_tumor"
+  ]
+}

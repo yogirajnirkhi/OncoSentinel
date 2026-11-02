@@ -1,0 +1,451 @@
+# OncoSentinel v2.0 — Authoritative Model Registry & Training Specification
+# Version: 2.0.0
+# Single Source of Truth for the MobileNetV3-Small multi-cancer model portfolio.
+# Synchronized with configs/taxonomy.yaml and models/*.pth weights.
+
+version: "2.0.0"
+global_defaults:
+  seed: 42
+  deterministic: true
+  device: "auto"
+  num_workers: 2
+  pin_memory: false
+  mixed_precision: false
+  shared_backbone_dim: 576
+  checkpoint_root: "../models"
+  metrics_root: "artifacts/metrics"
+  logs_root: "artifacts/logs"
+  model_cards_root: "artifacts/model_cards"
+  splits_root: "configs/splits"
+
+tasks:
+  # ── 1. Breast Ultrasound (Untrained / Scaffolded) ─────────────────────────
+  breast_ultrasound:
+    task_id: "breast_ultrasound"
+    category: "breast"
+    display_name: "Breast Cancer Ultrasound Classification"
+    modality: "ultrasound"
+    enabled: false
+    status: "UNTRAINED"
+    data:
+      dataset_id: "BUSI-v1"
+      data_dir: "data/datasets/breast_ultrasound"
+      image_size: [224, 224]
+      channels: 3
+      class_names: ["benign", "malignant"]
+      class_mapping:
+        0: "benign"
+        1: "malignant"
+      split_manifest: "configs/splits/breast_ultrasound_split.json"
+      grouping_key: "patient_id"
+    model:
+      architecture: "MobileNetV3-Small"
+      modality_branch: "ultrasound_encoder"
+      shared_trunk: true
+      embedding_dim: 576
+      num_classes: 2
+      dropout: 0.2
+    training:
+      batch_size: 16
+      epochs: 15
+      learning_rate: 0.001
+      weight_decay: 0.0001
+      optimizer: "adamw"
+      scheduler: "cosine"
+      loss: "cross_entropy"
+      class_weights: "balanced"
+      early_stopping_patience: 5
+      selection_metric: "macro_f1"
+    checkpoint:
+      best_path: "../models/breast_model.pth"
+      sha256: null
+      version: "untrained"
+
+  # ── 2. Kidney CT (Active — Deployed MobileNetV3-Small) ────────────────────
+  kidney_ct:
+    task_id: "kidney_ct"
+    category: "kidney"
+    display_name: "Kidney CT Tumor Classification"
+    modality: "ct"
+    enabled: true
+    status: "ACTIVE"
+    data:
+      dataset_id: "CT-Kidney-v1"
+      data_dir: "data/datasets/kidney_ct"
+      image_size: [224, 224]
+      channels: 3
+      class_names: ["normal", "tumor"]
+      class_mapping:
+        0: "normal"
+        1: "tumor"
+      split_manifest: "configs/splits/kidney_ct_split.json"
+      grouping_key: "patient_id"
+    model:
+      architecture: "MobileNetV3-Small"
+      modality_branch: "ct_encoder"
+      shared_trunk: false
+      embedding_dim: 576
+      num_classes: 2
+      dropout: 0.2
+    training:
+      batch_size: 16
+      epochs: 15
+      learning_rate: 0.001
+      weight_decay: 0.0001
+      optimizer: "adamw"
+      scheduler: "cosine"
+      loss: "cross_entropy"
+      class_weights: "balanced"
+      early_stopping_patience: 5
+      selection_metric: "macro_f1"
+    checkpoint:
+      best_path: "../models/kidney_model.pth"
+      sha256: "b0ad31aa209358f9dff0643adcf66a1a387ee1c71dfca1ccb03c5251be28b071"
+      version: "v2.0.0-kidney-mbv3s"
+
+  # ── 3. ALL Leukemia Microscopy (Active — Deployed MobileNetV3-Small) ──────
+  leukemia_microscopy:
+    task_id: "leukemia_microscopy"
+    category: "all_leukemia"
+    display_name: "Acute Lymphoblastic Leukemia (ALL) Microscopy"
+    modality: "microscopy"
+    enabled: true
+    status: "ACTIVE"
+    data:
+      dataset_id: "C-NMC-v1"
+      data_dir: "data/datasets/leukemia_microscopy"
+      image_size: [224, 224]
+      channels: 3
+      class_names: ["all_benign", "all_early", "all_pre", "all_pro"]
+      class_mapping:
+        0: "all_benign"
+        1: "all_early"
+        2: "all_pre"
+        3: "all_pro"
+      split_manifest: "configs/splits/leukemia_microscopy_split.json"
+      grouping_key: "patient_id"
+    model:
+      architecture: "MobileNetV3-Small"
+      modality_branch: "pathology_encoder"
+      shared_trunk: false
+      embedding_dim: 576
+      num_classes: 4
+      dropout: 0.2
+    training:
+      batch_size: 16
+      epochs: 15
+      learning_rate: 0.001
+      weight_decay: 0.0001
+      optimizer: "adamw"
+      scheduler: "cosine"
+      loss: "cross_entropy"
+      class_weights: "balanced"
+      early_stopping_patience: 5
+      selection_metric: "macro_f1"
+    checkpoint:
+      best_path: "../models/ALL.pth"
+      sha256: "81cbf9c5ff4f3e7c69cf70e5ddde39528c11562c074c6611489ac01d5e12b5be"
+      version: "v2.0.0-all-mbv3s"
+
+  # ── 4. Oral Cancer Histology (Active — Deployed MobileNetV3-Small) ────────
+  oral_cancer:
+    task_id: "oral_cancer"
+    category: "oral"
+    display_name: "Oral Squamous Cell Carcinoma (OSCC) Histology"
+    modality: "histology"
+    enabled: true
+    status: "ACTIVE"
+    data:
+      dataset_id: "OralHisto-v1"
+      data_dir: "data/datasets/oral_cancer"
+      image_size: [224, 224]
+      channels: 3
+      class_names: ["normal", "oscc"]
+      class_mapping:
+        0: "normal"
+        1: "oscc"
+      split_manifest: "configs/splits/oral_cancer_split.json"
+      grouping_key: "patient_id"
+    model:
+      architecture: "MobileNetV3-Small"
+      modality_branch: "pathology_encoder"
+      shared_trunk: false
+      embedding_dim: 576
+      num_classes: 2
+      dropout: 0.2
+    training:
+      batch_size: 16
+      epochs: 15
+      learning_rate: 0.001
+      weight_decay: 0.0001
+      optimizer: "adamw"
+      scheduler: "cosine"
+      loss: "cross_entropy"
+      class_weights: "balanced"
+      early_stopping_patience: 5
+      selection_metric: "macro_f1"
+    checkpoint:
+      best_path: "../models/oral_model.pth"
+      sha256: "4446d83fc235780206619ed5a037ac0b9e8bfe18eadb07660c86e8cb5d7074b0"
+      version: "v2.0.0-oral-mbv3s"
+
+  # ── 5. Colon Histology (Active — Deployed MobileNetV3-Small) ──────────────
+  colon_histology:
+    task_id: "colon_histology"
+    category: "colon"
+    display_name: "Colon Histopathology Classification"
+    modality: "histology"
+    enabled: true
+    status: "ACTIVE"
+    data:
+      dataset_id: "LC25000-Colon-v1"
+      data_dir: "data/datasets/colon_histology"
+      image_size: [224, 224]
+      channels: 3
+      class_names: ["colon_aca", "colon_bnt"]
+      class_mapping:
+        0: "colon_aca"
+        1: "colon_bnt"
+      split_manifest: "configs/splits/colon_histology_split.json"
+      grouping_key: "patient_id"
+    model:
+      architecture: "MobileNetV3-Small"
+      modality_branch: "pathology_encoder"
+      shared_trunk: false
+      embedding_dim: 576
+      num_classes: 2
+      dropout: 0.2
+    training:
+      batch_size: 16
+      epochs: 15
+      learning_rate: 0.001
+      weight_decay: 0.0001
+      optimizer: "adamw"
+      scheduler: "cosine"
+      loss: "cross_entropy"
+      class_weights: "balanced"
+      early_stopping_patience: 5
+      selection_metric: "macro_f1"
+    checkpoint:
+      best_path: "../models/colon.pth"
+      sha256: "f7c454303152f256ad48441be3ef76216d2fd6f9d3a54a9bbc099219803090ce"
+      version: "v2.0.0-colon-mbv3s"
+
+  # ── 6. Lung Histology (Active — Deployed MobileNetV3-Small) ───────────────
+  lung_histology:
+    task_id: "lung_histology"
+    category: "lung"
+    display_name: "Lung Histopathology Classification"
+    modality: "histology"
+    enabled: true
+    status: "ACTIVE"
+    data:
+      dataset_id: "LC25000-Lung-v1"
+      data_dir: "data/datasets/lung_histology"
+      image_size: [224, 224]
+      channels: 3
+      class_names: ["lung_aca", "lung_bnt", "lung_scc"]
+      class_mapping:
+        0: "lung_aca"
+        1: "lung_bnt"
+        2: "lung_scc"
+      split_manifest: "configs/splits/lung_histology_split.json"
+      grouping_key: "patient_id"
+    model:
+      architecture: "MobileNetV3-Small"
+      modality_branch: "pathology_encoder"
+      shared_trunk: false
+      embedding_dim: 576
+      num_classes: 3
+      dropout: 0.2
+    training:
+      batch_size: 16
+      epochs: 15
+      learning_rate: 0.001
+      weight_decay: 0.0001
+      optimizer: "adamw"
+      scheduler: "cosine"
+      loss: "cross_entropy"
+      class_weights: "balanced"
+      early_stopping_patience: 5
+      selection_metric: "macro_f1"
+    checkpoint:
+      best_path: "../models/lung.pth"
+      sha256: "32551a1e0a4af46d1c58b51742477dacee555ca7927515eb27a36369646e171e"
+      version: "v2.0.0-lung-mbv3s"
+
+  # ── 7. Lung & Colon Combined Histology (Active Ensemble) ──────────────────
+  lung_colon_histology:
+    task_id: "lung_colon_histology"
+    category: "lung_colon"
+    display_name: "Lung & Colon Histopathology Classification"
+    modality: "histology"
+    enabled: true
+    status: "ACTIVE"
+    data:
+      dataset_id: "LC25000-v1"
+      data_dir: "data/datasets/lung_colon_histology"
+      image_size: [224, 224]
+      channels: 3
+      class_names: ["colon_aca", "colon_bnt", "lung_aca", "lung_bnt", "lung_scc"]
+      class_mapping:
+        0: "colon_aca"
+        1: "colon_bnt"
+        2: "lung_aca"
+        3: "lung_bnt"
+        4: "lung_scc"
+      split_manifest: "configs/splits/lung_colon_histology_split.json"
+      grouping_key: "patient_id"
+    model:
+      architecture: "MobileNetV3-Small (Dual-Head)"
+      modality_branch: "pathology_encoder"
+      shared_trunk: false
+      embedding_dim: 576
+      num_classes: 5
+      dropout: 0.2
+    training:
+      batch_size: 16
+      epochs: 15
+      learning_rate: 0.001
+      weight_decay: 0.0001
+      optimizer: "adamw"
+      scheduler: "cosine"
+      loss: "cross_entropy"
+      class_weights: "balanced"
+      early_stopping_patience: 5
+      selection_metric: "macro_f1"
+    checkpoint:
+      best_path: "../models/lung.pth"
+      sha256: "32551a1e0a4af46d1c58b51742477dacee555ca7927515eb27a36369646e171e"
+      version: "v2.0.0-lung-colon-mbv3s"
+
+  # ── 8. Lymphoma Histology (Untrained / Scaffolded) ────────────────────────
+  lymphoma_histology:
+    task_id: "lymphoma_histology"
+    category: "lymphoma"
+    display_name: "Lymphoma Subtype Histology (CLL / FL / MCL)"
+    modality: "histology"
+    enabled: false
+    status: "UNTRAINED"
+    data:
+      dataset_id: "LymphomaHisto-v1"
+      data_dir: "data/datasets/lymphoma_histology"
+      image_size: [224, 224]
+      channels: 3
+      class_names: ["cll", "fl", "mcl"]
+      class_mapping:
+        0: "cll"
+        1: "fl"
+        2: "mcl"
+      split_manifest: "configs/splits/lymphoma_histology_split.json"
+      grouping_key: "patient_id"
+    model:
+      architecture: "MobileNetV3-Small"
+      modality_branch: "pathology_encoder"
+      shared_trunk: false
+      embedding_dim: 576
+      num_classes: 3
+      dropout: 0.2
+    training:
+      batch_size: 16
+      epochs: 15
+      learning_rate: 0.001
+      weight_decay: 0.0001
+      optimizer: "adamw"
+      scheduler: "cosine"
+      loss: "cross_entropy"
+      class_weights: "balanced"
+      early_stopping_patience: 5
+      selection_metric: "macro_f1"
+    checkpoint:
+      best_path: "../models/lymphoma_model.pth"
+      sha256: null
+      version: "untrained"
+
+  # ── 9. Brain Tumor MRI (Active — Deployed MobileNetV3-Small) ──────────────
+  brain_mri:
+    task_id: "brain_mri"
+    category: "brain"
+    display_name: "Brain Tumor MRI Classification"
+    modality: "mri"
+    enabled: true
+    status: "ACTIVE"
+    data:
+      dataset_id: "BraTS2023-v1"
+      data_dir: "data/datasets/brain_mri"
+      image_size: [224, 224]
+      channels: 3
+      class_names: ["brain_glioma", "brain_menin", "brain_tumor"]
+      class_mapping:
+        0: "brain_glioma"
+        1: "brain_menin"
+        2: "brain_tumor"
+      split_manifest: "configs/splits/brain_mri_split.json"
+      grouping_key: "patient_id"
+    model:
+      architecture: "MobileNetV3-Small"
+      modality_branch: "mri_encoder"
+      shared_trunk: false
+      embedding_dim: 576
+      num_classes: 3
+      dropout: 0.2
+    training:
+      batch_size: 16
+      epochs: 15
+      learning_rate: 0.001
+      weight_decay: 0.0001
+      optimizer: "adamw"
+      scheduler: "cosine"
+      loss: "cross_entropy"
+      class_weights: "balanced"
+      early_stopping_patience: 5
+      selection_metric: "macro_f1"
+    checkpoint:
+      best_path: "../models/brain_tumor.pth"
+      sha256: "d73579f6d4ac5cda67f816ce2a15c8a2b47435b46541d2ee48f252282e71edf5"
+      version: "v2.0.0-brain-mbv3s"
+
+  # ── 10. Cervical Cytology (Active — Deployed MobileNetV3-Small) ───────────
+  cervical_cytology:
+    task_id: "cervical_cytology"
+    category: "cervical"
+    display_name: "Cervical Cytology (SIPaKMeD) Classification"
+    modality: "cytology"
+    enabled: true
+    status: "ACTIVE"
+    data:
+      dataset_id: "SIPaKMeD-v1"
+      data_dir: "data/datasets/cervical_cytology"
+      image_size: [224, 224]
+      channels: 3
+      class_names: ["cervix_dyk", "cervix_koc", "cervix_mep", "cervix_pab", "cervix_sfi"]
+      class_mapping:
+        0: "cervix_dyk"
+        1: "cervix_koc"
+        2: "cervix_mep"
+        3: "cervix_pab"
+        4: "cervix_sfi"
+      split_manifest: "configs/splits/cervical_cytology_split.json"
+      grouping_key: "patient_id"
+    model:
+      architecture: "MobileNetV3-Small"
+      modality_branch: "cytology_encoder"
+      shared_trunk: false
+      embedding_dim: 576
+      num_classes: 5
+      dropout: 0.2
+    training:
+      batch_size: 16
+      epochs: 15
+      learning_rate: 0.001
+      weight_decay: 0.0001
+      optimizer: "adamw"
+      scheduler: "cosine"
+      loss: "cross_entropy"
+      class_weights: "balanced"
+      early_stopping_patience: 5
+      selection_metric: "macro_f1"
+    checkpoint:
+      best_path: "../models/Cervical.pth"
+      sha256: "3d60f22fd8f9ba57660a5556f0b9c70162131b21795ee2eb58d917f1458e7d82"
+      version: "v2.0.0-cervical-mbv3s"

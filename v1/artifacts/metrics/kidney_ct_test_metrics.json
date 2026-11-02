@@ -1,0 +1,18 @@
+{
+  "task_id": "kidney_ct",
+  "category": "kidney",
+  "status": "ACTIVE",
+  "architecture": "MobileNetV3-Small",
+  "checkpoint_sha256": "b0ad31aa209358f9dff0643adcf66a1a387ee1c71dfca1ccb03c5251be28b071",
+  "accuracy": 0.964,
+  "macro_f1": 0.962,
+  "sensitivity_macro": 0.968,
+  "specificity_macro": 0.96,
+  "roc_auc_macro": 0.985,
+  "expected_calibration_error": 0.028,
+  "brier_score": 0.041,
+  "class_names": [
+    "normal",
+    "tumor"
+  ]
+}

@@ -1,0 +1,134 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.backends.legacy:build"
+
+[project]
+name = "oncosentinel"
+version = "2.0.0"
+description = "OncoSentinel v2.0 — Multimodal Cancer AI Clinical Decision-Support Research Platform"
+requires-python = ">=3.11"
+readme = "README.md"
+license = {text = "Research Use Only"}
+
+dependencies = [
+    # API & Validation
+    "fastapi==0.111.0",
+    "uvicorn[standard]==0.29.0",
+    "pydantic==2.7.1",
+    "pydantic-settings==2.2.1",
+    "python-multipart==0.0.9",
+    "python-jose[cryptography]==3.3.0",
+    "passlib[bcrypt]==1.7.4",
+    "httpx==0.27.0",
+
+    # Database
+    "sqlalchemy==2.0.30",
+    "alembic==1.13.1",
+    "asyncpg==0.29.0",
+    "aiosqlite>=0.20.0",
+    "psycopg2-binary==2.9.9",
+
+    # Task Queue
+    "celery==5.4.0",
+    "redis==5.0.4",
+
+    # ML Core
+    "torch==2.3.0",
+    "torchvision==0.18.0",
+    "timm==1.0.3",
+    "monai==1.3.0",
+    "scikit-learn==1.5.0",
+    "numpy==1.26.4",
+    "scipy==1.13.0",
+    "pillow==10.3.0",
+    "opencv-python-headless==4.9.0.80",
+    "nibabel==5.2.1",        # NIfTI for brain/CT volumes
+    "pydicom>=2.4.4",        # DICOM medical imaging metadata
+
+    # Calibration & Uncertainty
+    "mapie==0.8.3",
+    "netcal==1.3.5",
+
+    # XAI
+    "captum==0.7.0",
+    "shap==0.45.0",
+    "quantus==0.5.3",
+
+    # Fairness
+    "fairlearn==0.10.0",
+
+    # RAG / Storage
+    "qdrant-client==1.9.1",
+    "minio==7.2.7",
+    "rank-bm25==0.2.2",
+    "sentence-transformers==3.0.1",
+
+    # LLM
+    "ollama==0.2.1",
+
+    # OCR / PDF
+    "pymupdf==1.24.3",
+    "pytesseract==0.3.10",
+
+    # MLOps
+    "mlflow==2.13.0",
+    "dvc==3.51.2",
+    "evidently==0.4.30",
+
+    # Monitoring
+    "prometheus-fastapi-instrumentator==6.1.0",
+    "opentelemetry-api==1.24.0",
+    "opentelemetry-sdk==1.24.0",
+    "opentelemetry-instrumentation-fastapi==0.45b0",
+
+    # Federated
+    "flwr==1.8.0",
+
+    # Utilities
+    "pyyaml==6.0.1",
+    "python-dotenv==1.0.1",
+    "structlog==24.1.0",
+    "tenacity==8.3.0",
+    "rich==13.7.1",
+    "typer==0.12.3",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest==8.2.0",
+    "pytest-asyncio==0.23.7",
+    "pytest-cov==5.0.0",
+    "pytest-mock==3.14.0",
+    "httpx==0.27.0",
+    "factory-boy==3.3.0",
+    "ruff==0.4.4",
+    "mypy==1.10.0",
+    "bandit==1.7.8",
+    "pre-commit==3.7.1",
+    "types-pyyaml",
+    "types-passlib",
+]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+select = ["E", "F", "W", "I", "N", "UP", "S", "B", "A", "C4", "PT", "SIM", "TCH", "ANN"]
+ignore = ["ANN101", "ANN102", "S101"]  # S101 = allow assert in tests
+
+[tool.ruff.per-file-ignores]
+"tests/*" = ["S101", "ANN"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+ignore_missing_imports = true
+exclude = ["alembic/", "scripts/"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+addopts = "--cov=services --cov-report=term-missing"
+
+[tool.bandit]
+exclude_dirs = ["tests", "scripts"]
+skips = ["B101"]

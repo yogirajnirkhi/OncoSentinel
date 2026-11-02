@@ -1,0 +1,111 @@
+# OncoSentinel v2.0 — Uncertainty & Quality Thresholds
+# Version: 1.0.0
+# CRITICAL: No threshold is hard-coded in Python. All values loaded from here.
+# Any change requires an ADR + calibration re-run + test update.
+# Satisfies: FR-05, FR-06, FR-07, FR-08, NFR-01
+
+version: "1.0.0"
+updated_at: "2024-01-01"
+
+# ── Global Uncertainty Thresholds ─────────────────────────────────────────────
+# Aggregate decision mapping: PASS | REVIEW | ABSTAIN
+# Applied after per-category calibration.
+global:
+  uncertainty:
+    # Predictive uncertainty (entropy) — [0, log(num_classes)]
+    predictive:
+      pass_below: 0.40
+      review_below: 0.70    # PASS if < 0.40; REVIEW if 0.40..0.70; ABSTAIN if >= 0.70
+    # OOD composite score [0, 1]  (higher = more OOD)
+    ood_composite:
+      pass_below: 0.30
+      review_below: 0.60
+    # Evidence uncertainty — RAG coverage [0, 1] (lower = less evidence)
+    evidence:
+      pass_above: 0.50       # must have > 0.50 evidence score to PASS
+      review_above: 0.20     # REVIEW if 0.20..0.50; ABSTAIN if < 0.20
+
+  # Image quality gate (0 = worst, 1 = best)
+  quality:
+    minimum_score: 0.40      # below this → UNSUPPORTED (quality)
+    review_score: 0.60       # between minimum and review → REVIEW_REQUIRED
+
+  # Cancer relevance gate
+  cancer_relevance:
+    minimum_score: 0.55      # below this → safe-fail (not routed to ML)
+
+# ── Per-Category Overrides ────────────────────────────────────────────────────
+# Inherits global values unless overridden.
+categories:
+  breast:
+    uncertainty:
+      predictive:
+        pass_below: 0.45      # slightly higher tolerance for binary task
+    ood_composite:
+      pass_below: 0.30
+    calibration:
+      method: "temperature_scaling"  # default; conformal for selective risk
+      temperature_init: 1.0
+
+  kidney:
+    uncertainty:
+      predictive:
+        pass_below: 0.35      # 4-class; tighter
+        review_below: 0.65
+    calibration:
+      method: "temperature_scaling"
+      temperature_init: 1.0
+
+  # Phase 2+ categories inherit global defaults until updated at their release.
+  all_leukemia: {}
+  oral: {}
+  lung_colon:
+    uncertainty:
+      predictive:
+        pass_below: 0.35
+        review_below: 0.65
+  colon:
+    uncertainty:
+      predictive:
+        pass_below: 0.35
+        review_below: 0.65
+  lung:
+    uncertainty:
+      predictive:
+        pass_below: 0.35
+        review_below: 0.65
+  lymphoma: {}
+  brain:
+    uncertainty:
+      predictive:
+        pass_below: 0.30      # 4-class MRI; tighter
+        review_below: 0.60
+  cervical:
+    uncertainty:
+      predictive:
+        pass_below: 0.35
+        review_below: 0.65
+
+# ── OOD Detector Thresholds ───────────────────────────────────────────────────
+ood:
+  mahalanobis:
+    # Percentile of training distribution to use as threshold
+    threshold_percentile: 95
+  energy:
+    threshold_percentile: 95
+  max_softmax:
+    threshold: 0.50          # predictions below this confidence are suspicious
+  # Final OOD decision: flagged if BOTH primary detectors agree
+  consensus_required: 2
+
+# ── Calibration Metrics Targets ───────────────────────────────────────────────
+calibration_targets:
+  ece_max: 0.10              # Expected Calibration Error ≤ 10%
+  brier_max: 0.20            # Brier score ≤ 0.20
+  # These are targets, not enforced gates in Phase 1 — reported alongside results
+
+# ── XAI Fidelity Thresholds ───────────────────────────────────────────────────
+xai:
+  fidelity_min: 0.70
+  robustness_min: 0.70
+  localization_min: 0.50     # lower bar; clinical localisation is approximate

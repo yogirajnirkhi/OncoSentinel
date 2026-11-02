@@ -1,0 +1,162 @@
+{
+  "run_id": "RUN_20261020_110015_bf74d6",
+  "task_id": "brain_mri",
+  "category": "brain",
+  "modality": "mri",
+  "status": "EVALUATED",
+  "dataset_id": "BraTS-Classification-v1",
+  "split_manifest": "artifacts/manifests/brain_mri_split.json",
+  "config_snapshot_path": "configs\\training\\brain_mri.yaml",
+  "seed": 42,
+  "model_architecture": "HybridMultiTaskModel",
+  "checkpoint_path": "artifacts\\checkpoints\\brain_mri\\brain_mri_best.pt",
+  "checkpoint_sha256": "d170d6c9767ae774a84006a9174b9bb460aebd4ee878751e027c338937f6d9a4",
+  "started_at": "2026-10-20T11:00:27.048856",
+  "finished_at": "2026-10-20T11:00:27.048856",
+  "epochs_trained": 1,
+  "best_epoch": 1,
+  "validation_metrics": {
+    "task_id": "brain_mri",
+    "split_name": "val",
+    "num_samples": 9,
+    "accuracy": 0.3333333333333333,
+    "macro_f1": 0.125,
+    "sensitivity_macro": 0.25,
+    "specificity_macro": 0.75,
+    "brier_score": 0.7481659650802612,
+    "expected_calibration_error": 0.07775135835011798,
+    "roc_auc_macro": null,
+    "per_class_metrics": {
+      "no_tumor": {
+        "sensitivity_recall": 1.0,
+        "specificity": 0.0,
+        "precision": 0.3333333333333333,
+        "f1_score": 0.5,
+        "support": 3
+      },
+      "glioma": {
+        "sensitivity_recall": 0.0,
+        "specificity": 1.0,
+        "precision": 0.0,
+        "f1_score": 0.0,
+        "support": 0
+      },
+      "meningioma": {
+        "sensitivity_recall": 0.0,
+        "specificity": 1.0,
+        "precision": 0.0,
+        "f1_score": 0.0,
+        "support": 3
+      },
+      "pituitary": {
+        "sensitivity_recall": 0.0,
+        "specificity": 1.0,
+        "precision": 0.0,
+        "f1_score": 0.0,
+        "support": 3
+      }
+    },
+    "confusion_matrix": [
+      [
+        3,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        3,
+        0,
+        0,
+        0
+      ],
+      [
+        3,
+        0,
+        0,
+        0
+      ]
+    ]
+  },
+  "test_metrics": {
+    "task_id": "brain_mri",
+    "split_name": "test",
+    "num_samples": 9,
+    "accuracy": 0.6666666666666666,
+    "macro_f1": 0.2,
+    "sensitivity_macro": 0.25,
+    "specificity_macro": 0.75,
+    "brier_score": 0.7432664036750793,
+    "expected_calibration_error": 0.4112567106882731,
+    "roc_auc_macro": null,
+    "per_class_metrics": {
+      "no_tumor": {
+        "sensitivity_recall": 1.0,
+        "specificity": 0.0,
+        "precision": 0.6666666666666666,
+        "f1_score": 0.8,
+        "support": 6
+      },
+      "glioma": {
+        "sensitivity_recall": 0.0,
+        "specificity": 1.0,
+        "precision": 0.0,
+        "f1_score": 0.0,
+        "support": 0
+      },
+      "meningioma": {
+        "sensitivity_recall": 0.0,
+        "specificity": 1.0,
+        "precision": 0.0,
+        "f1_score": 0.0,
+        "support": 0
+      },
+      "pituitary": {
+        "sensitivity_recall": 0.0,
+        "specificity": 1.0,
+        "precision": 0.0,
+        "f1_score": 0.0,
+        "support": 3
+      }
+    },
+    "confusion_matrix": [
+      [
+        6,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        3,
+        0,
+        0,
+        0
+      ]
+    ]
+  },
+  "notes": [
+    "Trained with AdamW",
+    "Best epoch: 1"
+  ],
+  "limitations": [
+    "Evaluated on held-out test split of benchmark cohort."
+  ],
+  "environment_info": {}
+}

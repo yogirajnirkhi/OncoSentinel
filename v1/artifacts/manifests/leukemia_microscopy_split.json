@@ -1,0 +1,690 @@
+{
+  "task_id": "leukemia_microscopy",
+  "dataset_id": "C-NMC-2019",
+  "created_at": "2026-10-20T10:54:41.412892",
+  "grouping_key": "patient_id",
+  "total_samples": 60,
+  "train_count": 42,
+  "val_count": 9,
+  "test_count": 9,
+  "class_distribution": {
+    "train": {
+      "normal": 18,
+      "all_blast": 24
+    },
+    "val": {
+      "normal": 6,
+      "all_blast": 3
+    },
+    "test": {
+      "normal": 6,
+      "all_blast": 3
+    }
+  },
+  "train_samples": [
+    {
+      "sample_id": "PATIENT_LEUK_018_SCAN_00",
+      "relative_path": "normal/PATIENT_LEUK_018_SCAN_00.png",
+      "class_label": 0,
+      "class_name": "normal",
+      "grouping_id": "PATIENT_LEUK_018",
+      "metadata": {
+        "synthetic": true,
+        "modality": "microscopy"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LEUK_018_SCAN_01",
+      "relative_path": "normal/PATIENT_LEUK_018_SCAN_01.png",
+      "class_label": 0,
+      "class_name": "normal",
+      "grouping_id": "PATIENT_LEUK_018",
+      "metadata": {
+        "synthetic": true,
+        "modality": "microscopy"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LEUK_018_SCAN_02",
+      "relative_path": "normal/PATIENT_LEUK_018_SCAN_02.png",
+      "class_label": 0,
+      "class_name": "normal",
+      "grouping_id": "PATIENT_LEUK_018",
+      "metadata": {
+        "synthetic": true,
+        "modality": "microscopy"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LEUK_004_SCAN_00",
+      "relative_path": "normal/PATIENT_LEUK_004_SCAN_00.png",
+      "class_label": 0,
+      "class_name": "normal",
+      "grouping_id": "PATIENT_LEUK_004",
+      "metadata": {
+        "synthetic": true,
+        "modality": "microscopy"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LEUK_004_SCAN_01",
+      "relative_path": "normal/PATIENT_LEUK_004_SCAN_01.png",
+      "class_label": 0,
+      "class_name": "normal",
+      "grouping_id": "PATIENT_LEUK_004",
+      "metadata": {
+        "synthetic": true,
+        "modality": "microscopy"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LEUK_004_SCAN_02",
+      "relative_path": "normal/PATIENT_LEUK_004_SCAN_02.png",
+      "class_label": 0,
+      "class_name": "normal",
+      "grouping_id": "PATIENT_LEUK_004",
+      "metadata": {
+        "synthetic": true,
+        "modality": "microscopy"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LEUK_014_SCAN_00",
+      "relative_path": "normal/PATIENT_LEUK_014_SCAN_00.png",
+      "class_label": 0,
+      "class_name": "normal",
+      "grouping_id": "PATIENT_LEUK_014",
+      "metadata": {
+        "synthetic": true,
+        "modality": "microscopy"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LEUK_014_SCAN_01",
+      "relative_path": "normal/PATIENT_LEUK_014_SCAN_01.png",
+      "class_label": 0,
+      "class_name": "normal",
+      "grouping_id": "PATIENT_LEUK_014",
+      "metadata": {
+        "synthetic": true,
+        "modality": "microscopy"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LEUK_014_SCAN_02",
+      "relative_path": "normal/PATIENT_LEUK_014_SCAN_02.png",
+      "class_label": 0,
+      "class_name": "normal",
+      "grouping_id": "PATIENT_LEUK_014",
+      "metadata": {
+        "synthetic": true,
+        "modality": "microscopy"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LEUK_010_SCAN_00",
+      "relative_path": "normal/PATIENT_LEUK_010_SCAN_00.png",
+      "class_label": 0,
+      "class_name": "normal",
+      "grouping_id": "PATIENT_LEUK_010",
+      "metadata": {
+        "synthetic": true,
+        "modality": "microscopy"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LEUK_010_SCAN_01",
+      "relative_path": "normal/PATIENT_LEUK_010_SCAN_01.png",
+      "class_label": 0,
+      "class_name": "normal",
+      "grouping_id": "PATIENT_LEUK_010",
+      "metadata": {
+        "synthetic": true,
+        "modality": "microscopy"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LEUK_010_SCAN_02",
+      "relative_path": "normal/PATIENT_LEUK_010_SCAN_02.png",
+      "class_label": 0,
+      "class_name": "normal",
+      "grouping_id": "PATIENT_LEUK_010",
+      "metadata": {
+        "synthetic": true,
+        "modality": "microscopy"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LEUK_015_SCAN_00",
+      "relative_path": "all_blast/PATIENT_LEUK_015_SCAN_00.png",
+      "class_label": 1,
+      "class_name": "all_blast",
+      "grouping_id": "PATIENT_LEUK_015",
+      "metadata": {
+        "synthetic": true,
+        "modality": "microscopy"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LEUK_015_SCAN_01",
+      "relative_path": "all_blast/PATIENT_LEUK_015_SCAN_01.png",
+      "class_label": 1,
+      "class_name": "all_blast",
+      "grouping_id": "PATIENT_LEUK_015",
+      "metadata": {
+        "synthetic": true,
+        "modality": "microscopy"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LEUK_015_SCAN_02",
+      "relative_path": "all_blast/PATIENT_LEUK_015_SCAN_02.png",
+      "class_label": 1,
+      "class_name": "all_blast",
+      "grouping_id": "PATIENT_LEUK_015",
+      "metadata": {
+        "synthetic": true,
+        "modality": "microscopy"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LEUK_006_SCAN_00",
+      "relative_path": "normal/PATIENT_LEUK_006_SCAN_00.png",
+      "class_label": 0,
+      "class_name": "normal",
+      "grouping_id": "PATIENT_LEUK_006",
+      "metadata": {
+        "synthetic": true,
+        "modality": "microscopy"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LEUK_006_SCAN_01",
+      "relative_path": "normal/PATIENT_LEUK_006_SCAN_01.png",
+      "class_label": 0,
+      "class_name": "normal",
+      "grouping_id": "PATIENT_LEUK_006",
+      "metadata": {
+        "synthetic": true,
+        "modality": "microscopy"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LEUK_006_SCAN_02",
+      "relative_path": "normal/PATIENT_LEUK_006_SCAN_02.png",
+      "class_label": 0,
+      "class_name": "normal",
+      "grouping_id": "PATIENT_LEUK_006",
+      "metadata": {
+        "synthetic": true,
+        "modality": "microscopy"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LEUK_005_SCAN_00",
+      "relative_path": "all_blast/PATIENT_LEUK_005_SCAN_00.png",
+      "class_label": 1,
+      "class_name": "all_blast",
+      "grouping_id": "PATIENT_LEUK_005",
+      "metadata": {
+        "synthetic": true,
+        "modality": "microscopy"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LEUK_005_SCAN_01",
+      "relative_path": "all_blast/PATIENT_LEUK_005_SCAN_01.png",
+      "class_label": 1,
+      "class_name": "all_blast",
+      "grouping_id": "PATIENT_LEUK_005",
+      "metadata": {
+        "synthetic": true,
+        "modality": "microscopy"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LEUK_005_SCAN_02",
+      "relative_path": "all_blast/PATIENT_LEUK_005_SCAN_02.png",
+      "class_label": 1,
+      "class_name": "all_blast",
+      "grouping_id": "PATIENT_LEUK_005",
+      "metadata": {
+        "synthetic": true,
+        "modality": "microscopy"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LEUK_011_SCAN_00",
+      "relative_path": "all_blast/PATIENT_LEUK_011_SCAN_00.png",
+      "class_label": 1,
+      "class_name": "all_blast",
+      "grouping_id": "PATIENT_LEUK_011",
+      "metadata": {
+        "synthetic": true,
+        "modality": "microscopy"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LEUK_011_SCAN_01",
+      "relative_path": "all_blast/PATIENT_LEUK_011_SCAN_01.png",
+      "class_label": 1,
+      "class_name": "all_blast",
+      "grouping_id": "PATIENT_LEUK_011",
+      "metadata": {
+        "synthetic": true,
+        "modality": "microscopy"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LEUK_011_SCAN_02",
+      "relative_path": "all_blast/PATIENT_LEUK_011_SCAN_02.png",
+      "class_label": 1,
+      "class_name": "all_blast",
+      "grouping_id": "PATIENT_LEUK_011",
+      "metadata": {
+        "synthetic": true,
+        "modality": "microscopy"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LEUK_013_SCAN_00",
+      "relative_path": "all_blast/PATIENT_LEUK_013_SCAN_00.png",
+      "class_label": 1,
+      "class_name": "all_blast",
+      "grouping_id": "PATIENT_LEUK_013",
+      "metadata": {
+        "synthetic": true,
+        "modality": "microscopy"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LEUK_013_SCAN_01",
+      "relative_path": "all_blast/PATIENT_LEUK_013_SCAN_01.png",
+      "class_label": 1,
+      "class_name": "all_blast",
+      "grouping_id": "PATIENT_LEUK_013",
+      "metadata": {
+        "synthetic": true,
+        "modality": "microscopy"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LEUK_013_SCAN_02",
+      "relative_path": "all_blast/PATIENT_LEUK_013_SCAN_02.png",
+      "class_label": 1,
+      "class_name": "all_blast",
+      "grouping_id": "PATIENT_LEUK_013",
+      "metadata": {
+        "synthetic": true,
+        "modality": "microscopy"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LEUK_001_SCAN_00",
+      "relative_path": "all_blast/PATIENT_LEUK_001_SCAN_00.png",
+      "class_label": 1,
+      "class_name": "all_blast",
+      "grouping_id": "PATIENT_LEUK_001",
+      "metadata": {
+        "synthetic": true,
+        "modality": "microscopy"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LEUK_001_SCAN_01",
+      "relative_path": "all_blast/PATIENT_LEUK_001_SCAN_01.png",
+      "class_label": 1,
+      "class_name": "all_blast",
+      "grouping_id": "PATIENT_LEUK_001",
+      "metadata": {
+        "synthetic": true,
+        "modality": "microscopy"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LEUK_001_SCAN_02",
+      "relative_path": "all_blast/PATIENT_LEUK_001_SCAN_02.png",
+      "class_label": 1,
+      "class_name": "all_blast",
+      "grouping_id": "PATIENT_LEUK_001",
+      "metadata": {
+        "synthetic": true,
+        "modality": "microscopy"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LEUK_012_SCAN_00",
+      "relative_path": "normal/PATIENT_LEUK_012_SCAN_00.png",
+      "class_label": 0,
+      "class_name": "normal",
+      "grouping_id": "PATIENT_LEUK_012",
+      "metadata": {
+        "synthetic": true,
+        "modality": "microscopy"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LEUK_012_SCAN_01",
+      "relative_path": "normal/PATIENT_LEUK_012_SCAN_01.png",
+      "class_label": 0,
+      "class_name": "normal",
+      "grouping_id": "PATIENT_LEUK_012",
+      "metadata": {
+        "synthetic": true,
+        "modality": "microscopy"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LEUK_012_SCAN_02",
+      "relative_path": "normal/PATIENT_LEUK_012_SCAN_02.png",
+      "class_label": 0,
+      "class_name": "normal",
+      "grouping_id": "PATIENT_LEUK_012",
+      "metadata": {
+        "synthetic": true,
+        "modality": "microscopy"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LEUK_009_SCAN_00",
+      "relative_path": "all_blast/PATIENT_LEUK_009_SCAN_00.png",
+      "class_label": 1,
+      "class_name": "all_blast",
+      "grouping_id": "PATIENT_LEUK_009",
+      "metadata": {
+        "synthetic": true,
+        "modality": "microscopy"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LEUK_009_SCAN_01",
+      "relative_path": "all_blast/PATIENT_LEUK_009_SCAN_01.png",
+      "class_label": 1,
+      "class_name": "all_blast",
+      "grouping_id": "PATIENT_LEUK_009",
+      "metadata": {
+        "synthetic": true,
+        "modality": "microscopy"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LEUK_009_SCAN_02",
+      "relative_path": "all_blast/PATIENT_LEUK_009_SCAN_02.png",
+      "class_label": 1,
+      "class_name": "all_blast",
+      "grouping_id": "PATIENT_LEUK_009",
+      "metadata": {
+        "synthetic": true,
+        "modality": "microscopy"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LEUK_017_SCAN_00",
+      "relative_path": "all_blast/PATIENT_LEUK_017_SCAN_00.png",
+      "class_label": 1,
+      "class_name": "all_blast",
+      "grouping_id": "PATIENT_LEUK_017",
+      "metadata": {
+        "synthetic": true,
+        "modality": "microscopy"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LEUK_017_SCAN_01",
+      "relative_path": "all_blast/PATIENT_LEUK_017_SCAN_01.png",
+      "class_label": 1,
+      "class_name": "all_blast",
+      "grouping_id": "PATIENT_LEUK_017",
+      "metadata": {
+        "synthetic": true,
+        "modality": "microscopy"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LEUK_017_SCAN_02",
+      "relative_path": "all_blast/PATIENT_LEUK_017_SCAN_02.png",
+      "class_label": 1,
+      "class_name": "all_blast",
+      "grouping_id": "PATIENT_LEUK_017",
+      "metadata": {
+        "synthetic": true,
+        "modality": "microscopy"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LEUK_019_SCAN_00",
+      "relative_path": "all_blast/PATIENT_LEUK_019_SCAN_00.png",
+      "class_label": 1,
+      "class_name": "all_blast",
+      "grouping_id": "PATIENT_LEUK_019",
+      "metadata": {
+        "synthetic": true,
+        "modality": "microscopy"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LEUK_019_SCAN_01",
+      "relative_path": "all_blast/PATIENT_LEUK_019_SCAN_01.png",
+      "class_label": 1,
+      "class_name": "all_blast",
+      "grouping_id": "PATIENT_LEUK_019",
+      "metadata": {
+        "synthetic": true,
+        "modality": "microscopy"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LEUK_019_SCAN_02",
+      "relative_path": "all_blast/PATIENT_LEUK_019_SCAN_02.png",
+      "class_label": 1,
+      "class_name": "all_blast",
+      "grouping_id": "PATIENT_LEUK_019",
+      "metadata": {
+        "synthetic": true,
+        "modality": "microscopy"
+      }
+    }
+  ],
+  "val_samples": [
+    {
+      "sample_id": "PATIENT_LEUK_002_SCAN_00",
+      "relative_path": "normal/PATIENT_LEUK_002_SCAN_00.png",
+      "class_label": 0,
+      "class_name": "normal",
+      "grouping_id": "PATIENT_LEUK_002",
+      "metadata": {
+        "synthetic": true,
+        "modality": "microscopy"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LEUK_002_SCAN_01",
+      "relative_path": "normal/PATIENT_LEUK_002_SCAN_01.png",
+      "class_label": 0,
+      "class_name": "normal",
+      "grouping_id": "PATIENT_LEUK_002",
+      "metadata": {
+        "synthetic": true,
+        "modality": "microscopy"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LEUK_002_SCAN_02",
+      "relative_path": "normal/PATIENT_LEUK_002_SCAN_02.png",
+      "class_label": 0,
+      "class_name": "normal",
+      "grouping_id": "PATIENT_LEUK_002",
+      "metadata": {
+        "synthetic": true,
+        "modality": "microscopy"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LEUK_016_SCAN_00",
+      "relative_path": "normal/PATIENT_LEUK_016_SCAN_00.png",
+      "class_label": 0,
+      "class_name": "normal",
+      "grouping_id": "PATIENT_LEUK_016",
+      "metadata": {
+        "synthetic": true,
+        "modality": "microscopy"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LEUK_016_SCAN_01",
+      "relative_path": "normal/PATIENT_LEUK_016_SCAN_01.png",
+      "class_label": 0,
+      "class_name": "normal",
+      "grouping_id": "PATIENT_LEUK_016",
+      "metadata": {
+        "synthetic": true,
+        "modality": "microscopy"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LEUK_016_SCAN_02",
+      "relative_path": "normal/PATIENT_LEUK_016_SCAN_02.png",
+      "class_label": 0,
+      "class_name": "normal",
+      "grouping_id": "PATIENT_LEUK_016",
+      "metadata": {
+        "synthetic": true,
+        "modality": "microscopy"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LEUK_007_SCAN_00",
+      "relative_path": "all_blast/PATIENT_LEUK_007_SCAN_00.png",
+      "class_label": 1,
+      "class_name": "all_blast",
+      "grouping_id": "PATIENT_LEUK_007",
+      "metadata": {
+        "synthetic": true,
+        "modality": "microscopy"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LEUK_007_SCAN_01",
+      "relative_path": "all_blast/PATIENT_LEUK_007_SCAN_01.png",
+      "class_label": 1,
+      "class_name": "all_blast",
+      "grouping_id": "PATIENT_LEUK_007",
+      "metadata": {
+        "synthetic": true,
+        "modality": "microscopy"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LEUK_007_SCAN_02",
+      "relative_path": "all_blast/PATIENT_LEUK_007_SCAN_02.png",
+      "class_label": 1,
+      "class_name": "all_blast",
+      "grouping_id": "PATIENT_LEUK_007",
+      "metadata": {
+        "synthetic": true,
+        "modality": "microscopy"
+      }
+    }
+  ],
+  "test_samples": [
+    {
+      "sample_id": "PATIENT_LEUK_000_SCAN_00",
+      "relative_path": "normal/PATIENT_LEUK_000_SCAN_00.png",
+      "class_label": 0,
+      "class_name": "normal",
+      "grouping_id": "PATIENT_LEUK_000",
+      "metadata": {
+        "synthetic": true,
+        "modality": "microscopy"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LEUK_000_SCAN_01",
+      "relative_path": "normal/PATIENT_LEUK_000_SCAN_01.png",
+      "class_label": 0,
+      "class_name": "normal",
+      "grouping_id": "PATIENT_LEUK_000",
+      "metadata": {
+        "synthetic": true,
+        "modality": "microscopy"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LEUK_000_SCAN_02",
+      "relative_path": "normal/PATIENT_LEUK_000_SCAN_02.png",
+      "class_label": 0,
+      "class_name": "normal",
+      "grouping_id": "PATIENT_LEUK_000",
+      "metadata": {
+        "synthetic": true,
+        "modality": "microscopy"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LEUK_003_SCAN_00",
+      "relative_path": "all_blast/PATIENT_LEUK_003_SCAN_00.png",
+      "class_label": 1,
+      "class_name": "all_blast",
+      "grouping_id": "PATIENT_LEUK_003",
+      "metadata": {
+        "synthetic": true,
+        "modality": "microscopy"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LEUK_003_SCAN_01",
+      "relative_path": "all_blast/PATIENT_LEUK_003_SCAN_01.png",
+      "class_label": 1,
+      "class_name": "all_blast",
+      "grouping_id": "PATIENT_LEUK_003",
+      "metadata": {
+        "synthetic": true,
+        "modality": "microscopy"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LEUK_003_SCAN_02",
+      "relative_path": "all_blast/PATIENT_LEUK_003_SCAN_02.png",
+      "class_label": 1,
+      "class_name": "all_blast",
+      "grouping_id": "PATIENT_LEUK_003",
+      "metadata": {
+        "synthetic": true,
+        "modality": "microscopy"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LEUK_008_SCAN_00",
+      "relative_path": "normal/PATIENT_LEUK_008_SCAN_00.png",
+      "class_label": 0,
+      "class_name": "normal",
+      "grouping_id": "PATIENT_LEUK_008",
+      "metadata": {
+        "synthetic": true,
+        "modality": "microscopy"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LEUK_008_SCAN_01",
+      "relative_path": "normal/PATIENT_LEUK_008_SCAN_01.png",
+      "class_label": 0,
+      "class_name": "normal",
+      "grouping_id": "PATIENT_LEUK_008",
+      "metadata": {
+        "synthetic": true,
+        "modality": "microscopy"
+      }
+    },
+    {
+      "sample_id": "PATIENT_LEUK_008_SCAN_02",
+      "relative_path": "normal/PATIENT_LEUK_008_SCAN_02.png",
+      "class_label": 0,
+      "class_name": "normal",
+      "grouping_id": "PATIENT_LEUK_008",
+      "metadata": {
+        "synthetic": true,
+        "modality": "microscopy"
+      }
+    }
+  ]
+}

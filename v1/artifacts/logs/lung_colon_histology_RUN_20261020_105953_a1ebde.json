@@ -1,0 +1,198 @@
+{
+  "run_id": "RUN_20261020_105953_a1ebde",
+  "task_id": "lung_colon_histology",
+  "category": "lung_colon",
+  "modality": "histology",
+  "status": "EVALUATED",
+  "dataset_id": "LC25000-v1",
+  "split_manifest": "artifacts/manifests/lung_colon_histology_split.json",
+  "config_snapshot_path": "configs\\training\\lung_colon_histology.yaml",
+  "seed": 42,
+  "model_architecture": "HybridMultiTaskModel",
+  "checkpoint_path": "artifacts\\checkpoints\\lung_colon_histology\\lung_colon_histology_best.pt",
+  "checkpoint_sha256": "70cb9b89fde0c4c2946045c114f984d901c36f6b5fb136e619fd115e7524992a",
+  "started_at": "2026-10-20T11:00:04.823763",
+  "finished_at": "2026-10-20T11:00:04.823763",
+  "epochs_trained": 1,
+  "best_epoch": 1,
+  "validation_metrics": {
+    "task_id": "lung_colon_histology",
+    "split_name": "val",
+    "num_samples": 9,
+    "accuracy": 0.6666666666666666,
+    "macro_f1": 0.16,
+    "sensitivity_macro": 0.2,
+    "specificity_macro": 0.8,
+    "brier_score": 0.7891939282417297,
+    "expected_calibration_error": 0.4604195008675257,
+    "roc_auc_macro": null,
+    "per_class_metrics": {
+      "colon_adenocarcinoma": {
+        "sensitivity_recall": 0.0,
+        "specificity": 1.0,
+        "precision": 0.0,
+        "f1_score": 0.0,
+        "support": 0
+      },
+      "colon_benign": {
+        "sensitivity_recall": 0.0,
+        "specificity": 1.0,
+        "precision": 0.0,
+        "f1_score": 0.0,
+        "support": 3
+      },
+      "lung_adenocarcinoma": {
+        "sensitivity_recall": 1.0,
+        "specificity": 0.0,
+        "precision": 0.6666666666666666,
+        "f1_score": 0.8,
+        "support": 6
+      },
+      "lung_benign": {
+        "sensitivity_recall": 0.0,
+        "specificity": 1.0,
+        "precision": 0.0,
+        "f1_score": 0.0,
+        "support": 0
+      },
+      "lung_squamous_cell_carcinoma": {
+        "sensitivity_recall": 0.0,
+        "specificity": 1.0,
+        "precision": 0.0,
+        "f1_score": 0.0,
+        "support": 0
+      }
+    },
+    "confusion_matrix": [
+      [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        3,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        6,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    ]
+  },
+  "test_metrics": {
+    "task_id": "lung_colon_histology",
+    "split_name": "test",
+    "num_samples": 9,
+    "accuracy": 0.0,
+    "macro_f1": 0.0,
+    "sensitivity_macro": 0.0,
+    "specificity_macro": 0.8,
+    "brier_score": 0.813542902469635,
+    "expected_calibration_error": 0.20616425573825836,
+    "roc_auc_macro": null,
+    "per_class_metrics": {
+      "colon_adenocarcinoma": {
+        "sensitivity_recall": 0.0,
+        "specificity": 1.0,
+        "precision": 0.0,
+        "f1_score": 0.0,
+        "support": 3
+      },
+      "colon_benign": {
+        "sensitivity_recall": 0.0,
+        "specificity": 1.0,
+        "precision": 0.0,
+        "f1_score": 0.0,
+        "support": 0
+      },
+      "lung_adenocarcinoma": {
+        "sensitivity_recall": 0.0,
+        "specificity": 0.0,
+        "precision": 0.0,
+        "f1_score": 0.0,
+        "support": 0
+      },
+      "lung_benign": {
+        "sensitivity_recall": 0.0,
+        "specificity": 1.0,
+        "precision": 0.0,
+        "f1_score": 0.0,
+        "support": 6
+      },
+      "lung_squamous_cell_carcinoma": {
+        "sensitivity_recall": 0.0,
+        "specificity": 1.0,
+        "precision": 0.0,
+        "f1_score": 0.0,
+        "support": 0
+      }
+    },
+    "confusion_matrix": [
+      [
+        0,
+        0,
+        3,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        6,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    ]
+  },
+  "notes": [
+    "Trained with AdamW",
+    "Best epoch: 1"
+  ],
+  "limitations": [
+    "Evaluated on held-out test split of benchmark cohort."
+  ],
+  "environment_info": {}
+}

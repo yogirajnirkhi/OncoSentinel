@@ -1,0 +1,130 @@
+{
+  "run_id": "RUN_20261020_110004_8b1ee0",
+  "task_id": "lymphoma_histology",
+  "category": "lymphoma",
+  "modality": "histology",
+  "status": "EVALUATED",
+  "dataset_id": "Lymphoma-NIH-v1",
+  "split_manifest": "artifacts/manifests/lymphoma_histology_split.json",
+  "config_snapshot_path": "configs\\training\\lymphoma_histology.yaml",
+  "seed": 42,
+  "model_architecture": "HybridMultiTaskModel",
+  "checkpoint_path": "artifacts\\checkpoints\\lymphoma_histology\\lymphoma_histology_best.pt",
+  "checkpoint_sha256": "9f062faeb7df767d718d33fc4ed414bcc71ad468918d63393a61beebe4b4f684",
+  "started_at": "2026-10-20T11:00:15.097274",
+  "finished_at": "2026-10-20T11:00:15.097274",
+  "epochs_trained": 1,
+  "best_epoch": 1,
+  "validation_metrics": {
+    "task_id": "lymphoma_histology",
+    "split_name": "val",
+    "num_samples": 9,
+    "accuracy": 0.3333333333333333,
+    "macro_f1": 0.16666666666666666,
+    "sensitivity_macro": 0.3333333333333333,
+    "specificity_macro": 0.6666666666666666,
+    "brier_score": 0.6782897710800171,
+    "expected_calibration_error": 0.014364341894785582,
+    "roc_auc_macro": null,
+    "per_class_metrics": {
+      "cll": {
+        "sensitivity_recall": 0.0,
+        "specificity": 1.0,
+        "precision": 0.0,
+        "f1_score": 0.0,
+        "support": 0
+      },
+      "fl": {
+        "sensitivity_recall": 0.0,
+        "specificity": 1.0,
+        "precision": 0.0,
+        "f1_score": 0.0,
+        "support": 6
+      },
+      "mcl": {
+        "sensitivity_recall": 1.0,
+        "specificity": 0.0,
+        "precision": 0.3333333333333333,
+        "f1_score": 0.5,
+        "support": 3
+      }
+    },
+    "confusion_matrix": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        6
+      ],
+      [
+        0,
+        0,
+        3
+      ]
+    ]
+  },
+  "test_metrics": {
+    "task_id": "lymphoma_histology",
+    "split_name": "test",
+    "num_samples": 9,
+    "accuracy": 0.3333333333333333,
+    "macro_f1": 0.16666666666666666,
+    "sensitivity_macro": 0.3333333333333333,
+    "specificity_macro": 0.6666666666666666,
+    "brier_score": 0.6560513973236084,
+    "expected_calibration_error": 0.014243225256601988,
+    "roc_auc_macro": null,
+    "per_class_metrics": {
+      "cll": {
+        "sensitivity_recall": 0.0,
+        "specificity": 1.0,
+        "precision": 0.0,
+        "f1_score": 0.0,
+        "support": 6
+      },
+      "fl": {
+        "sensitivity_recall": 0.0,
+        "specificity": 1.0,
+        "precision": 0.0,
+        "f1_score": 0.0,
+        "support": 0
+      },
+      "mcl": {
+        "sensitivity_recall": 1.0,
+        "specificity": 0.0,
+        "precision": 0.3333333333333333,
+        "f1_score": 0.5,
+        "support": 3
+      }
+    },
+    "confusion_matrix": [
+      [
+        0,
+        0,
+        6
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        3
+      ]
+    ]
+  },
+  "notes": [
+    "Trained with AdamW",
+    "Best epoch: 1"
+  ],
+  "limitations": [
+    "Evaluated on held-out test split of benchmark cohort."
+  ],
+  "environment_info": {}
+}

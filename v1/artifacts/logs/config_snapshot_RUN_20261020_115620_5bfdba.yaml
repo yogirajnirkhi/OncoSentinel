@@ -1,0 +1,31 @@
+category: breast
+checkpoint:
+  checkpoint_dir: C:\Users\ACER\AppData\Local\Temp\tmp17ojc_zo\checkpoints
+data:
+  channels: 3
+  class_mapping:
+    0: benign
+    1: malignant
+  class_names:
+  - benign
+  - malignant
+  data_dir: C:\Users\ACER\AppData\Local\Temp\tmp17ojc_zo\data
+  dataset_id: synthetic_test_v1
+  grouping_key: patient_id
+  image_size:
+  - 224
+  - 224
+  split_manifest: C:\Users\ACER\AppData\Local\Temp\tmp17ojc_zo\manifest.json
+enabled: true
+modality: ultrasound
+model:
+  dropout: 0.2
+  embedding_dim: 512
+  num_classes: 2
+task_id: test_e2e_task
+training:
+  batch_size: 4
+  early_stopping_patience: 2
+  epochs: 2
+  learning_rate: 0.001
+  seed: 42

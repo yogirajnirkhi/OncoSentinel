@@ -1,0 +1,198 @@
+{
+  "run_id": "RUN_20261020_105519_fe4181",
+  "task_id": "cervical_cytology",
+  "category": "cervical",
+  "modality": "cytology",
+  "status": "EVALUATED",
+  "dataset_id": "SIPaKMeD-v1",
+  "split_manifest": "artifacts/manifests/cervical_cytology_split.json",
+  "config_snapshot_path": "configs\\training\\cervical_cytology.yaml",
+  "seed": 42,
+  "model_architecture": "HybridMultiTaskModel",
+  "checkpoint_path": "artifacts\\checkpoints\\cervical_cytology\\cervical_cytology_best.pt",
+  "checkpoint_sha256": "b9573c7977d028495eb09253421b55c4f74b01e0907a649fa8c44b5a29090e4f",
+  "started_at": "2026-10-20T10:55:26.368898",
+  "finished_at": "2026-10-20T10:55:26.368898",
+  "epochs_trained": 1,
+  "best_epoch": 1,
+  "validation_metrics": {
+    "task_id": "cervical_cytology",
+    "split_name": "val",
+    "num_samples": 9,
+    "accuracy": 0.0,
+    "macro_f1": 0.0,
+    "sensitivity_macro": 0.0,
+    "specificity_macro": 0.8,
+    "brier_score": 0.7972562909126282,
+    "expected_calibration_error": 0.20953436195850372,
+    "roc_auc_macro": null,
+    "per_class_metrics": {
+      "dyskeratotic": {
+        "sensitivity_recall": 0.0,
+        "specificity": 0.0,
+        "precision": 0.0,
+        "f1_score": 0.0,
+        "support": 0
+      },
+      "koilocytotic": {
+        "sensitivity_recall": 0.0,
+        "specificity": 1.0,
+        "precision": 0.0,
+        "f1_score": 0.0,
+        "support": 3
+      },
+      "metaplastic": {
+        "sensitivity_recall": 0.0,
+        "specificity": 1.0,
+        "precision": 0.0,
+        "f1_score": 0.0,
+        "support": 6
+      },
+      "parabasal": {
+        "sensitivity_recall": 0.0,
+        "specificity": 1.0,
+        "precision": 0.0,
+        "f1_score": 0.0,
+        "support": 0
+      },
+      "superficial_intermediate": {
+        "sensitivity_recall": 0.0,
+        "specificity": 1.0,
+        "precision": 0.0,
+        "f1_score": 0.0,
+        "support": 0
+      }
+    },
+    "confusion_matrix": [
+      [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        3,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        6,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    ]
+  },
+  "test_metrics": {
+    "task_id": "cervical_cytology",
+    "split_name": "test",
+    "num_samples": 9,
+    "accuracy": 0.3333333333333333,
+    "macro_f1": 0.1,
+    "sensitivity_macro": 0.2,
+    "specificity_macro": 0.8,
+    "brier_score": 0.8139885663986206,
+    "expected_calibration_error": 0.12401812275250751,
+    "roc_auc_macro": null,
+    "per_class_metrics": {
+      "dyskeratotic": {
+        "sensitivity_recall": 1.0,
+        "specificity": 0.0,
+        "precision": 0.3333333333333333,
+        "f1_score": 0.5,
+        "support": 3
+      },
+      "koilocytotic": {
+        "sensitivity_recall": 0.0,
+        "specificity": 1.0,
+        "precision": 0.0,
+        "f1_score": 0.0,
+        "support": 0
+      },
+      "metaplastic": {
+        "sensitivity_recall": 0.0,
+        "specificity": 1.0,
+        "precision": 0.0,
+        "f1_score": 0.0,
+        "support": 0
+      },
+      "parabasal": {
+        "sensitivity_recall": 0.0,
+        "specificity": 1.0,
+        "precision": 0.0,
+        "f1_score": 0.0,
+        "support": 6
+      },
+      "superficial_intermediate": {
+        "sensitivity_recall": 0.0,
+        "specificity": 1.0,
+        "precision": 0.0,
+        "f1_score": 0.0,
+        "support": 0
+      }
+    },
+    "confusion_matrix": [
+      [
+        3,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        6,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    ]
+  },
+  "notes": [
+    "Trained with AdamW",
+    "Best epoch: 1"
+  ],
+  "limitations": [
+    "Evaluated on held-out test split of benchmark cohort."
+  ],
+  "environment_info": {}
+}

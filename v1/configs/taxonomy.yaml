@@ -1,0 +1,308 @@
+# OncoSentinel v2.0 — Authoritative Taxonomy Configuration
+# Version: 2.0.0
+# This file is the SINGLE SOURCE OF TRUTH for category routing.
+# Any change requires an ADR in docs/decisions/ and a calibration re-run.
+# Satisfies: FR-02, FR-04, FR-28
+
+version: "2.0.0"
+updated_at: "2024-01-01"
+
+categories:
+
+  # ── Phase 1 Categories ────────────────────────────────────────────────────
+
+  breast:
+    display_name: "Breast Cancer"
+    class_mapping:
+      0: "benign"
+      1: "malignant"
+    supported_modalities:
+      - "ultrasound"
+      - "histology"
+    datasets:
+      - id: "BUSI-v1"
+        name: "Breast Ultrasound Images Dataset"
+        split_config: "configs/splits/busi_split.json"
+        license: "CC-BY-4.0"
+        source_url: "https://www.kaggle.com/datasets/aryashah2k/breast-ultrasound-images-dataset"
+      - id: "BreakHis-v1"
+        name: "BreaKHis Dataset"
+        split_config: "configs/splits/breakhis_split.json"
+        license: "CC-BY-NC-SA-4.0"
+        source_url: "https://web.inf.ufpr.br/vri/databases/breast-cancer-histopathological-database-breakhis/"
+    calibration_policy: "temperature_scaling+isotonic+conformal"
+    calibration_method_priority: ["conformal", "temperature_scaling", "isotonic"]
+    uncertainty_policy: "entropy+mahalanobis+energy"
+    uncertainty_threshold_ref: "breast"   # key in thresholds.yaml
+    explanation_type: "concept_bottleneck+gradcam_audit"
+    clinical_concepts:
+      - "mass_shape"
+      - "mass_margin"
+      - "mass_density"
+      - "calcification_pattern"
+      - "nuclear_grade"
+      - "architectural_distortion"
+    fairness_strata:
+      - "age_group"
+      - "scanner_vendor"
+      - "institution"
+      - "biopsy_site"
+    clinical_study_status: "UNTRAINED"
+    phase_availability: 1
+    model_card: "artifacts/model_cards/breast_ultrasound.md"
+
+  kidney:
+    display_name: "Kidney Cancer"
+    class_mapping:
+      0: "normal"
+      1: "tumor"
+    supported_modalities:
+      - "ct"
+    datasets:
+      - id: "KiTS23-v1"
+        name: "Kidney and Kidney Tumor Segmentation Challenge 2023"
+        split_config: "configs/splits/kits_split.json"
+        license: "CC-BY-NC-SA-4.0"
+        source_url: "https://kits-challenge.org/kits23/"
+      - id: "CT-Kidney-v1"
+        name: "CT Kidney Dataset: Normal-Cyst-Tumor-Stone"
+        split_config: "configs/splits/ct_kidney_split.json"
+        license: "CC-BY-4.0"
+        source_url: "https://www.kaggle.com/datasets/nazmul0087/ct-kidney-dataset-normal-cyst-tumor-and-stone"
+    calibration_policy: "temperature_scaling+isotonic+conformal"
+    calibration_method_priority: ["conformal", "temperature_scaling", "isotonic"]
+    uncertainty_policy: "entropy+mahalanobis+energy"
+    uncertainty_threshold_ref: "kidney"
+    explanation_type: "segmentation_concept+gradcam_audit"
+    clinical_concepts:
+      - "lesion_size"
+      - "lesion_density"
+      - "lesion_location"
+      - "cortical_involvement"
+      - "enhancement_pattern"
+    fairness_strata:
+      - "age_group"
+      - "sex"
+      - "institution"
+      - "scanner_protocol"
+    clinical_study_status: "ACTIVE"
+    phase_availability: 1
+    model_card: "artifacts/model_cards/kidney_ct.md"
+
+  # ── Phase 2 Categories (stubs — routing disabled until phase 2) ──────────
+
+  all_leukemia:
+    display_name: "Acute Lymphoblastic Leukemia"
+    class_mapping:
+      0: "all_benign"
+      1: "all_early"
+      2: "all_pre"
+      3: "all_pro"
+    supported_modalities:
+      - "microscopy"
+    datasets:
+      - id: "C-NMC-v1"
+        name: "C-NMC 2019 ALL Challenge Dataset"
+        license: "research_only"
+    calibration_policy: "temperature_scaling+conformal"
+    uncertainty_policy: "entropy+mahalanobis+energy"
+    explanation_type: "concept_bottleneck+gradcam_audit"
+    clinical_concepts:
+      - "blast_morphology"
+      - "nuclear_cytoplasmic_ratio"
+      - "chromatin_texture"
+    fairness_strata:
+      - "age_group"
+      - "sex"
+    clinical_study_status: "ACTIVE"
+    phase_availability: 2
+
+  oral:
+    display_name: "Oral Cancer"
+    class_mapping:
+      0: "normal"
+      1: "oscc"
+    supported_modalities:
+      - "histology"
+    datasets:
+      - id: "OralHisto-v1"
+        name: "Oral Histopathology Dataset"
+        license: "research_only"
+    calibration_policy: "temperature_scaling+conformal"
+    uncertainty_policy: "entropy+mahalanobis+energy"
+    explanation_type: "concept_bottleneck+gradcam_audit"
+    clinical_concepts:
+      - "epithelial_dysplasia_grade"
+      - "invasion_depth"
+      - "keratinization"
+    fairness_strata:
+      - "age_group"
+      - "sex"
+    clinical_study_status: "ACTIVE"
+    phase_availability: 1
+
+  colon:
+    display_name: "Colon Cancer"
+    class_mapping:
+      0: "colon_aca"
+      1: "colon_bnt"
+    supported_modalities:
+      - "histology"
+    datasets:
+      - id: "LC25000-Colon-v1"
+        name: "LC25000 Colon Histopathological Dataset"
+        license: "CC-BY-4.0"
+        source_url: "https://github.com/tampapath/lung_colon_image_set"
+    calibration_policy: "temperature_scaling+conformal"
+    uncertainty_policy: "entropy+mahalanobis+energy"
+    explanation_type: "concept_bottleneck+gradcam_audit"
+    clinical_concepts:
+      - "glandular_architecture"
+      - "nuclear_pleomorphism"
+      - "stromal_invasion"
+      - "tumor_grade"
+    fairness_strata:
+      - "age_group"
+      - "sex"
+    clinical_study_status: "ACTIVE"
+    phase_availability: 2
+
+  lung:
+    display_name: "Lung Cancer"
+    class_mapping:
+      0: "lung_aca"
+      1: "lung_bnt"
+      2: "lung_scc"
+    supported_modalities:
+      - "histology"
+    datasets:
+      - id: "LC25000-Lung-v1"
+        name: "LC25000 Lung Histopathological Dataset"
+        license: "CC-BY-4.0"
+        source_url: "https://github.com/tampapath/lung_colon_image_set"
+    calibration_policy: "temperature_scaling+conformal"
+    uncertainty_policy: "entropy+mahalanobis+energy"
+    explanation_type: "concept_bottleneck+gradcam_audit"
+    clinical_concepts:
+      - "glandular_architecture"
+      - "nuclear_pleomorphism"
+      - "stromal_invasion"
+      - "tumor_grade"
+    fairness_strata:
+      - "age_group"
+      - "sex"
+      - "smoking_status"
+    clinical_study_status: "ACTIVE"
+    phase_availability: 2
+
+  lung_colon:
+    display_name: "Lung & Colon Cancer"
+    class_mapping:
+      0: "colon_aca"
+      1: "colon_bnt"
+      2: "lung_aca"
+      3: "lung_bnt"
+      4: "lung_scc"
+    supported_modalities:
+      - "histology"
+    datasets:
+      - id: "LC25000-v1"
+        name: "LC25000 Lung and Colon Histopathological Image Dataset"
+        license: "CC-BY-4.0"
+        source_url: "https://github.com/tampapath/lung_colon_image_set"
+    calibration_policy: "temperature_scaling+conformal"
+    uncertainty_policy: "entropy+mahalanobis+energy"
+    explanation_type: "concept_bottleneck+gradcam_audit"
+    clinical_concepts:
+      - "glandular_architecture"
+      - "nuclear_pleomorphism"
+      - "stromal_invasion"
+      - "tumor_grade"
+    fairness_strata:
+      - "age_group"
+      - "sex"
+      - "smoking_status"
+    clinical_study_status: "ACTIVE"
+    phase_availability: 2
+
+  lymphoma:
+    display_name: "Lymphoma"
+    class_mapping:
+      0: "cll"
+      1: "fl"
+      2: "mcl"
+    supported_modalities:
+      - "histology"
+    datasets:
+      - id: "LymphomaHisto-v1"
+        name: "Lymphoma Histology (CLL/FL/MCL)"
+        license: "research_only"
+    calibration_policy: "temperature_scaling+conformal"
+    uncertainty_policy: "entropy+mahalanobis+energy"
+    explanation_type: "concept_bottleneck+gradcam_audit"
+    clinical_concepts:
+      - "follicular_architecture"
+      - "mantle_zone_pattern"
+      - "nuclear_morphology"
+    fairness_strata:
+      - "age_group"
+      - "sex"
+    clinical_study_status: "UNTRAINED"
+    phase_availability: 2
+
+  brain:
+    display_name: "Brain Tumor"
+    class_mapping:
+      0: "brain_glioma"
+      1: "brain_menin"
+      2: "brain_tumor"
+    supported_modalities:
+      - "mri"
+    datasets:
+      - id: "BraTS2023-v1"
+        name: "Brain Tumor Segmentation Challenge 2023"
+        license: "CC-BY-NC-SA-4.0"
+        source_url: "https://www.synapse.org/brats2023"
+    calibration_policy: "temperature_scaling+conformal"
+    uncertainty_policy: "entropy+mahalanobis+energy"
+    explanation_type: "segmentation_concept+gradcam_audit"
+    clinical_concepts:
+      - "tumor_volume"
+      - "edema_extent"
+      - "enhancement_pattern"
+      - "midline_shift"
+    fairness_strata:
+      - "age_group"
+      - "sex"
+      - "scanner_field_strength"
+    clinical_study_status: "ACTIVE"
+    phase_availability: 2
+
+  cervical:
+    display_name: "Cervical Cancer"
+    class_mapping:
+      0: "cervix_dyk"
+      1: "cervix_koc"
+      2: "cervix_mep"
+      3: "cervix_pab"
+      4: "cervix_sfi"
+    supported_modalities:
+      - "cytology"
+    datasets:
+      - id: "SIPaKMeD-v1"
+        name: "SIPaKMeD Database"
+        license: "research_only"
+        source_url: "https://www.cs.uoi.gr/~marina/sipakmed.html"
+    calibration_policy: "temperature_scaling+conformal"
+    uncertainty_policy: "entropy+mahalanobis+energy"
+    explanation_type: "concept_bottleneck+gradcam_audit"
+    clinical_concepts:
+      - "cell_shape"
+      - "nucleus_size"
+      - "cytoplasm_ratio"
+      - "border_irregularity"
+    fairness_strata:
+      - "age_group"
+      - "pap_smear_history"
+    clinical_study_status: "ACTIVE"
+    phase_availability: 2

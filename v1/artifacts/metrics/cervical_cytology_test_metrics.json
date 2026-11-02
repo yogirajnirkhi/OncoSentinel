@@ -1,0 +1,21 @@
+{
+  "task_id": "cervical_cytology",
+  "category": "cervical",
+  "status": "ACTIVE",
+  "architecture": "MobileNetV3-Small",
+  "checkpoint_sha256": "3d60f22fd8f9ba57660a5556f0b9c70162131b21795ee2eb58d917f1458e7d82",
+  "accuracy": 0.938,
+  "macro_f1": 0.935,
+  "sensitivity_macro": 0.94,
+  "specificity_macro": 0.936,
+  "roc_auc_macro": 0.974,
+  "expected_calibration_error": 0.035,
+  "brier_score": 0.056,
+  "class_names": [
+    "cervix_dyk",
+    "cervix_koc",
+    "cervix_mep",
+    "cervix_pab",
+    "cervix_sfi"
+  ]
+}
